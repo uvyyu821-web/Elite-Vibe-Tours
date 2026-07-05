@@ -11,14 +11,19 @@
   
   <style>
     :root {
-      --bg: #F8F9FA;
-      --white: #FFFFFF;
-      --text-dark: #1A1A1A;
-      --text-gray: #666666;
-      --primary: #D73A15;
-      --primary-hover: #B92D0E;
-      --border: #E5E5E5;
+      /* Dark Theme Colors */
+      --bg: #121212;
+      --surface: #1E1E1E;
+      --surface-hover: #2A2A2A;
+      --text-main: #FFFFFF;
+      --text-muted: #A0A0A0;
       
+      /* Golden Accents */
+      --primary: #D4AF37;
+      --primary-hover: #B5952F;
+      
+      /* Structure */
+      --border: #333333;
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Inter', sans-serif;
     }
@@ -30,9 +35,12 @@
     body {
       font-family: var(--font-body);
       background-color: var(--bg);
-      color: var(--text-dark);
+      color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
+      /* Subtle dark texture */
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 0);
+      background-size: 24px 24px;
     }
 
     img { max-width: 100%; height: auto; display: block; }
@@ -56,160 +64,207 @@
       font-weight: 600; font-size: 0.9rem;
       border-radius: 4px;
       transition: all 0.2s ease;
+      cursor: pointer;
     }
-    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary { background: var(--primary); color: #000; font-weight: 700; }
     .btn-primary:hover { background: var(--primary-hover); }
-    .btn-outline { border: 1px solid var(--text-dark); color: var(--text-dark); }
-    .btn-outline:hover { background: var(--text-dark); color: var(--white); }
+    .btn-outline { border: 1px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: #000; }
 
-    .title { font-family: var(--font-heading); font-size: 2.5rem; line-height: 1.2; margin-bottom: 1rem; color: var(--text-dark); }
+    .title { font-family: var(--font-heading); font-size: 2.5rem; line-height: 1.2; margin-bottom: 1rem; color: var(--primary); }
     @media (min-width: 768px) { .title { font-size: 3.5rem; } }
 
     .navbar {
-      background: var(--white);
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0; z-index: 100;
     }
     .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
     
-    .logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--text-dark); }
+    .logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
     
     .nav-links { display: none; gap: 2rem; }
-    .nav-links a { font-weight: 500; font-size: 0.9rem; color: var(--text-gray); transition: color 0.2s; }
+    .nav-links a { font-weight: 500; font-size: 0.9rem; color: var(--text-muted); transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--primary); }
     
     @media (min-width: 768px) { .nav-links { display: flex; align-items: center; } }
 
     .nav-actions { display: flex; align-items: center; gap: 1rem; }
-    .cart-btn { font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; background: var(--bg); padding: 0.5rem 1rem; border-radius: 4px; }
-    .cart-btn:hover { background: var(--border); }
-    .cart-count { background: var(--primary); color: var(--white); padding: 2px 8px; border-radius: 20px; font-size: 0.8rem; }
+    .cart-btn { font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; background: var(--surface); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 4px; border: 1px solid var(--border); }
+    .cart-btn:hover { border-color: var(--primary); }
+    .cart-count { background: var(--primary); color: #000; padding: 2px 8px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
 
-    .mobile-menu-btn { display: block; font-size: 1.5rem; }
+    .mobile-menu-btn { display: block; font-size: 1.5rem; color: var(--text-main); }
     @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
 
-    /* Mobile Menu Overlay */
     .mobile-menu {
       position: fixed; top: 70px; left: 0; width: 100%; height: calc(100vh - 70px);
-      background: var(--white); z-index: 99; padding: 2rem;
+      background: var(--bg); z-index: 99; padding: 2rem;
       display: none; flex-direction: column; gap: 1.5rem;
     }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-size: 1.2rem; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+    .mobile-menu a { font-size: 1.2rem; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 1rem; color: var(--text-main); }
 
     .hero {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
+      position: relative;
+      background: url('https://i.ibb.co/DDVnfJvQ/IMG-20260705-184552.jpg') center/cover no-repeat;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 4rem 0;
     }
-    .hero-grid {
+    
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(18,18,18,0.95) 0%, rgba(18,18,18,0.8) 50%, rgba(18,18,18,0.4) 100%);
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .hero-overlay {
+        background: linear-gradient(to bottom, rgba(18,18,18,0.9) 0%, rgba(18,18,18,0.85) 100%);
+      }
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 2;
       display: grid;
       grid-template-columns: 1fr;
       gap: 3rem;
       align-items: center;
-      padding: 4rem 0;
     }
     @media (min-width: 992px) {
-      .hero-grid { grid-template-columns: 1fr 1fr; padding: 6rem 0; }
+      .hero-container { grid-template-columns: 1.2fr 1fr; }
     }
 
-    .hero-content { display: flex; flex-direction: column; align-items: flex-start; }
-    .hero-logo { width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin-bottom: 2rem; border: 2px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    .hero-logo img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-title { font-family: var(--font-heading); font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
-    .hero-subtitle { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 2rem; max-width: 500px; }
+    .hero-main { display: flex; flex-direction: column; align-items: flex-start; }
+    
+    .hero-logo-wrapper {
+      width: 100px; height: 100px; border-radius: 50%; overflow: hidden; 
+      margin-bottom: 1.5rem; border: 2px solid var(--primary);
+      background: var(--surface); padding: 0.5rem;
+    }
+    .hero-logo-wrapper img { width: 100%; height: 100%; object-fit: contain; }
+    
+    .hero-title { font-family: var(--font-heading); font-size: clamp(3rem, 6vw, 5rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.5rem; color: var(--text-main); }
+    .hero-tagline { font-size: 1.2rem; color: var(--primary); margin-bottom: 2rem; font-weight: 500; letter-spacing: 1px; }
 
-    .hero-visuals { display: flex; flex-direction: column; gap: 2rem; }
-    .branches-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-    @media (min-width: 500px) { .branches-card { grid-template-columns: 1fr 1fr; } }
-    .branch-item h4 { font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem; }
-    .branch-item p { font-size: 0.9rem; color: var(--text-gray); }
-    .hero-image { border-radius: 8px; overflow: hidden; height: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-    .hero-image img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-services { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem; }
+    .service-tag { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .glass-card {
+      background: rgba(30, 30, 30, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .glass-card h3 { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.5rem; font-family: var(--font-heading); }
+    .branch { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .branch:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .branch h4 { color: var(--text-main); font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .branch p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.4; }
+    .branch small { color: var(--primary); font-size: 0.85rem; opacity: 0.8; }
 
     .filter-bar { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; align-items: center; justify-content: space-between; }
-    .category-tabs { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; }
-    .tab-btn { padding: 0.5rem 1rem; background: var(--white); border: 1px solid var(--border); border-radius: 20px; font-size: 0.9rem; white-space: nowrap; }
-    .tab-btn.active, .tab-btn:hover { background: var(--text-dark); color: var(--white); border-color: var(--text-dark); }
-    .search-box { padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 20px; outline: none; width: 100%; max-width: 300px; }
+    .category-tabs { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: none; }
+    .category-tabs::-webkit-scrollbar { display: none; }
+    .tab-btn { padding: 0.5rem 1.2rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 20px; font-size: 0.9rem; white-space: nowrap; }
+    .tab-btn.active, .tab-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); font-weight: 600; }
+    .search-box { padding: 0.6rem 1.2rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 20px; outline: none; width: 100%; max-width: 300px; }
+    .search-box:focus { border-color: var(--primary); }
 
     .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
-    .product-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
-    .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-    .product-img { aspect-ratio: 4/3; overflow: hidden; background: #eee; }
+    .product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
+    .product-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+    .product-img { aspect-ratio: 4/3; overflow: hidden; background: #000; }
     .product-img img { width: 100%; height: 100%; object-fit: cover; }
     .product-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
-    .product-cat { font-size: 0.8rem; color: var(--text-gray); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
-    .product-name { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.3; }
+    .product-cat { font-size: 0.8rem; color: var(--primary); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.05em; font-weight: 600; }
+    .product-name { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.3; color: var(--text-main); }
     .product-action { margin-top: auto; }
-    .btn-add { width: 100%; padding: 0.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; font-weight: 600; color: var(--text-dark); transition: 0.2s; }
-    .btn-add:hover { background: var(--primary); color: var(--white); border-color: var(--primary); }
-    .btn-add.added { background: #4CAF50; color: white; border-color: #4CAF50; }
+    
+    .btn-add { width: 100%; padding: 0.75rem; background: transparent; border: 1px solid var(--primary); border-radius: 4px; font-weight: 600; color: var(--primary); transition: 0.2s; text-transform: uppercase; font-size: 0.85rem; }
+    .btn-add:hover { background: var(--primary); color: #000; }
+    .btn-add.added { background: var(--primary); color: #000; }
 
     .detail-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
     @media (min-width: 768px) { .detail-grid { grid-template-columns: 1fr 1fr; } }
-    .detail-img { border-radius: 8px; overflow: hidden; background: var(--white); border: 1px solid var(--border); }
-    .detail-info h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; }
-    .detail-desc { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 2rem; }
-    .specs-list { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; }
+    .detail-img { border-radius: 8px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); }
+    .detail-info h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); }
+    .detail-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
+    
+    .specs-list { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; }
     .spec-item { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
     .spec-item:last-child { border-bottom: none; }
-    .spec-label { color: var(--text-gray); }
-    .spec-value { font-weight: 600; text-align: right; }
+    .spec-label { color: var(--text-muted); }
+    .spec-value { font-weight: 600; text-align: right; color: var(--text-main); }
 
-    .works-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
-    .work-item { aspect-ratio: 4/3; overflow: hidden; border-radius: 8px; }
-    .work-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-    .work-item:hover img { transform: scale(1.05); }
+    .works-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+    .work-item { aspect-ratio: 1; overflow: hidden; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); }
+    .work-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .work-item:hover img { transform: scale(1.08); }
 
-    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
     @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
-    .contact-details { padding: 3rem; background: var(--bg); }
-    .contact-block { margin-bottom: 2rem; }
+    .contact-details { padding: 3rem; background: rgba(0,0,0,0.2); border-right: 1px solid var(--border); }
+    .contact-block { margin-bottom: 2.5rem; }
     .contact-block h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--primary); }
-    .contact-block p { color: var(--text-gray); line-height: 1.6; }
+    .contact-block p { color: var(--text-muted); line-height: 1.6; }
     
-    .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; opacity: 0; visibility: hidden; transition: 0.3s; }
+    /* Side Cart Drawer */
+    .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 1000; opacity: 0; visibility: hidden; transition: 0.3s; }
     .cart-overlay.open { opacity: 1; visibility: visible; }
-    .cart-drawer { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: var(--white); z-index: 1001; transition: right 0.3s ease; display: flex; flex-direction: column; box-shadow: -5px 0 15px rgba(0,0,0,0.1); }
+    .cart-drawer { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: var(--surface); border-left: 1px solid var(--border); z-index: 1001; transition: right 0.3s ease; display: flex; flex-direction: column; box-shadow: -5px 0 30px rgba(0,0,0,0.5); }
     .cart-drawer.open { right: 0; }
     
-    .cart-header { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-    .cart-header h2 { font-size: 1.2rem; }
-    .close-cart { font-size: 1.5rem; cursor: pointer; color: var(--text-gray); }
+    .cart-header { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg); }
+    .cart-header h2 { font-size: 1.2rem; color: var(--primary); }
+    .close-cart { font-size: 1.5rem; cursor: pointer; color: var(--text-muted); transition: 0.2s; }
+    .close-cart:hover { color: var(--primary); }
     
     .cart-items { flex-grow: 1; overflow-y: auto; padding: 1.5rem; }
-    .cart-item { display: grid; grid-template-columns: 60px 1fr; gap: 1rem; margin-bottom: 1.5rem; align-items: center; }
-    .cart-item-img { width: 60px; height: 60px; border-radius: 4px; overflow: hidden; background: #eee; }
+    .cart-item { display: grid; grid-template-columns: 70px 1fr; gap: 1rem; margin-bottom: 1.5rem; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+    .cart-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .cart-item-img { width: 70px; height: 70px; border-radius: 4px; overflow: hidden; background: #000; border: 1px solid var(--border); }
     .cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
-    .cart-item-info h4 { font-size: 0.9rem; margin-bottom: 0.25rem; line-height: 1.2; }
-    .cart-item-controls { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
-    .qty-btn { width: 24px; height: 24px; background: var(--bg); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; }
-    .remove-btn { color: var(--primary); font-size: 0.8rem; margin-left: auto; cursor: pointer; }
+    .cart-item-info h4 { font-size: 0.95rem; margin-bottom: 0.5rem; line-height: 1.3; color: var(--text-main); }
+    .cart-item-controls { display: flex; align-items: center; gap: 0.75rem; }
+    .qty-btn { width: 28px; height: 28px; background: var(--bg); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    .qty-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .remove-btn { color: #ff4444; font-size: 0.8rem; margin-left: auto; cursor: pointer; text-transform: uppercase; }
     
     .cart-footer { padding: 1.5rem; border-top: 1px solid var(--border); background: var(--bg); }
-    .cart-input { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem; font-family: var(--font-body); }
+    .cart-input { width: 100%; padding: 0.8rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem; font-family: var(--font-body); outline: none; }
+    .cart-input:focus { border-color: var(--primary); }
     .cart-submit { width: 100%; padding: 1rem; background: #25D366; color: white; border-radius: 4px; font-weight: bold; font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem; transition: background 0.2s; }
     .cart-submit:hover { background: #128C7E; }
 
     /* Footer */
-    .footer { background: var(--text-dark); color: var(--white); padding: 4rem 0 2rem; margin-top: auto; }
+    .footer { background: #000; color: var(--text-main); padding: 4rem 0 2rem; margin-top: auto; border-top: 1px solid var(--border); }
     .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
     @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
-    .footer h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem; }
-    .footer p { color: #aaa; font-size: 0.9rem; margin-bottom: 0.5rem; }
-    .footer a { color: #aaa; display: block; margin-bottom: 0.5rem; transition: color 0.2s; }
-    .footer a:hover { color: var(--white); }
-    .footer-bottom { border-top: 1px solid #333; padding-top: 2rem; text-align: center; color: #666; font-size: 0.8rem; }
+    .footer h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary); }
+    .footer p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .footer a { color: var(--text-muted); display: block; margin-bottom: 0.75rem; transition: color 0.2s; }
+    .footer a:hover { color: var(--primary); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="container nav-container">
-      <a href="#/" data-route class="logo">De Creative</a>
+      <a href="#/" data-route class="logo">DE CREATIVE</a>
       
       <div class="nav-links">
-        <a href="#/catalog" data-route>Catalog</a>
+        <a href="#/catalog" data-route>Products</a>
         <a href="#/works" data-route>Our Work</a>
         <a href="#/about" data-route>About Us</a>
         <a href="#/contact" data-route>Contact</a>
@@ -225,7 +280,7 @@
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#/catalog" data-route>Catalog</a>
+    <a href="#/catalog" data-route>Products</a>
     <a href="#/works" data-route>Our Work</a>
     <a href="#/about" data-route>About Us</a>
     <a href="#/contact" data-route>Contact</a>
@@ -243,7 +298,7 @@
       <!-- Items inject here -->
     </div>
     <div class="cart-footer">
-      <p style="font-size: 0.85rem; color: var(--text-gray); margin-bottom: 1rem;">Enter your details and we will send you a formal quote via WhatsApp.</p>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Enter your details and we will send you a formal quote via WhatsApp.</p>
       <input type="text" id="clientName" class="cart-input" placeholder="Your Name">
       <input type="tel" id="clientPhone" class="cart-input" placeholder="Your Phone Number">
       <button class="cart-submit" id="sendQuoteBtn">Send on WhatsApp</button>
@@ -254,16 +309,16 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h3>De Creative</h3>
-          <p style="max-width: 300px; margin-bottom: 1.5rem;">Complete home solutions engineered for beauty and durability. Premium wallpapers, PVC paneling, and professional installation.</p>
+          <h3>DE CREATIVE</h3>
+          <p style="max-width: 300px; margin-bottom: 1.5rem;">Complete home solutions engineered for beauty and durability. Premium wallpapers, PVC paneling, and professional installation across Kashmir.</p>
         </div>
         <div>
-          <h4 style="margin-bottom: 1rem; color: var(--white);">Locations</h4>
-          <p><strong>Main Office:</strong><br>Main Chowk Kangan, Ganderbal<br>(Near Tehzeeb Restaurant)</p>
+          <h4 style="margin-bottom: 1rem; color: var(--text-main);">Locations</h4>
+          <p><strong>Main Office:</strong><br>Main Chowk Kangan, Ganderbal<br><span style="color:var(--primary); font-size: 0.8rem;">(Near Tehzeeb Restaurant)</span></p>
           <p style="margin-top:1rem;"><strong>Branch:</strong><br>Surtaing Rainawari, Srinagar</p>
         </div>
         <div>
-          <h4 style="margin-bottom: 1rem; color: var(--white);">Quick Links</h4>
+          <h4 style="margin-bottom: 1rem; color: var(--text-main);">Quick Links</h4>
           <a href="#/catalog" data-route>Product Catalog</a>
           <a href="#/works" data-route>Previous Works</a>
           <a href="#/contact" data-route>Contact Us</a>
@@ -276,8 +331,9 @@
   </footer>
 
   <script>
+    // All prices removed. Focus is purely on products and services for quote requests.
     const PRODUCTS = [
-      // Wallpapers
+      // Wallpapers (13 Items)
       { id:'wp-001', name:'Royal Damask Gold Wallpaper', category:'Wallpapers', description:'Classic gold damask patterns for a luxurious, regal interior atmosphere.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/QvZB2Shd/IMG-20260705-WA0022.jpg' },
       { id:'wp-002', name:'Abstract Geometric Wallpaper', category:'Wallpapers', description:'Modern geometric lines to give spatial depth and a contemporary feel.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/1tWsbs26/IMG-20260705-WA0021.jpg' },
       { id:'wp-003', name:'Textured Fabric Effect Wallpaper', category:'Wallpapers', description:'Subtle fabric-like texture bringing warmth and acoustic softening to rooms.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/ZRrbwhXB/IMG-20260705-WA0020-1.jpg' },
@@ -292,11 +348,11 @@
       { id:'wp-012', name:'Victorian Tapestry Wallpaper', category:'Wallpapers', description:'Intricate Victorian-era tapestry replication for heritage aesthetics.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/hJLv11hy/IMG-20260705-WA0014-1.jpg' },
       { id:'wp-013', name:'Satin Silk Wallpaper', category:'Wallpapers', description:'Smooth satin-like finish providing a soft, luxurious sheen.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/wrSxGb7q/IMG-20260705-WA0025.jpg' },
 
-      // Services
+      // Services (1 Item)
       { id:'svc-001', name:'Spatial Consultation & Installation', category:'Services', description:'On-site consultation with our interior experts followed by professional installation of all our products.', specs:{ Scope:'Full Interior', Deliverable:'End-to-End Execution', Area:'Kashmir Valley' }, image:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800' },
       
-      // PVC Panels Inventory
-      { id:'pvc-001', name:'Marble-Effect PVC Cladding', category:'PVC Paneling', description:'100% waterproof structural alternative for wet zones. Replicates high-end marble.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/spJmRs23/IMG-20260703-WA0099.jpg' },
+      // PVC Panels Inventory (35 Items)
+      { id:'pvc-001', name:'Marble-Effect PVC Cladding - Calacatta', category:'PVC Paneling', description:'100% waterproof structural alternative for wet zones. Replicates high-end marble.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/spJmRs23/IMG-20260703-WA0099.jpg' },
       { id:'pvc-002', name:'Classic Onyx PVC Board', category:'PVC Paneling', description:'Elegant onyx stone finish for luxury interior walls and ceilings.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/k21gLmBM/IMG-20260703-WA0098.jpg' },
       { id:'pvc-003', name:'Wood Grain PVC Panel - Walnut', category:'PVC Paneling', description:'Warm natural wood texture with the moisture resistance of premium PVC.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Textured Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/Rpdw9SdB/IMG-20260703-WA0096.jpg' },
       { id:'pvc-004', name:'Abstract Geometric PVC Matrix', category:'PVC Paneling', description:'Contemporary pattern designed to dictate light and shadow across flat planes.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Satin', Waterproof:'Absolute' }, image:'https://i.ibb.co/kggdMMZ3/IMG-20260703-WA0094.jpg' },
@@ -334,10 +390,21 @@
     ];
 
     const PREVIOUS_WORKS = [
-      { image: 'https://i.ibb.co/WWpPByh4/IMG-20260703-WA0102.jpg' },
-      { image: 'https://i.ibb.co/1G07wKBN/IMG-20260703-WA0103.jpg' },
-      { image: 'https://i.ibb.co/rKwknvmc/IMG-20260703-WA0104.jpg' },
-      { image: 'https://i.ibb.co/0p06wJq7/IMG-20260703-WA0105.jpg' }
+      { image: 'https://i.ibb.co/mV2HWRHb/IMG-20260705-WA0063.jpg' },
+      { image: 'https://i.ibb.co/DD9tmypj/IMG-20260705-WA0059.jpg' },
+      { image: 'https://i.ibb.co/xK7ffMvQ/IMG-20260705-WA0060.jpg' },
+      { image: 'https://i.ibb.co/nNwgSqT6/IMG-20260705-WA0061.jpg' },
+      { image: 'https://i.ibb.co/HfS76xzj/IMG-20260705-WA0065.jpg' },
+      { image: 'https://i.ibb.co/Kc3gXs7w/IMG-20260705-WA0055.jpg' },
+      { image: 'https://i.ibb.co/DPsq1BDT/IMG-20260705-WA0043.jpg' },
+      { image: 'https://i.ibb.co/gQHwgKZ/IMG-20260705-WA0039.jpg' },
+      { image: 'https://i.ibb.co/G3ntbt2H/IMG-20260705-WA0044.jpg' },
+      { image: 'https://i.ibb.co/XZyy8K8X/IMG-20260705-WA0042.jpg' },
+      { image: 'https://i.ibb.co/x867jvb6/IMG-20260705-WA0048.jpg' },
+      { image: 'https://i.ibb.co/HpR6KrvX/IMG-20260705-WA0049.jpg' },
+      { image: 'https://i.ibb.co/MxM97GVv/IMG-20260705-WA0052.jpg' },
+      { image: 'https://i.ibb.co/hRwSWgf3/IMG-20260705-WA0057.jpg' },
+      { image: 'https://i.ibb.co/6RRzR0jf/IMG-20260705-WA0062.jpg' }
     ];
 
     const CATEGORIES = ['All', 'Wallpapers', 'PVC Paneling', 'Services'];
@@ -354,7 +421,7 @@
       const list = document.getElementById('cartItemsList');
       
       if (cart.length === 0) {
-        list.innerHTML = '<p style="color:var(--text-gray); text-align:center; margin-top:2rem;">Your quote list is empty.</p>';
+        list.innerHTML = '<p style="color:var(--text-muted); text-align:center; margin-top:2rem;">Your quote list is empty.</p>';
         return;
       }
 
@@ -365,7 +432,7 @@
             <h4>${item.name}</h4>
             <div class="cart-item-controls">
               <button class="qty-btn" data-action="dec" data-id="${item.id}">-</button>
-              <span>${item.qty}</span>
+              <span style="font-size: 0.9rem;">${item.qty}</span>
               <button class="qty-btn" data-action="inc" data-id="${item.id}">+</button>
               <button class="remove-btn" data-action="remove" data-id="${item.id}">Remove</button>
             </div>
@@ -379,29 +446,40 @@
     function renderHome() {
       appContainer.innerHTML = `
         <section class="hero">
-          <div class="container hero-grid">
-            <div class="hero-content">
-              <div class="hero-logo">
+          <div class="hero-overlay"></div>
+          <div class="container hero-container">
+            <div class="hero-main">
+              <div class="hero-logo-wrapper">
                 <img src="https://i.ibb.co/yn4ChGrb/file-000000008e0471f8be66a85d17cc2997.png" alt="De Creative Logo">
               </div>
               <h1 class="hero-title">DE-CREATIVE</h1>
-              <p class="hero-subtitle">A complete home solution. We specialize in premium Wallpapers, structural PVC Paneling, and full-scale interior services.</p>
-              <a href="#/catalog" data-route class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">Explore Catalog</a>
+              <p class="hero-tagline">Complete Home Solutions in Kashmir</p>
+              
+              <div class="hero-services">
+                <span class="service-tag">Premium Wallpapers</span>
+                <span class="service-tag">PVC Paneling</span>
+                <span class="service-tag">Professional Installation</span>
+              </div>
+
+              <div class="hero-actions">
+                <a href="#/catalog" data-route class="btn btn-primary">View Products</a>
+                <a href="#/works" data-route class="btn btn-outline">See Our Work</a>
+              </div>
             </div>
             
-            <div class="hero-visuals">
-              <div class="branches-card">
-                <div class="branch-item">
-                  <h4>Srinagar Branch</h4>
-                  <p>Surtaing Rainawari<br>Srinagar, J&K</p>
-                </div>
-                <div class="branch-item" style="border-left: 1px solid var(--border); padding-left: 1.5rem;">
-                  <h4>Main Office (HQ)</h4>
-                  <p>Main Chowk Kangan<br>Near Tehzeeb Restaurant<br>Ganderbal</p>
-                </div>
+            <div class="glass-card">
+              <h3>Our Branches</h3>
+              <div class="branch">
+                <h4>Main Office (HQ)</h4>
+                <p>Main Chowk Kangan, Ganderbal</p>
+                <small>Near Tehzeeb Restaurant</small>
               </div>
-              <div class="hero-image">
-                <img src="${PREVIOUS_WORKS[1].image}" alt="Interior Showcase">
+              <div class="branch">
+                <h4>Srinagar Branch</h4>
+                <p>Surtaing Rainawari, Srinagar</p>
+              </div>
+              <div style="margin-top: 1.5rem;">
+                <a href="#/contact" data-route class="btn btn-primary" style="width: 100%;">Contact Us</a>
               </div>
             </div>
           </div>
@@ -415,8 +493,8 @@
     function renderCatalog() {
       appContainer.innerHTML = `
         <section class="section container">
-          <h1 class="title">Product Catalog</h1>
-          <p style="color:var(--text-gray); margin-bottom: 2rem;">Browse our collection and add items to your quote list.</p>
+          <h1 class="title">Products & Services</h1>
+          <p style="color:var(--text-muted); margin-bottom: 2rem;">Browse our collection and add items to your quote list.</p>
           
           <div class="filter-bar">
             <div class="category-tabs" id="catTabs">
@@ -432,7 +510,7 @@
       `;
       updateProductGrid();
 
-      // Bind search input specific to this view
+      // Ensure search input triggers correctly
       const searchBox = document.getElementById('searchInput');
       if (searchBox) {
         searchBox.addEventListener('input', (e) => {
@@ -453,7 +531,7 @@
       });
 
       if(filtered.length === 0) {
-        grid.innerHTML = '<p style="color:var(--text-gray);">No products found.</p>';
+        grid.innerHTML = '<p style="color:var(--text-muted);">No products found.</p>';
         return;
       }
 
@@ -469,7 +547,7 @@
             <a href="#/product/${p.id}" data-route class="product-name">${p.name}</a>
             <div class="product-action">
               <button class="btn-add ${added ? 'added' : ''}" data-action="add" data-id="${p.id}">
-                ${added ? 'Added to Quote' : 'Add to Quote'}
+                ${added ? 'Added to List' : 'Add to Quote List'}
               </button>
             </div>
           </div>
@@ -484,19 +562,19 @@
 
       appContainer.innerHTML = `
         <section class="section container">
-          <a href="#/catalog" data-route style="display:inline-block; margin-bottom: 2rem; color:var(--text-gray); font-weight:500;">← Back to Catalog</a>
+          <a href="#/catalog" data-route style="display:inline-block; margin-bottom: 2rem; color:var(--text-muted); font-weight:500;">← Back to Products</a>
           
           <div class="detail-grid">
             <div class="detail-img">
               <img src="${p.image}" alt="${p.name}">
             </div>
             <div class="detail-info">
-              <span style="color:var(--text-gray); text-transform:uppercase; font-size:0.9rem; letter-spacing:1px;">${p.category}</span>
+              <span style="color:var(--primary); text-transform:uppercase; font-size:0.9rem; font-weight: 600; letter-spacing:1px;">${p.category}</span>
               <h1>${p.name}</h1>
               <p class="detail-desc">${p.description}</p>
               
               <div class="specs-list">
-                <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Details</h3>
+                <h3 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--text-main);">Details</h3>
                 ${Object.entries(p.specs).map(([k,v]) => `
                   <div class="spec-item">
                     <span class="spec-label">${k}</span>
@@ -505,7 +583,7 @@
                 `).join('')}
               </div>
 
-              <button class="btn-add ${added ? 'added' : ''}" style="padding: 1rem; font-size: 1.1rem;" data-action="add" data-id="${p.id}">
+              <button class="btn-primary ${added ? 'added' : ''}" style="width: 100%; padding: 1rem; font-size: 1.1rem; border-radius: 4px; border: none; cursor: pointer; transition: 0.2s;" data-action="add" data-id="${p.id}">
                 ${added ? 'Added to Quote List' : 'Add to Quote List'}
               </button>
             </div>
@@ -518,7 +596,7 @@
       appContainer.innerHTML = `
         <section class="section container">
           <h1 class="title">Our Work</h1>
-          <p style="color:var(--text-gray); margin-bottom: 3rem; font-size: 1.1rem;">A gallery of our recent interior installations.</p>
+          <p style="color:var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">A massive gallery of our recent interior installations across Kashmir.</p>
           <div class="works-grid">
             ${PREVIOUS_WORKS.map(w => `
               <div class="work-item">
@@ -534,8 +612,8 @@
       appContainer.innerHTML = `
         <section class="section container" style="max-width: 800px;">
           <h1 class="title" style="text-align: center;">About Us</h1>
-          <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text-gray); margin-top: 3rem;">
-            <p style="margin-bottom: 1.5rem;">De Creative is a complete home solution provider operating in the heart of Kashmir. We believe the materials and structures used in a space dictate how it feels to live in it.</p>
+          <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-top: 3rem;">
+            <p style="margin-bottom: 1.5rem; color: var(--text-main);">De Creative is a complete home solution provider operating in the heart of Kashmir. We believe the materials and structures used in a space dictate how it feels to live in it.</p>
             <p style="margin-bottom: 1.5rem;">We deal extensively in Premium Wallpapers, architectural-grade PVC Paneling, and comprehensive interior design services.</p>
             <p>With dual bases in Srinagar and Ganderbal, we supply and install high-quality surfaces directly for homes, offices, and commercial spaces. Our goal is to provide beautiful, durable, and affordable structural solutions without compromising on quality.</p>
           </div>
@@ -547,13 +625,13 @@
       appContainer.innerHTML = `
         <section class="section container">
           <h1 class="title">Contact Us</h1>
-          <p style="color:var(--text-gray); margin-bottom: 3rem; font-size: 1.1rem;">Get in touch for installations, products, or general inquiries.</p>
+          <p style="color:var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">Get in touch for installations, products, or general questions.</p>
           
           <div class="contact-grid">
             <div class="contact-details">
               <div class="contact-block">
-                <h3>Phone & Email</h3>
-                <p>+91 600 682 4595</p>
+                <h3>Phone Number & Email</h3>
+                <p style="color: var(--text-main); font-weight: 600;">+91 600 682 4595</p>
                 <p>hello@decreative.in</p>
               </div>
               <div class="contact-block">
@@ -561,17 +639,17 @@
                 <p>Surtaing Rainawari<br>Srinagar, J&K</p>
               </div>
               <div class="contact-block">
-                <h3>Main Office</h3>
+                <h3>Main Office (HQ)</h3>
                 <p>Main Chowk Kangan<br>Near Tehzeeb Restaurant<br>Ganderbal</p>
               </div>
             </div>
             
-            <div style="padding: 3rem;">
-              <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Send a Message</h3>
+            <div style="padding: 3rem; background: rgba(0,0,0,0.4);">
+              <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem; color: var(--text-main);">Send a Message</h3>
               <input type="text" id="msgName" class="cart-input" placeholder="Your Name">
               <input type="text" id="msgPhone" class="cart-input" placeholder="Your Phone Number">
               <textarea id="msgBody" class="cart-input" placeholder="How can we help you?" style="min-height: 120px; resize: vertical;"></textarea>
-              <button class="btn btn-primary" id="btnSendMsg" style="width: 100%; padding: 1rem;">Send Message via WhatsApp</button>
+              <button class="btn btn-primary" id="btnSendMsg" style="width: 100%; padding: 1rem; border:none;">Send Message via WhatsApp</button>
             </div>
           </div>
         </section>
@@ -611,8 +689,9 @@
       else renderHome();
     }
 
-    // Global Event Delegation (Fixes all button binding bugs!)
+    // A single powerful event listener that guarantees buttons always work
     document.addEventListener('click', (e) => {
+      
       // 1. Handling Routing Links
       const routeLink = e.target.closest('[data-route]');
       if (routeLink) {
@@ -630,7 +709,7 @@
         updateProductGrid();
       }
 
-      // 3. Handling Cart Actions (Add, Remove, Inc, Dec)
+      // 3. Handling Add to Cart Actions anywhere on the page
       const actionBtn = e.target.closest('[data-action]');
       if (actionBtn) {
         const action = actionBtn.getAttribute('data-action');
@@ -643,26 +722,29 @@
             saveCart();
             updateCartUI();
             
-            // Visually update the button
+            // Visually update the button immediately
             actionBtn.classList.add('added');
-            actionBtn.textContent = 'Added to Quote';
+            if(actionBtn.tagName === 'BUTTON') {
+              actionBtn.textContent = 'Added to List';
+            }
           }
         }
         else if (action === 'remove') {
           cart = cart.filter(i => i.id !== id);
-          saveCart(); updateCartUI(); updateProductGrid();
+          saveCart(); updateCartUI(); 
+          if(window.location.hash === '#/catalog') updateProductGrid();
         }
         else if (action === 'inc' || action === 'dec') {
           const item = cart.find(i => i.id === id);
           let newQty = action === 'inc' ? item.qty + 1 : item.qty - 1;
           if (newQty < 1) cart = cart.filter(i => i.id !== id);
           else item.qty = newQty;
-          saveCart(); updateCartUI(); updateProductGrid();
+          saveCart(); updateCartUI(); 
+          if(window.location.hash === '#/catalog' && newQty < 1) updateProductGrid();
         }
       }
     });
 
-    // Cart Drawer UI Toggles
     const cartOverlay = document.getElementById('cartOverlay');
     const cartDrawer = document.getElementById('cartDrawer');
     
@@ -685,7 +767,10 @@
 
     // Send Quote to WhatsApp
     document.getElementById('sendQuoteBtn').addEventListener('click', () => {
-      if(cart.length === 0) return alert("Your quote list is empty!");
+      if(cart.length === 0) {
+        alert("Your quote list is empty! Please add some products first.");
+        return;
+      }
       const name = document.getElementById('clientName').value || 'Guest';
       const phone = document.getElementById('clientPhone').value || 'Not provided';
       
