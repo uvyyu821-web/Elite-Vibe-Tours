@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>De Creative - Complete Home Solutions</title>
   <meta name="description" content="De Creative — Complete home solutions, premium wallpapers, and PVC paneling in Kashmir.">
+  
+  <!-- Premium Fonts: Cormorant Garamond (Headings) & Jost (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -24,8 +26,8 @@
       
       /* Structure */
       --border: #333333;
-      --font-heading: 'Playfair Display', serif;
-      --font-body: 'Inter', sans-serif;
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Jost', sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,7 +40,6 @@
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
-      /* Subtle dark texture */
       background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 0);
       background-size: 24px 24px;
     }
@@ -61,17 +62,19 @@
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       padding: 0.75rem 1.5rem;
-      font-weight: 600; font-size: 0.9rem;
+      font-weight: 500; font-size: 1rem;
       border-radius: 4px;
       transition: all 0.2s ease;
       cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-    .btn-primary { background: var(--primary); color: #000; font-weight: 700; }
+    .btn-primary { background: var(--primary); color: #000; font-weight: 600; }
     .btn-primary:hover { background: var(--primary-hover); }
     .btn-outline { border: 1px solid var(--primary); color: var(--primary); }
     .btn-outline:hover { background: var(--primary); color: #000; }
 
-    .title { font-family: var(--font-heading); font-size: 2.5rem; line-height: 1.2; margin-bottom: 1rem; color: var(--primary); }
+    .title { font-family: var(--font-heading); font-size: 2.5rem; line-height: 1.2; margin-bottom: 1rem; color: var(--primary); font-weight: 600; }
     @media (min-width: 768px) { .title { font-size: 3.5rem; } }
 
     .navbar {
@@ -83,20 +86,20 @@
     }
     .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
     
-    .logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
+    .logo { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
     
     .nav-links { display: none; gap: 2rem; }
-    .nav-links a { font-weight: 500; font-size: 0.9rem; color: var(--text-muted); transition: color 0.2s; }
+    .nav-links a { font-weight: 400; font-size: 1rem; color: var(--text-muted); transition: color 0.2s; letter-spacing: 0.5px; }
     .nav-links a:hover, .nav-links a.active { color: var(--primary); }
     
     @media (min-width: 768px) { .nav-links { display: flex; align-items: center; } }
 
     .nav-actions { display: flex; align-items: center; gap: 1rem; }
-    .cart-btn { font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; background: var(--surface); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 4px; border: 1px solid var(--border); }
+    .cart-btn { font-weight: 500; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; background: var(--surface); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 4px; border: 1px solid var(--border); }
     .cart-btn:hover { border-color: var(--primary); }
-    .cart-count { background: var(--primary); color: #000; padding: 2px 8px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+    .cart-count { background: var(--primary); color: #000; padding: 2px 8px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
 
-    .mobile-menu-btn { display: block; font-size: 1.5rem; color: var(--text-main); }
+    .mobile-menu-btn { display: block; font-size: 1.5rem; color: var(--text-main); padding: 0.5rem; }
     @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
 
     .mobile-menu {
@@ -147,16 +150,15 @@
       width: 100px; height: 100px; border-radius: 50%; overflow: hidden; 
       margin-bottom: 1.5rem; border: 2px solid var(--primary);
       background: var(--surface); padding: 0.5rem;
+      display: flex; justify-content: center; align-items: center;
     }
     .hero-logo-wrapper img { width: 100%; height: 100%; object-fit: contain; }
     
-    .hero-title { font-family: var(--font-heading); font-size: clamp(3rem, 6vw, 5rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.5rem; color: var(--text-main); }
-    .hero-tagline { font-size: 1.2rem; color: var(--primary); margin-bottom: 2rem; font-weight: 500; letter-spacing: 1px; }
+    .hero-title { font-family: var(--font-heading); font-size: clamp(3rem, 6vw, 5rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.5rem; color: var(--text-main); letter-spacing: 1px; }
+    .hero-tagline { font-size: 1.2rem; color: var(--primary); margin-bottom: 2rem; font-weight: 400; letter-spacing: 1px; }
 
     .hero-services { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem; }
     .service-tag { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; }
-
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
     .glass-card {
       background: rgba(30, 30, 30, 0.6);
@@ -166,46 +168,46 @@
       padding: 2.5rem;
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
-    .glass-card h3 { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.5rem; font-family: var(--font-heading); }
+    .glass-card h3 { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.8rem; font-family: var(--font-heading); }
     .branch { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
     .branch:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .branch h4 { color: var(--text-main); font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .branch h4 { color: var(--text-main); font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 500; }
     .branch p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.4; }
-    .branch small { color: var(--primary); font-size: 0.85rem; opacity: 0.8; }
+    .branch small { color: var(--primary); font-size: 0.85rem; opacity: 0.9; display: block; margin-top: 0.25rem; }
 
     .filter-bar { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; align-items: center; justify-content: space-between; }
     .category-tabs { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: none; }
     .category-tabs::-webkit-scrollbar { display: none; }
-    .tab-btn { padding: 0.5rem 1.2rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 20px; font-size: 0.9rem; white-space: nowrap; }
-    .tab-btn.active, .tab-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); font-weight: 600; }
-    .search-box { padding: 0.6rem 1.2rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 20px; outline: none; width: 100%; max-width: 300px; }
+    .tab-btn { padding: 0.5rem 1.2rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 20px; font-size: 0.9rem; white-space: nowrap; font-family: var(--font-body); cursor: pointer; transition: 0.2s; }
+    .tab-btn.active, .tab-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); font-weight: 500; }
+    .search-box { padding: 0.75rem 1.2rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 20px; outline: none; width: 100%; max-width: 300px; font-family: var(--font-body); }
     .search-box:focus { border-color: var(--primary); }
 
     .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
-    .product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
+    .product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; text-decoration: none; color: inherit; cursor: pointer; }
     .product-card:hover { transform: translateY(-5px); border-color: var(--primary); }
     .product-img { aspect-ratio: 4/3; overflow: hidden; background: #000; }
     .product-img img { width: 100%; height: 100%; object-fit: cover; }
     .product-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
-    .product-cat { font-size: 0.8rem; color: var(--primary); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.05em; font-weight: 600; }
-    .product-name { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.3; color: var(--text-main); }
+    .product-cat { font-size: 0.8rem; color: var(--primary); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px; font-weight: 500; }
+    .product-name { font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem; line-height: 1.3; color: var(--text-main); font-family: var(--font-heading); }
     .product-action { margin-top: auto; }
     
-    .btn-add { width: 100%; padding: 0.75rem; background: transparent; border: 1px solid var(--primary); border-radius: 4px; font-weight: 600; color: var(--primary); transition: 0.2s; text-transform: uppercase; font-size: 0.85rem; }
+    .btn-add { width: 100%; padding: 0.75rem; background: transparent; border: 1px solid var(--primary); border-radius: 4px; font-weight: 500; color: var(--primary); transition: 0.2s; text-transform: uppercase; font-size: 0.85rem; font-family: var(--font-body); cursor: pointer; }
     .btn-add:hover { background: var(--primary); color: #000; }
     .btn-add.added { background: var(--primary); color: #000; }
 
     .detail-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
-    @media (min-width: 768px) { .detail-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 768px) { .detail-grid { grid-template-columns: 1fr 1fr; align-items: start; } }
     .detail-img { border-radius: 8px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); }
-    .detail-info h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); }
+    .detail-info h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); line-height: 1.1; }
     .detail-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
     
     .specs-list { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; }
     .spec-item { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
     .spec-item:last-child { border-bottom: none; }
     .spec-label { color: var(--text-muted); }
-    .spec-value { font-weight: 600; text-align: right; color: var(--text-main); }
+    .spec-value { font-weight: 500; text-align: right; color: var(--text-main); }
 
     .works-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
     .work-item { aspect-ratio: 1; overflow: hidden; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); }
@@ -216,18 +218,17 @@
     @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
     .contact-details { padding: 3rem; background: rgba(0,0,0,0.2); border-right: 1px solid var(--border); }
     .contact-block { margin-bottom: 2.5rem; }
-    .contact-block h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--primary); }
+    .contact-block h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--primary); font-family: var(--font-heading); }
     .contact-block p { color: var(--text-muted); line-height: 1.6; }
     
-    /* Side Cart Drawer */
     .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 1000; opacity: 0; visibility: hidden; transition: 0.3s; }
     .cart-overlay.open { opacity: 1; visibility: visible; }
     .cart-drawer { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: var(--surface); border-left: 1px solid var(--border); z-index: 1001; transition: right 0.3s ease; display: flex; flex-direction: column; box-shadow: -5px 0 30px rgba(0,0,0,0.5); }
     .cart-drawer.open { right: 0; }
     
     .cart-header { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg); }
-    .cart-header h2 { font-size: 1.2rem; color: var(--primary); }
-    .close-cart { font-size: 1.5rem; cursor: pointer; color: var(--text-muted); transition: 0.2s; }
+    .cart-header h2 { font-size: 1.4rem; color: var(--primary); font-family: var(--font-heading); margin: 0; }
+    .close-cart { font-size: 1.5rem; cursor: pointer; color: var(--text-muted); transition: 0.2s; padding: 0.5rem; display: flex; align-items: center; justify-content: center; }
     .close-cart:hover { color: var(--primary); }
     
     .cart-items { flex-grow: 1; overflow-y: auto; padding: 1.5rem; }
@@ -235,27 +236,26 @@
     .cart-item:last-child { border-bottom: none; padding-bottom: 0; }
     .cart-item-img { width: 70px; height: 70px; border-radius: 4px; overflow: hidden; background: #000; border: 1px solid var(--border); }
     .cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
-    .cart-item-info h4 { font-size: 0.95rem; margin-bottom: 0.5rem; line-height: 1.3; color: var(--text-main); }
+    .cart-item-info h4 { font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.3; color: var(--text-main); font-weight: 500; font-family: var(--font-heading); }
     .cart-item-controls { display: flex; align-items: center; gap: 0.75rem; }
-    .qty-btn { width: 28px; height: 28px; background: var(--bg); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    .qty-btn { width: 28px; height: 28px; background: var(--bg); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 500; cursor: pointer; transition: 0.2s; font-family: var(--font-body); }
     .qty-btn:hover { border-color: var(--primary); color: var(--primary); }
-    .remove-btn { color: #ff4444; font-size: 0.8rem; margin-left: auto; cursor: pointer; text-transform: uppercase; }
+    .remove-btn { color: #ff4444; font-size: 0.8rem; margin-left: auto; cursor: pointer; text-transform: uppercase; border: none; background: transparent; font-family: var(--font-body); }
     
     .cart-footer { padding: 1.5rem; border-top: 1px solid var(--border); background: var(--bg); }
-    .cart-input { width: 100%; padding: 0.8rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem; font-family: var(--font-body); outline: none; }
+    .cart-input { width: 100%; padding: 0.8rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem; font-family: var(--font-body); outline: none; font-size: 0.95rem; }
     .cart-input:focus { border-color: var(--primary); }
-    .cart-submit { width: 100%; padding: 1rem; background: #25D366; color: white; border-radius: 4px; font-weight: bold; font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem; transition: background 0.2s; }
+    .cart-submit { width: 100%; padding: 1rem; background: #25D366; color: white; border-radius: 4px; font-weight: 500; font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem; transition: background 0.2s; font-family: var(--font-body); border: none; cursor: pointer; }
     .cart-submit:hover { background: #128C7E; }
 
-    /* Footer */
     .footer { background: #000; color: var(--text-main); padding: 4rem 0 2rem; margin-top: auto; border-top: 1px solid var(--border); }
     .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
     @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
-    .footer h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary); }
-    .footer p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
-    .footer a { color: var(--text-muted); display: block; margin-bottom: 0.75rem; transition: color 0.2s; }
+    .footer h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary); }
+    .footer p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .footer a { color: var(--text-muted); display: block; margin-bottom: 0.75rem; transition: color 0.2s; font-size: 0.95rem; }
     .footer a:hover { color: var(--primary); }
-    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
   </style>
 </head>
 <body>
@@ -313,12 +313,12 @@
           <p style="max-width: 300px; margin-bottom: 1.5rem;">Complete home solutions engineered for beauty and durability. Premium wallpapers, PVC paneling, and professional installation across Kashmir.</p>
         </div>
         <div>
-          <h4 style="margin-bottom: 1rem; color: var(--text-main);">Locations</h4>
-          <p><strong>Main Office:</strong><br>Main Chowk Kangan, Ganderbal<br><span style="color:var(--primary); font-size: 0.8rem;">(Near Tehzeeb Restaurant)</span></p>
+          <h4 style="margin-bottom: 1rem; color: var(--text-main); font-family: var(--font-heading); font-size: 1.2rem;">Locations</h4>
+          <p><strong>Main Office:</strong><br>Main Chowk Kangan, Ganderbal<br><span style="color:var(--primary); font-size: 0.85rem;">(Near Tehzeeb Restaurant)</span></p>
           <p style="margin-top:1rem;"><strong>Branch:</strong><br>Surtaing Rainawari, Srinagar</p>
         </div>
         <div>
-          <h4 style="margin-bottom: 1rem; color: var(--text-main);">Quick Links</h4>
+          <h4 style="margin-bottom: 1rem; color: var(--text-main); font-family: var(--font-heading); font-size: 1.2rem;">Quick Links</h4>
           <a href="#/catalog" data-route>Product Catalog</a>
           <a href="#/works" data-route>Previous Works</a>
           <a href="#/contact" data-route>Contact Us</a>
@@ -331,7 +331,6 @@
   </footer>
 
   <script>
-    // All prices removed. Focus is purely on products and services for quote requests.
     const PRODUCTS = [
       // Wallpapers (13 Items)
       { id:'wp-001', name:'Royal Damask Gold Wallpaper', category:'Wallpapers', description:'Classic gold damask patterns for a luxurious, regal interior atmosphere.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/QvZB2Shd/IMG-20260705-WA0022.jpg' },
@@ -416,44 +415,89 @@
     function saveCart() { try { localStorage.setItem('deCreativeCart', JSON.stringify(cart)); } catch (e) {} }
     function isInCart(id) { return cart.some(i => i.id === id); }
     
-    function updateCartUI() {
-      document.getElementById('cartCount').textContent = cart.length;
-      const list = document.getElementById('cartItemsList');
-      
-      if (cart.length === 0) {
-        list.innerHTML = '<p style="color:var(--text-muted); text-align:center; margin-top:2rem;">Your quote list is empty.</p>';
-        return;
+    function addItem(product) { 
+      if (!isInCart(product.id)) {
+        cart.push({ ...product, qty: 1 }); 
+        saveCart(); 
+        renderCart(); 
+        updateAddButtons(); 
       }
-
-      list.innerHTML = cart.map(item => `
-        <div class="cart-item">
-          <div class="cart-item-img"><img src="${item.image}" alt=""></div>
-          <div class="cart-item-info">
-            <h4>${item.name}</h4>
-            <div class="cart-item-controls">
-              <button class="qty-btn" data-action="dec" data-id="${item.id}">-</button>
-              <span style="font-size: 0.9rem;">${item.qty}</span>
-              <button class="qty-btn" data-action="inc" data-id="${item.id}">+</button>
-              <button class="remove-btn" data-action="remove" data-id="${item.id}">Remove</button>
-            </div>
-          </div>
-        </div>
-      `).join('');
+    }
+    
+    function removeItem(id) { 
+      cart = cart.filter(i => i.id !== id); 
+      saveCart(); 
+      renderCart(); 
+      updateAddButtons(); 
+    }
+    
+    function updateQty(id, qty) { 
+      if (qty < 1) return removeItem(id); 
+      cart = cart.map(i => i.id === id ? { ...i, qty } : i); 
+      saveCart(); 
+      renderCart(); 
     }
 
-    const appContainer = document.getElementById('app');
+    // Handles ALL "Add to Quote" button clicks cleanly using event delegation
+    document.body.addEventListener('click', function(e) {
+      if (e.target.classList.contains('btn-add')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const id = e.target.dataset.id;
+        const product = PRODUCTS.find(p => p.id === id);
+        if (product && !isInCart(id)) {
+          addItem(product);
+        }
+      }
+    });
 
-    function renderHome() {
-      appContainer.innerHTML = `
-        <section class="hero">
+    const routes = {
+      '/': renderHome,
+      '/catalog': renderCatalog,
+      '/works': renderWorks,
+      '/about': renderAbout,
+      '/contact': renderContact
+    };
+
+    function getRoute() {
+      const hash = window.location.hash.replace('#', '') || '/';
+      if (hash.startsWith('/product/')) return { page: 'product', id: hash.replace('/product/', '') };
+      return { page: hash };
+    }
+
+    function navigate() {
+      const route = getRoute();
+      const app = document.getElementById('app');
+      window.scrollTo(0, 0);
+      
+      if (route.page === 'product') renderProductDetail(route.id);
+      else if (routes[route.page]) routes[route.page](app);
+      else renderHome(app);
+      
+      updateActiveNav();
+      document.getElementById('mobileMenu').classList.remove('open');
+      updateAddButtons();
+    }
+
+    function updateActiveNav() {
+      const route = getRoute();
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        const href = link.getAttribute('href').replace('#', '');
+        link.classList.toggle('active', href === route.page || (route.page === 'product' && href === '/catalog'));
+      });
+    }
+
+    function renderHome(app) {
+      app.innerHTML = `
+        <div class="hero">
           <div class="hero-overlay"></div>
           <div class="container hero-container">
             <div class="hero-main">
               <div class="hero-logo-wrapper">
                 <img src="https://i.ibb.co/yn4ChGrb/file-000000008e0471f8be66a85d17cc2997.png" alt="De Creative Logo">
               </div>
-              <h1 class="hero-title">DE-CREATIVE</h1>
-              <p class="hero-tagline">Complete Home Solutions in Kashmir</p>
+              <h1 class="hero-title">DE CREATIVE</h1>
+              <p class="hero-tagline">Architectural Surfaces & Premium Paneling</p>
               
               <div class="hero-services">
                 <span class="service-tag">Premium Wallpapers</span>
@@ -463,118 +507,140 @@
 
               <div class="hero-actions">
                 <a href="#/catalog" data-route class="btn btn-primary">View Products</a>
-                <a href="#/works" data-route class="btn btn-outline">See Our Work</a>
+                <a href="#/works" data-route class="btn btn-outline" style="color:var(--text-main); border-color:var(--text-main);">Our Work</a>
               </div>
             </div>
-            
+
             <div class="glass-card">
               <h3>Our Branches</h3>
               <div class="branch">
-                <h4>Main Office (HQ)</h4>
-                <p>Main Chowk Kangan, Ganderbal</p>
+                <h4>Kangan, Ganderbal</h4>
+                <p>Main Office at Main Chowk.</p>
                 <small>Near Tehzeeb Restaurant</small>
               </div>
               <div class="branch">
-                <h4>Srinagar Branch</h4>
-                <p>Surtaing Rainawari, Srinagar</p>
+                <h4>Rainawari, Srinagar</h4>
+                <p>Branch Office at Surtaing.</p>
               </div>
-              <div style="margin-top: 1.5rem;">
-                <a href="#/contact" data-route class="btn btn-primary" style="width: 100%;">Contact Us</a>
-              </div>
-            </div>
-          </div>
-        </section>
-      `;
-    }
-
-    let currentFilter = 'All';
-    let currentSearch = '';
-
-    function renderCatalog() {
-      appContainer.innerHTML = `
-        <section class="section container">
-          <h1 class="title">Products & Services</h1>
-          <p style="color:var(--text-muted); margin-bottom: 2rem;">Browse our collection and add items to your quote list.</p>
-          
-          <div class="filter-bar">
-            <div class="category-tabs" id="catTabs">
-              ${CATEGORIES.map(c => `
-                <button class="tab-btn ${c === currentFilter ? 'active' : ''}" data-cat="${c}">${c}</button>
-              `).join('')}
-            </div>
-            <input type="text" id="searchInput" class="search-box" placeholder="Search products..." value="${currentSearch}">
-          </div>
-
-          <div class="product-grid" id="productGrid"></div>
-        </section>
-      `;
-      updateProductGrid();
-
-      // Ensure search input triggers correctly
-      const searchBox = document.getElementById('searchInput');
-      if (searchBox) {
-        searchBox.addEventListener('input', (e) => {
-          currentSearch = e.target.value.toLowerCase();
-          updateProductGrid();
-        });
-      }
-    }
-
-    function updateProductGrid() {
-      const grid = document.getElementById('productGrid');
-      if (!grid) return;
-
-      const filtered = PRODUCTS.filter(p => {
-        const matchCat = currentFilter === 'All' || p.category === currentFilter;
-        const matchSearch = p.name.toLowerCase().includes(currentSearch);
-        return matchCat && matchSearch;
-      });
-
-      if(filtered.length === 0) {
-        grid.innerHTML = '<p style="color:var(--text-muted);">No products found.</p>';
-        return;
-      }
-
-      grid.innerHTML = filtered.map(p => {
-        const added = isInCart(p.id);
-        return `
-        <div class="product-card">
-          <a href="#/product/${p.id}" data-route class="product-img">
-            <img src="${p.image}" alt="${p.name}" loading="lazy">
-          </a>
-          <div class="product-info">
-            <div class="product-cat">${p.category}</div>
-            <a href="#/product/${p.id}" data-route class="product-name">${p.name}</a>
-            <div class="product-action">
-              <button class="btn-add ${added ? 'added' : ''}" data-action="add" data-id="${p.id}">
-                ${added ? 'Added to List' : 'Add to Quote List'}
-              </button>
+              <a href="#/contact" data-route class="btn btn-outline" style="width: 100%; margin-top: 1rem;">Contact Us</a>
             </div>
           </div>
         </div>
-      `}).join('');
+        
+        <section class="section">
+          <div class="container">
+            <h2 class="title" style="text-align:center; margin-bottom: 3rem;">Popular Products</h2>
+            <div class="product-grid">
+              ${PRODUCTS.slice(13, 17).map(p => createProductCard(p)).join('')}
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+              <a href="#/catalog" data-route class="btn btn-primary">See All Products</a>
+            </div>
+          </div>
+        </section>
+      `;
     }
 
-    function renderProduct(id) {
+    function createProductCard(p) {
+      const added = isInCart(p.id);
+      return `
+        <a href="#/product/${p.id}" data-route class="product-card">
+          <div class="product-img">
+            <img src="${p.image}" alt="${p.name}">
+          </div>
+          <div class="product-info">
+            <div class="product-cat">${p.category}</div>
+            <h3 class="product-name">${p.name}</h3>
+            <div class="product-action">
+              <button class="btn-add ${added ? 'added' : ''}" data-id="${p.id}">
+                ${added ? 'Added to Quote' : 'Add to Quote +'}
+              </button>
+            </div>
+          </div>
+        </a>
+      `;
+    }
+
+    let catalogState = { category: 'All', search: '' };
+
+    function renderCatalog(app) {
+      app.innerHTML = `
+        <div class="container section">
+          <h1 class="title">Our Products</h1>
+          <p style="color:var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; max-width: 600px;">Browse our complete range of premium materials. Add items to your quote list, and we'll send you a formal estimate via WhatsApp.</p>
+          
+          <div class="filter-bar">
+            <div class="category-tabs" id="filterTabs">
+              ${CATEGORIES.map(c => `<button class="tab-btn ${c === catalogState.category ? 'active' : ''}" data-cat="${c}">${c}</button>`).join('')}
+            </div>
+            <input type="text" class="search-box" id="searchInput" placeholder="Search products..." value="${catalogState.search}">
+          </div>
+
+          <div class="product-grid" id="catalogGrid"></div>
+        </div>
+      `;
+      
+      updateCatalogGrid();
+
+      document.getElementById('filterTabs').addEventListener('click', e => {
+        if (e.target.classList.contains('tab-btn')) {
+          document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+          e.target.classList.add('active');
+          catalogState.category = e.target.dataset.cat;
+          updateCatalogGrid();
+        }
+      });
+
+      document.getElementById('searchInput').addEventListener('input', e => {
+        catalogState.search = e.target.value.toLowerCase();
+        updateCatalogGrid();
+      });
+    }
+
+    function updateCatalogGrid() {
+      const grid = document.getElementById('catalogGrid');
+      if (!grid) return;
+      
+      const filtered = PRODUCTS.filter(p => {
+        const matchCat = catalogState.category === 'All' || p.category === catalogState.category;
+        const matchSearch = p.name.toLowerCase().includes(catalogState.search) || p.category.toLowerCase().includes(catalogState.search);
+        return matchCat && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<p style="grid-column: 1/-1; color: var(--text-muted); padding: 2rem 0;">No products found matching your criteria.</p>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => createProductCard(p)).join('');
+    }
+
+    function renderProductDetail(id) {
       const p = PRODUCTS.find(x => x.id === id);
-      if(!p) return renderCatalog();
+      const app = document.getElementById('app');
+      
+      if (!p) {
+        app.innerHTML = `<div class="container section"><h1 class="title">Product Not Found</h1><a href="#/catalog" data-route class="btn btn-outline">Back to Catalog</a></div>`;
+        return;
+      }
+
       const added = isInCart(p.id);
 
-      appContainer.innerHTML = `
-        <section class="section container">
-          <a href="#/catalog" data-route style="display:inline-block; margin-bottom: 2rem; color:var(--text-muted); font-weight:500;">← Back to Products</a>
+      app.innerHTML = `
+        <div class="container section">
+          <a href="#/catalog" data-route style="color:var(--primary); font-size: 0.9rem; margin-bottom: 2rem; display: inline-block;">← Back to Products</a>
           
           <div class="detail-grid">
             <div class="detail-img">
               <img src="${p.image}" alt="${p.name}">
             </div>
             <div class="detail-info">
-              <span style="color:var(--primary); text-transform:uppercase; font-size:0.9rem; font-weight: 600; letter-spacing:1px;">${p.category}</span>
+              <div style="color:var(--primary); text-transform:uppercase; font-size:0.85rem; margin-bottom: 1rem; font-weight:600; letter-spacing:1px;">${p.category}</div>
               <h1>${p.name}</h1>
               <p class="detail-desc">${p.description}</p>
               
               <div class="specs-list">
-                <h3 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--text-main);">Details</h3>
+                <h3 style="font-size:1.1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; font-family: var(--font-heading);">Specifications</h3>
                 ${Object.entries(p.specs).map(([k,v]) => `
                   <div class="spec-item">
                     <span class="spec-label">${k}</span>
@@ -583,208 +649,183 @@
                 `).join('')}
               </div>
 
-              <button class="btn-primary ${added ? 'added' : ''}" style="width: 100%; padding: 1rem; font-size: 1.1rem; border-radius: 4px; border: none; cursor: pointer; transition: 0.2s;" data-action="add" data-id="${p.id}">
-                ${added ? 'Added to Quote List' : 'Add to Quote List'}
+              <button class="btn-add ${added ? 'added' : ''}" data-id="${p.id}" style="padding: 1rem; font-size: 1rem; background: ${added ? 'var(--primary)' : 'transparent'};">
+                ${added ? 'Added to Quote Request' : 'Add to Quote Request +'}
               </button>
             </div>
           </div>
-        </section>
+        </div>
       `;
     }
 
-    function renderWorks() {
-      appContainer.innerHTML = `
-        <section class="section container">
-          <h1 class="title">Our Work</h1>
-          <p style="color:var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">A massive gallery of our recent interior installations across Kashmir.</p>
+    function renderWorks(app) {
+      app.innerHTML = `
+        <div class="container section">
+          <h1 class="title" style="text-align:center; margin-bottom: 1rem;">Our Installations</h1>
+          <p style="text-align:center; color:var(--text-muted); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Explore our recent interior transformations, featuring our premium wallpapers and PVC paneling installed by our experts across Kashmir.</p>
+          
           <div class="works-grid">
             ${PREVIOUS_WORKS.map(w => `
               <div class="work-item">
-                <img src="${w.image}" alt="De Creative Project" loading="lazy">
+                <img src="${w.image}" loading="lazy" alt="Installation Work by De Creative">
               </div>
             `).join('')}
           </div>
-        </section>
+        </div>
       `;
     }
 
-    function renderAbout() {
-      appContainer.innerHTML = `
-        <section class="section container" style="max-width: 800px;">
-          <h1 class="title" style="text-align: center;">About Us</h1>
-          <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-top: 3rem;">
-            <p style="margin-bottom: 1.5rem; color: var(--text-main);">De Creative is a complete home solution provider operating in the heart of Kashmir. We believe the materials and structures used in a space dictate how it feels to live in it.</p>
-            <p style="margin-bottom: 1.5rem;">We deal extensively in Premium Wallpapers, architectural-grade PVC Paneling, and comprehensive interior design services.</p>
-            <p>With dual bases in Srinagar and Ganderbal, we supply and install high-quality surfaces directly for homes, offices, and commercial spaces. Our goal is to provide beautiful, durable, and affordable structural solutions without compromising on quality.</p>
+    function renderAbout(app) {
+      app.innerHTML = `
+        <div class="container section">
+          <div class="detail-grid" style="align-items: center;">
+            <div>
+              <h1 class="title">About De Creative</h1>
+              <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1.5rem;">We believe the materials surrounding you shape your everyday experience. Based in the heart of Kashmir, De Creative is a specialized supplier and installer of architectural surfaces.</p>
+              <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem;">We bypass generic retail to bring you direct access to premium wallpapers and robust PVC paneling. From the initial consultation at our Ganderbal or Srinagar offices to the final installation in your home, we ensure flawless execution.</p>
+              
+              <div style="display:flex; gap: 1rem;">
+                <a href="#/catalog" data-route class="btn btn-primary">View Products</a>
+                <a href="#/contact" data-route class="btn btn-outline">Contact Us</a>
+              </div>
+            </div>
+            <div class="detail-img">
+              <img src="https://i.ibb.co/yn4ChGrb/file-000000008e0471f8be66a85d17cc2997.png" alt="De Creative Logo" style="background: var(--surface); padding: 4rem;">
+            </div>
           </div>
-        </section>
+        </div>
       `;
     }
 
-    function renderContact() {
-      appContainer.innerHTML = `
-        <section class="section container">
-          <h1 class="title">Contact Us</h1>
-          <p style="color:var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">Get in touch for installations, products, or general questions.</p>
-          
+    function renderContact(app) {
+      app.innerHTML = `
+        <div class="container section">
           <div class="contact-grid">
             <div class="contact-details">
+              <h1 class="title" style="margin-bottom: 2rem;">Get in Touch</h1>
+              
               <div class="contact-block">
-                <h3>Phone Number & Email</h3>
-                <p style="color: var(--text-main); font-weight: 600;">+91 600 682 4595</p>
-                <p>hello@decreative.in</p>
+                <h3>Main Office (Ganderbal)</h3>
+                <p>Main Chowk Kangan<br>Near Tehzeeb Restaurant<br>Jammu & Kashmir</p>
               </div>
+              
               <div class="contact-block">
-                <h3>Srinagar Branch</h3>
-                <p>Surtaing Rainawari<br>Srinagar, J&K</p>
+                <h3>Branch (Srinagar)</h3>
+                <p>Surtaing Rainawari<br>Srinagar, Jammu & Kashmir</p>
               </div>
+              
               <div class="contact-block">
-                <h3>Main Office (HQ)</h3>
-                <p>Main Chowk Kangan<br>Near Tehzeeb Restaurant<br>Ganderbal</p>
+                <h3>Direct Contact</h3>
+                <p>Phone: +91 600 682 4595</p>
               </div>
             </div>
             
-            <div style="padding: 3rem; background: rgba(0,0,0,0.4);">
-              <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem; color: var(--text-main);">Send a Message</h3>
-              <input type="text" id="msgName" class="cart-input" placeholder="Your Name">
-              <input type="text" id="msgPhone" class="cart-input" placeholder="Your Phone Number">
-              <textarea id="msgBody" class="cart-input" placeholder="How can we help you?" style="min-height: 120px; resize: vertical;"></textarea>
-              <button class="btn btn-primary" id="btnSendMsg" style="width: 100%; padding: 1rem; border:none;">Send Message via WhatsApp</button>
+            <div style="background: var(--bg); padding: 3rem;">
+              <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary);">Send an Inquiry</h3>
+              <form id="contactForm">
+                <input type="text" id="genName" class="cart-input" placeholder="Your Name" required>
+                <input type="tel" id="genPhone" class="cart-input" placeholder="Your Phone Number" required>
+                <textarea id="genMessage" class="cart-input" placeholder="How can we help you?" rows="4" required style="resize:vertical;"></textarea>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Send Message via WhatsApp</button>
+              </form>
             </div>
           </div>
-        </section>
+        </div>
       `;
 
-      // Bind contact form button
       setTimeout(() => {
-        const btn = document.getElementById('btnSendMsg');
-        if(btn) {
-          btn.addEventListener('click', () => {
-            const n = document.getElementById('msgName').value || 'Guest';
-            const p = document.getElementById('msgPhone').value || '-';
-            const m = document.getElementById('msgBody').value || '-';
-            const text = `*New Inquiry*\n\nName: ${n}\nPhone: ${p}\n\nMessage: ${m}`;
-            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
-          });
-        }
+        document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('genName').value || 'a Customer';
+          const details = document.getElementById('genMessage').value;
+          const msg = `Hey Akeel sir, my name is ${name}.\n\n${details}`;
+          window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+        });
       }, 50);
     }
 
-    function handleRoute() {
-      const hash = window.location.hash.replace('#', '') || '/';
-      window.scrollTo(0, 0);
-      
-      // Update active nav links
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        const route = a.getAttribute('href').replace('#', '');
-        a.classList.toggle('active', hash === route || (hash.startsWith('/product/') && route === '/catalog'));
+    function updateAddButtons() {
+      document.querySelectorAll('.btn-add').forEach(btn => {
+        const id = btn.dataset.id;
+        if (isInCart(id)) {
+          btn.classList.add('added');
+          btn.textContent = btn.textContent.includes('+') ? 'Added to Quote' : 'Added to Quote Request';
+        } else {
+          btn.classList.remove('added');
+          btn.textContent = btn.textContent.includes('Request') ? 'Add to Quote Request +' : 'Add to Quote +';
+        }
       });
-
-      if (hash === '/') renderHome();
-      else if (hash === '/catalog') renderCatalog();
-      else if (hash.startsWith('/product/')) renderProduct(hash.replace('/product/', ''));
-      else if (hash === '/works') renderWorks();
-      else if (hash === '/about') renderAbout();
-      else if (hash === '/contact') renderContact();
-      else renderHome();
     }
 
-    // A single powerful event listener that guarantees buttons always work
-    document.addEventListener('click', (e) => {
+    function renderCart() {
+      document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
       
-      // 1. Handling Routing Links
-      const routeLink = e.target.closest('[data-route]');
-      if (routeLink) {
-        e.preventDefault();
-        window.location.hash = routeLink.getAttribute('href');
-        document.getElementById('mobileMenu').classList.remove('open');
-      }
-
-      // 2. Handling Catalog Filter Tabs
-      const tabBtn = e.target.closest('.tab-btn');
-      if (tabBtn) {
-        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        tabBtn.classList.add('active');
-        currentFilter = tabBtn.getAttribute('data-cat');
-        updateProductGrid();
-      }
-
-      // 3. Handling Add to Cart Actions anywhere on the page
-      const actionBtn = e.target.closest('[data-action]');
-      if (actionBtn) {
-        const action = actionBtn.getAttribute('data-action');
-        const id = actionBtn.getAttribute('data-id');
-        
-        if (action === 'add') {
-          if (!isInCart(id)) {
-            const product = PRODUCTS.find(p => p.id === id);
-            cart.push({ ...product, qty: 1 });
-            saveCart();
-            updateCartUI();
-            
-            // Visually update the button immediately
-            actionBtn.classList.add('added');
-            if(actionBtn.tagName === 'BUTTON') {
-              actionBtn.textContent = 'Added to List';
-            }
-          }
-        }
-        else if (action === 'remove') {
-          cart = cart.filter(i => i.id !== id);
-          saveCart(); updateCartUI(); 
-          if(window.location.hash === '#/catalog') updateProductGrid();
-        }
-        else if (action === 'inc' || action === 'dec') {
-          const item = cart.find(i => i.id === id);
-          let newQty = action === 'inc' ? item.qty + 1 : item.qty - 1;
-          if (newQty < 1) cart = cart.filter(i => i.id !== id);
-          else item.qty = newQty;
-          saveCart(); updateCartUI(); 
-          if(window.location.hash === '#/catalog' && newQty < 1) updateProductGrid();
-        }
-      }
-    });
-
-    const cartOverlay = document.getElementById('cartOverlay');
-    const cartDrawer = document.getElementById('cartDrawer');
-    
-    document.getElementById('openCartBtn').addEventListener('click', () => {
-      cartOverlay.classList.add('open');
-      cartDrawer.classList.add('open');
-    });
-    
-    function closeCart() {
-      cartOverlay.classList.remove('open');
-      cartDrawer.classList.remove('open');
-    }
-    document.getElementById('closeCartBtn').addEventListener('click', closeCart);
-    cartOverlay.addEventListener('click', closeCart);
-
-    // Mobile Menu Toggle
-    document.getElementById('menuToggle').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('open');
-    });
-
-    // Send Quote to WhatsApp
-    document.getElementById('sendQuoteBtn').addEventListener('click', () => {
-      if(cart.length === 0) {
-        alert("Your quote list is empty! Please add some products first.");
+      const list = document.getElementById('cartItemsList');
+      if (cart.length === 0) {
+        list.innerHTML = `<div style="color:var(--text-muted); text-align:center; margin-top:2rem;">Your quote list is empty.</div>`;
         return;
       }
-      const name = document.getElementById('clientName').value || 'Guest';
-      const phone = document.getElementById('clientPhone').value || 'Not provided';
       
-      const lines = cart.map(i => `- ${i.qty}x ${i.name} (${i.id})`).join('\n');
-      const text = `*New Quote Request*\n\nName: ${name}\nPhone: ${phone}\n\n*Requested Items:*\n${lines}`;
-      
-      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
-    });
+      list.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-img"><img src="${item.image}" alt=""></div>
+          <div>
+            <h4>${item.name}</h4>
+            <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 0.5rem; text-transform:uppercase;">${item.category}</div>
+            <div class="cart-item-controls">
+              <button class="qty-btn" onclick="updateQty('${item.id}', ${item.qty - 1})">-</button>
+              <span style="width: 20px; text-align: center; font-size: 0.9rem;">${item.qty}</span>
+              <button class="qty-btn" onclick="updateQty('${item.id}', ${item.qty + 1})">+</button>
+              <button class="remove-btn" onclick="removeItem('${item.id}')">Remove</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
 
-    // Initialize Application
-    window.addEventListener('hashchange', handleRoute);
     document.addEventListener('DOMContentLoaded', () => {
-      updateCartUI();
-      handleRoute();
+      // Setup Routing
+      document.body.addEventListener('click', e => {
+        const link = e.target.closest('[data-route]');
+        if (link) {
+          e.preventDefault();
+          window.location.hash = link.getAttribute('href');
+        }
+      });
+      window.addEventListener('hashchange', navigate);
+      
+      // Setup UI Toggles
+      document.getElementById('menuToggle').addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.toggle('open');
+      });
+      
+      document.getElementById('openCartBtn').addEventListener('click', () => {
+        document.getElementById('cartOverlay').classList.add('open');
+        document.getElementById('cartDrawer').classList.add('open');
+      });
+      
+      const closeCart = () => {
+        document.getElementById('cartOverlay').classList.remove('open');
+        document.getElementById('cartDrawer').classList.remove('open');
+      };
+      
+      document.getElementById('closeCartBtn').addEventListener('click', closeCart);
+      document.getElementById('cartOverlay').addEventListener('click', closeCart);
+
+      // WhatsApp Quote Submission
+      document.getElementById('sendQuoteBtn').addEventListener('click', () => {
+        if (cart.length === 0) return alert('Your quote list is empty.');
+        
+        const name = document.getElementById('clientName').value || 'a Customer';
+        const lines = cart.map(i => `- ${i.qty}x ${i.name}`).join('\n');
+        
+        const msg = `Hey Akeel sir, my name is ${name}. I need the following products:\n\n${lines}`;
+        window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+      });
+
+      // Initial Load
+      renderCart();
+      navigate();
     });
   </script>
 </body>
