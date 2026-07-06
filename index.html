@@ -110,6 +110,10 @@
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-size: 1.2rem; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 1rem; color: var(--text-main); }
 
+    .sticky-back-bar { position: sticky; top: 70px; z-index: 98; background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 0.75rem 0; display: none; }
+    .btn-back { color: var(--primary); font-weight: 500; display: inline-flex; align-items: center; font-size: 0.95rem; font-family: var(--font-body); }
+    .btn-back:hover { color: var(--text-main); }
+
     .hero {
       position: relative;
       background: url('https://i.ibb.co/DDVnfJvQ/IMG-20260705-184552.jpg') center/cover no-repeat;
@@ -286,6 +290,14 @@
     <a href="#/contact" data-route>Contact</a>
   </div>
 
+  <div id="stickyBackBar" class="sticky-back-bar">
+    <div class="container">
+      <button onclick="window.history.length > 1 ? window.history.back() : window.location.hash = '#/'" class="btn-back">
+        ← Go Back
+      </button>
+    </div>
+  </div>
+
   <main id="app" style="min-height: 80vh;"></main>
 
   <div class="cart-overlay" id="cartOverlay"></div>
@@ -309,8 +321,9 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h3>DE CREATIVE</h3>
-          <p style="max-width: 300px; margin-bottom: 1.5rem;">Complete home solutions engineered for beauty and durability. Premium wallpapers, PVC paneling, and professional installation across Kashmir.</p>
+          <h4 style="margin-bottom: 1rem; color: var(--text-main);">Locations</h4>
+          <p><strong>Main Office:</strong><br>Main Chowk Kangan, Ganderbal<br><span style="color:var(--primary); font-size: 0.8rem;">(Near Tehzeeb Restaurant)</span></p>
+          <p style="margin-top:1rem;"><strong>Branch:</strong><br>Branch office at Rainawari</p>
         </div>
         <div>
           <h4 style="margin-bottom: 1rem; color: var(--text-main); font-family: var(--font-heading); font-size: 1.2rem;">Locations</h4>
@@ -470,6 +483,13 @@
       const app = document.getElementById('app');
       window.scrollTo(0, 0);
       
+      const stickyBar = document.getElementById('stickyBackBar');
+      if (route.page === '/' || route.page === '') {
+        stickyBar.style.display = 'none';
+      } else {
+        stickyBar.style.display = 'block';
+      }
+      
       if (route.page === 'product') renderProductDetail(route.id);
       else if (routes[route.page]) routes[route.page](app);
       else renderHome(app);
@@ -494,7 +514,7 @@
           <div class="container hero-container">
             <div class="hero-main">
               <div class="hero-logo-wrapper">
-                <img src="https://i.ibb.co/yn4ChGrb/file-000000008e0471f8be66a85d17cc2997.png" alt="De Creative Logo">
+                <img src="https://i.ibb.co/p6nDgt03/file-000000008e0471f8be66a85d17cc2997.png" alt="De Creative Logo">
               </div>
               <h1 class="hero-title">DE CREATIVE</h1>
               <p class="hero-tagline">Architectural Surfaces & Premium Paneling</p>
@@ -520,7 +540,7 @@
               </div>
               <div class="branch">
                 <h4>Rainawari, Srinagar</h4>
-                <p>Branch Office at Surtaing.</p>
+                <p>Branch office at Rainawari.</p>
               </div>
               <a href="#/contact" data-route class="btn btn-outline" style="width: 100%; margin-top: 1rem;">Contact Us</a>
             </div>
@@ -690,7 +710,7 @@
               </div>
             </div>
             <div class="detail-img">
-              <img src="https://i.ibb.co/yn4ChGrb/file-000000008e0471f8be66a85d17cc2997.png" alt="De Creative Logo" style="background: var(--surface); padding: 4rem;">
+              <img src="https://i.ibb.co/p6nDgt03/file-000000008e0471f8be66a85d17cc2997.png" alt="De Creative Logo" style="background: var(--surface); padding: 4rem;">
             </div>
           </div>
         </div>
@@ -711,7 +731,7 @@
               
               <div class="contact-block">
                 <h3>Branch (Srinagar)</h3>
-                <p>Surtaing Rainawari<br>Srinagar, Jammu & Kashmir</p>
+                <p>Branch office at Rainawari<br>Srinagar, Jammu & Kashmir</p>
               </div>
               
               <div class="contact-block">
