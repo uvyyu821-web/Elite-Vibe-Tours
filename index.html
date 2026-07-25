@@ -3,369 +3,423 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>De Creative — Architectural Surfaces</title>
-  <meta name="description" content="De Creative — Premium wooden paneling, PVC products and interior design services.">
+  <title>De Creative - Complete Home Solutions</title>
+  <meta name="description" content="De Creative — Complete home solutions, premium wallpapers, and PVC paneling in Kashmir.">
+  
+  <!-- Premium Fonts: Cormorant Garamond (Headings) & Jost (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg: #EBE8E3; /* Drafting paper */
-      --ink: #0A0A0A; /* Architectural black */
-      --accent: #D73A15; /* Industrial Rust */
-      --muted: #666666;
+      /* Dark Theme Colors */
+      --bg: #121212;
+      --surface: #1E1E1E;
+      --surface-hover: #2A2A2A;
+      --text-main: #FFFFFF;
+      --text-muted: #A0A0A0;
       
-      --font-display: 'Cormorant Garamond', serif;
-      --font-body: 'Manrope', sans-serif;
-      --font-tech: 'JetBrains Mono', monospace;
+      /* Golden Accents */
+      --primary: #D4AF37;
+      --primary-hover: #B5952F;
       
-      --border-heavy: 2px solid var(--ink);
-      --border-light: 1px solid rgba(10, 10, 10, 0.15);
+      /* Structure */
+      --border: #333333;
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-body: 'Jost', sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; background: var(--bg); }
+    
+    html { scroll-behavior: smooth; }
     
     body {
       font-family: var(--font-body);
       background-color: var(--bg);
-      color: var(--ink);
-      line-height: 1.5;
+      color: var(--text-main);
+      line-height: 1.6;
       overflow-x: hidden;
-      position: relative;
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 0);
+      background-size: 24px 24px;
     }
 
-    /* Aggressive paper grain texture */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.45;
-      mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: var(--font-body); cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    ::selection { background: var(--accent); color: var(--bg); }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 0; }
-    ::-webkit-scrollbar { width: 8px; border-left: var(--border-heavy); }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--ink); }
+    .section { padding: 4rem 0; }
+    @media (min-width: 768px) { .section { padding: 6rem 0; } }
 
-    /* Typography */
-    h1, h2, h3, .display { font-family: var(--font-display); line-height: 1; }
-    .tech { font-family: var(--font-tech); text-transform: uppercase; letter-spacing: -0.02em; font-size: 0.75rem; }
-    
-    /* Layout Primitives */
-    .grid-wrap { display: grid; border-bottom: var(--border-heavy); }
-    .col-border { border-right: var(--border-heavy); }
-    .p-md { padding: 2rem; }
-    .p-lg { padding: 4rem; }
-    
-    /* Navigation - Brutalist structural header */
-    #navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-      background: var(--bg);
-      border-bottom: var(--border-heavy);
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-    }
-    .logo {
-      font-family: var(--font-display); font-weight: 700; font-size: 1.5rem;
-      text-decoration: none; color: var(--ink);
-      padding: 1rem 2rem; border-right: var(--border-heavy);
-      text-transform: uppercase; letter-spacing: -0.02em;
-    }
-    .nav-links { display: flex; height: 100%; }
-    .nav-link {
-      font-family: var(--font-tech); font-size: 0.75rem;
-      text-decoration: none; color: var(--ink);
-      padding: 0 2rem; display: flex; align-items: center;
-      border-right: var(--border-light);
-      transition: background 0.2s, color 0.2s;
-    }
-    .nav-link:hover, .nav-link.active { background: var(--ink); color: var(--bg); }
-    .nav-cta {
-      font-family: var(--font-tech); font-size: 0.75rem; font-weight: 700;
-      background: var(--accent); color: var(--bg);
-      text-decoration: none; padding: 0 2rem;
-      display: flex; align-items: center; height: 100%;
-      transition: opacity 0.2s;
-    }
-    .nav-cta:hover { opacity: 0.8; }
-    .menu-toggle { display: none; padding: 1.5rem; background: none; border: none; border-left: var(--border-heavy); cursor: pointer; }
-    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--ink); margin-bottom: 4px; transition: 0.3s; }
-    .mobile-menu {
-      display: none; position: fixed; top: 58px; left: 0; width: 100%;
-      background: var(--bg); border-bottom: var(--border-heavy); z-index: 40;
-    }
-    .mobile-menu.open { display: block; }
-    .mobile-menu a {
-      display: block; padding: 1.5rem; border-bottom: var(--border-light);
-      font-family: var(--font-tech); text-decoration: none; color: var(--ink);
-    }
-    
-    main { margin-top: 59px; min-height: 100vh; }
-
-    /* Buttons */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 1rem 2rem; border: var(--border-heavy);
-      font-family: var(--font-tech); font-size: 0.75rem; font-weight: 700;
-      text-decoration: none; color: var(--ink); background: transparent;
-      cursor: pointer; transition: all 0.2s ease;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500; font-size: 1rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      cursor: pointer;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
-    .btn:hover { background: var(--ink); color: var(--bg); }
-    .btn-solid { background: var(--ink); color: var(--bg); }
-    .btn-solid:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-primary { background: var(--primary); color: #000; font-weight: 600; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-outline { border: 1px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: #000; }
 
-    /* Hero Section - Editorial Spread */
+    .title { font-family: var(--font-heading); font-size: 2.5rem; line-height: 1.2; margin-bottom: 1rem; color: var(--primary); font-weight: 600; }
+    @media (min-width: 768px) { .title { font-size: 3.5rem; } }
+
+    .navbar {
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0; z-index: 100;
+    }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    
+    .logo { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
+    
+    .nav-links { display: none; gap: 2rem; }
+    .nav-links a { font-weight: 400; font-size: 1rem; color: var(--text-muted); transition: color 0.2s; letter-spacing: 0.5px; }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+    
+    @media (min-width: 768px) { .nav-links { display: flex; align-items: center; } }
+
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .cart-btn { font-weight: 500; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; background: var(--surface); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 4px; border: 1px solid var(--border); }
+    .cart-btn:hover { border-color: var(--primary); }
+    .cart-count { background: var(--primary); color: #000; padding: 2px 8px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+
+    .mobile-menu-btn { display: block; font-size: 1.5rem; color: var(--text-main); padding: 0.5rem; }
+    @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
+
+    .mobile-menu {
+      position: fixed; top: 70px; left: 0; width: 100%; height: calc(100vh - 70px);
+      background: var(--bg); z-index: 99; padding: 2rem;
+      display: none; flex-direction: column; gap: 1.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.2rem; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 1rem; color: var(--text-main); }
+
+    .sticky-back-bar { position: sticky; top: 70px; z-index: 98; background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 0.75rem 0; display: none; }
+    .btn-back { color: var(--primary); font-weight: 500; display: inline-flex; align-items: center; font-size: 0.95rem; font-family: var(--font-body); }
+    .btn-back:hover { color: var(--text-main); }
+
     .hero {
-      display: grid; grid-template-columns: 1fr 1fr;
-      min-height: calc(100vh - 59px);
-      border-bottom: var(--border-heavy);
-    }
-    .hero-text-col {
-      display: flex; flex-direction: column; justify-content: space-between;
-      border-right: var(--border-heavy); padding: 4rem;
       position: relative;
-    }
-    .hero-meta { display: flex; justify-content: space-between; border-bottom: var(--border-heavy); padding-bottom: 1rem; margin-bottom: 4rem; }
-    .hero h1 { font-size: clamp(4rem, 10vw, 8rem); font-style: italic; letter-spacing: -0.04em; margin-left: -0.05em; }
-    .hero h1 span { display: block; font-style: normal; font-weight: 700; color: var(--accent); margin-top: -0.2em; }
-    .hero-desc { font-size: 1.25rem; max-width: 400px; margin-top: 4rem; }
-    .hero-visual { position: relative; overflow: hidden; background: var(--ink); }
-    .hero-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; filter: grayscale(20%) contrast(1.2); }
-    .hero-visual .overlay-text {
-      position: absolute; bottom: 2rem; left: 2rem; color: var(--bg);
-      font-family: var(--font-tech); font-size: 0.75rem; mix-blend-mode: difference;
-    }
-
-    /* Grid Sections */
-    .section-editorial { display: grid; grid-template-columns: 300px 1fr; border-bottom: var(--border-heavy); }
-    .section-header-col { border-right: var(--border-heavy); padding: 4rem 2rem; display: flex; flex-direction: column; justify-content: space-between; }
-    .section-content-col { padding: 0; }
-    
-    .discipline-grid { display: grid; grid-template-columns: repeat(3, 1fr); height: 100%; }
-    .discipline-card { padding: 3rem; border-right: var(--border-heavy); display: flex; flex-direction: column; }
-    .discipline-card:last-child { border-right: none; }
-    .discipline-card .num { font-family: var(--font-tech); font-size: 2rem; color: var(--accent); margin-bottom: auto; }
-    .discipline-card h3 { font-size: 2.5rem; margin: 2rem 0 1rem; }
-    
-    /* Feature Manifest (Catalog Preview) */
-    .manifest-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-    .manifest-item { border-right: var(--border-heavy); display: flex; flex-direction: column; }
-    .manifest-item:last-child { border-right: none; }
-    .manifest-item .img-box { aspect-ratio: 4/5; border-bottom: var(--border-heavy); overflow: hidden; position: relative; }
-    .manifest-item .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.5s, transform 0.5s; }
-    .manifest-item:hover .img-box img { filter: grayscale(0%); transform: scale(1.05); }
-    .manifest-item .info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-    .manifest-item h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-    .manifest-item .price-row { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 1rem; }
-
-    /* Statement Marquee / Banner */
-    .statement { background: var(--ink); color: var(--bg); padding: 6rem 4rem; text-align: center; border-bottom: var(--border-heavy); }
-    .statement h2 { font-size: clamp(3rem, 7vw, 6rem); line-height: 0.9; text-transform: uppercase; }
-    .statement i { color: var(--accent); }
-
-    /* Full Catalog Page */
-    .catalog-header { padding: 6rem 4rem; border-bottom: var(--border-heavy); }
-    .catalog-header h1 { font-size: clamp(4rem, 8vw, 7rem); }
-    
-    .filter-bar {
-      display: grid; grid-template-columns: 1fr 300px; border-bottom: var(--border-heavy);
-      position: sticky; top: 59px; background: var(--bg); z-index: 30;
-    }
-    .filters { display: flex; border-right: var(--border-heavy); }
-    .filter-btn {
-      padding: 1.5rem 2rem; background: none; border: none; border-right: var(--border-light);
-      font-family: var(--font-tech); font-size: 0.75rem; cursor: pointer; transition: 0.2s;
-    }
-    .filter-btn.active, .filter-btn:hover { background: var(--ink); color: var(--bg); }
-    .search-input { width: 100%; border: none; background: transparent; padding: 0 2rem; font-family: var(--font-tech); font-size: 0.875rem; color: var(--ink); outline: none; }
-    .search-input::placeholder { color: var(--muted); }
-
-    /* Inventory Rows (Brutalist Table) */
-    .inventory-list { display: flex; flex-direction: column; }
-    .inventory-row {
-      display: grid; grid-template-columns: 80px 100px 3fr 1.5fr 1fr 150px;
-      align-items: center; border-bottom: var(--border-light);
-      transition: background 0.3s, color 0.3s;
-      text-decoration: none; color: var(--ink);
-    }
-    .inventory-row:hover { background: var(--ink); color: var(--bg); border-bottom-color: var(--ink); }
-    .inventory-row > div { padding: 1.5rem; border-right: var(--border-light); height: 100%; display: flex; align-items: center; }
-    .inventory-row:hover > div { border-right-color: rgba(235, 232, 227, 0.2); }
-    .inventory-row > div:last-child { border-right: none; justify-content: center; }
-    .inv-thumb { width: 100%; aspect-ratio: 1; overflow: hidden; background: #000; }
-    .inv-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-    .inventory-row:hover .inv-thumb img { opacity: 1; }
-    .inv-title { font-family: var(--font-display); font-size: 2rem; font-weight: 600; line-height: 1.1; }
-    
-    .add-action {
-      background: transparent; border: 1px solid currentColor; color: inherit;
-      width: 100%; padding: 0.75rem; font-family: var(--font-tech); font-size: 0.75rem;
-      cursor: pointer; transition: 0.2s;
-    }
-    .inventory-row:hover .add-action { border-color: var(--bg); }
-    .add-action:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-    .add-action.added { background: var(--bg); color: var(--ink); }
-    .inventory-row:hover .add-action.added { background: var(--bg); color: var(--ink); }
-
-    /* Product Detail */
-    .spec-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 59px); }
-    .spec-visual { border-right: var(--border-heavy); position: sticky; top: 59px; height: calc(100vh - 59px); overflow: hidden; padding: 2rem; background: #fff; }
-    .spec-visual img { width: 100%; height: 100%; object-fit: contain; }
-    .spec-data { padding: 4rem; display: flex; flex-direction: column; }
-    .spec-data h1 { font-size: clamp(3rem, 6vw, 5rem); margin: 1rem 0 2rem; line-height: 0.9; }
-    .spec-table { border-top: var(--border-heavy); margin-top: 3rem; }
-    .spec-row { display: grid; grid-template-columns: 150px 1fr; border-bottom: var(--border-light); padding: 1.5rem 0; }
-    .spec-price-block { margin-top: 4rem; padding: 3rem; border: var(--border-heavy); text-align: center; }
-
-    /* About / Editorial Text */
-    .article-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border-heavy); }
-    .article-text { padding: 6rem 4rem; border-right: var(--border-heavy); }
-    .article-text p { font-size: 1.25rem; margin-bottom: 2rem; max-width: 500px; }
-    .pull-quote { font-family: var(--font-display); font-size: 3rem; font-style: italic; line-height: 1.1; margin: 4rem 0; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 2rem; }
-    .article-img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* Contact Form - Structural */
-    .contact-container { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
-    .contact-info { padding: 6rem 4rem; border-right: var(--border-heavy); display: flex; flex-direction: column; justify-content: space-between; }
-    .contact-info h1 { font-size: clamp(4rem, 8vw, 7rem); margin-bottom: 2rem; }
-    .info-block { border-top: var(--border-heavy); padding-top: 2rem; margin-top: 2rem; }
-    .contact-form-wrap { padding: 6rem 4rem; background: var(--ink); color: var(--bg); }
-    .form-group { margin-bottom: 3rem; }
-    .form-group label { display: block; font-family: var(--font-tech); font-size: 0.75rem; margin-bottom: 1rem; color: var(--muted); }
-    .form-input { 
-      width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(235, 232, 227, 0.3);
-      padding: 1rem 0; font-family: var(--font-body); font-size: 1.25rem; color: var(--bg); outline: none;
-      transition: border-color 0.3s;
-    }
-    .form-input:focus { border-bottom-color: var(--accent); }
-    
-    /* Command Bar (Cart) */
-    .cmd-bar {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
-      background: var(--bg); border-top: var(--border-heavy);
-      display: flex; flex-direction: column;
-      transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .cmd-bar.peek { transform: translateY(calc(100% - 60px)); }
-    .cmd-bar.open { transform: translateY(0); box-shadow: 0 -20px 40px rgba(0,0,0,0.2); }
-    .cmd-header {
-      height: 60px; display: flex; justify-content: space-between; align-items: center;
-      padding: 0 2rem; cursor: pointer; font-family: var(--font-tech); font-size: 0.875rem;
-      background: var(--ink); color: var(--bg);
-    }
-    .cmd-header:hover { background: #000; }
-    .cmd-content { max-height: 60vh; overflow-y: auto; padding: 2rem; display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; }
-    .cmd-list { border-top: var(--border-heavy); }
-    .cmd-item { display: grid; grid-template-columns: 2fr 1fr auto; padding: 1.5rem 0; border-bottom: var(--border-light); align-items: center; }
-    .cmd-item-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
-    .cmd-controls { display: flex; align-items: center; gap: 1rem; font-family: var(--font-tech); }
-    .cmd-controls button { background: none; border: var(--border-light); width: 30px; height: 30px; cursor: pointer; font-family: var(--font-tech); }
-    .cmd-summary { background: rgba(10,10,10,0.03); padding: 2rem; border: var(--border-light); height: fit-content; }
-    
-    /* Footer */
-    #footer { background: var(--ink); color: var(--bg); padding: 6rem 4rem 2rem; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; border-bottom: 1px solid rgba(235, 232, 227, 0.2); padding-bottom: 4rem; margin-bottom: 2rem; }
-    .footer-logo { font-family: var(--font-display); font-size: 3rem; margin-bottom: 1rem; }
-    .footer-links a { display: block; color: var(--bg); text-decoration: none; font-family: var(--font-tech); font-size: 0.75rem; margin-bottom: 1rem; opacity: 0.7; transition: 0.2s; }
-    .footer-links a:hover { opacity: 1; color: var(--accent); }
-
-    /* Motion & Reveals */
-    .clip-reveal {
-      clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    .clip-reveal.visible {
-      animation: brutalReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    @keyframes brutalReveal {
-      0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); transform: translateY(20px); opacity: 0; }
-      100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateY(0); opacity: 1; }
+      background: url('https://i.ibb.co/DDVnfJvQ/IMG-20260705-184552.jpg') center/cover no-repeat;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 4rem 0;
     }
     
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-
-    /* Mobile Adaptations */
-    @media (max-width: 1024px) {
-      .hero, .section-editorial, .spec-grid, .article-grid, .contact-container, .cmd-content { grid-template-columns: 1fr; }
-      .hero-text-col, .section-header-col, .discipline-card, .manifest-item, .article-text, .contact-info { border-right: none; border-bottom: var(--border-heavy); }
-      .discipline-grid, .manifest-grid { grid-template-columns: 1fr 1fr; }
-      .filter-bar { grid-template-columns: 1fr; }
-      .filters { border-right: none; overflow-x: auto; }
-      .search-input { padding: 1.5rem 2rem; border-top: var(--border-heavy); }
-      .inventory-row { display: none; } /* Hide complex table on mobile */
-      .mobile-catalog { display: block; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(18,18,18,0.95) 0%, rgba(18,18,18,0.8) 50%, rgba(18,18,18,0.4) 100%);
+      z-index: 1;
     }
+
     @media (max-width: 768px) {
-      .nav-links, .nav-cta { display: none; }
-      .menu-toggle { display: block; }
-      .discipline-grid, .manifest-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 4rem; }
-      .p-lg { padding: 2rem; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-overlay {
+        background: linear-gradient(to bottom, rgba(18,18,18,0.9) 0%, rgba(18,18,18,0.85) 100%);
+      }
     }
+
+    .hero-container {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (min-width: 992px) {
+      .hero-container { grid-template-columns: 1.2fr 1fr; }
+    }
+
+    .hero-main { display: flex; flex-direction: column; align-items: flex-start; }
     
-    .mobile-catalog { display: none; }
-    @media (max-width: 1024px) {
-      .mobile-catalog { display: block; }
-      .mobile-inv-card { border-bottom: var(--border-heavy); padding: 2rem; display: grid; grid-template-columns: 80px 1fr; gap: 2rem; }
-      .mobile-inv-card .thumb { aspect-ratio: 1; background: #000; }
-      .mobile-inv-card .thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-      .mobile-inv-card h3 { font-family: var(--font-display); font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .hero-logo-wrapper {
+      width: 100px; height: 100px; border-radius: 50%; overflow: hidden; 
+      margin-bottom: 1.5rem; border: 2px solid var(--primary);
+      background: var(--surface); padding: 0.5rem;
+      display: flex; justify-content: center; align-items: center;
     }
+    .hero-logo-wrapper img { width: 100%; height: 100%; object-fit: contain; }
+    
+    .hero-title { font-family: var(--font-heading); font-size: clamp(3rem, 6vw, 5rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.5rem; color: var(--text-main); letter-spacing: 1px; }
+    .hero-tagline { font-size: 1.2rem; color: var(--primary); margin-bottom: 2rem; font-weight: 400; letter-spacing: 1px; }
+
+    .hero-services { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem; }
+    .service-tag { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; }
+
+    .glass-card {
+      background: rgba(30, 30, 30, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .glass-card h3 { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.8rem; font-family: var(--font-heading); }
+    .branch { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .branch:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .branch h4 { color: var(--text-main); font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 500; }
+    .branch p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.4; }
+    .branch small { color: var(--primary); font-size: 0.85rem; opacity: 0.9; display: block; margin-top: 0.25rem; }
+
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; align-items: center; justify-content: space-between; }
+    .category-tabs { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: none; }
+    .category-tabs::-webkit-scrollbar { display: none; }
+    .tab-btn { padding: 0.5rem 1.2rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 20px; font-size: 0.9rem; white-space: nowrap; font-family: var(--font-body); cursor: pointer; transition: 0.2s; }
+    .tab-btn.active, .tab-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); font-weight: 500; }
+    .search-box { padding: 0.75rem 1.2rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 20px; outline: none; width: 100%; max-width: 300px; font-family: var(--font-body); }
+    .search-box:focus { border-color: var(--primary); }
+
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+    .product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; text-decoration: none; color: inherit; cursor: pointer; }
+    .product-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+    .product-img { aspect-ratio: 4/3; overflow: hidden; background: #000; }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; }
+    .product-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-cat { font-size: 0.8rem; color: var(--primary); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px; font-weight: 500; }
+    .product-name { font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem; line-height: 1.3; color: var(--text-main); font-family: var(--font-heading); }
+    .product-action { margin-top: auto; }
+    
+    .btn-add { width: 100%; padding: 0.75rem; background: transparent; border: 1px solid var(--primary); border-radius: 4px; font-weight: 500; color: var(--primary); transition: 0.2s; text-transform: uppercase; font-size: 0.85rem; font-family: var(--font-body); cursor: pointer; }
+    .btn-add:hover { background: var(--primary); color: #000; }
+    .btn-add.added { background: var(--primary); color: #000; }
+
+    .detail-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 768px) { .detail-grid { grid-template-columns: 1fr 1fr; align-items: start; } }
+    .detail-img { border-radius: 8px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); }
+    .detail-info h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); line-height: 1.1; }
+    .detail-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
+    
+    .specs-list { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; }
+    .spec-item { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    .spec-item:last-child { border-bottom: none; }
+    .spec-label { color: var(--text-muted); }
+    .spec-value { font-weight: 500; text-align: right; color: var(--text-main); }
+
+    .works-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+    .work-item { aspect-ratio: 1; overflow: hidden; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); }
+    .work-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .work-item:hover img { transform: scale(1.08); }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    .contact-details { padding: 3rem; background: rgba(0,0,0,0.2); border-right: 1px solid var(--border); }
+    .contact-block { margin-bottom: 2.5rem; }
+    .contact-block h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--primary); font-family: var(--font-heading); }
+    .contact-block p { color: var(--text-muted); line-height: 1.6; }
+    
+    .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 1000; opacity: 0; visibility: hidden; transition: 0.3s; }
+    .cart-overlay.open { opacity: 1; visibility: visible; }
+    .cart-drawer { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: var(--surface); border-left: 1px solid var(--border); z-index: 1001; transition: right 0.3s ease; display: flex; flex-direction: column; box-shadow: -5px 0 30px rgba(0,0,0,0.5); }
+    .cart-drawer.open { right: 0; }
+    
+    .cart-header { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg); }
+    .cart-header h2 { font-size: 1.4rem; color: var(--primary); font-family: var(--font-heading); margin: 0; }
+    .close-cart { font-size: 1.5rem; cursor: pointer; color: var(--text-muted); transition: 0.2s; padding: 0.5rem; display: flex; align-items: center; justify-content: center; }
+    .close-cart:hover { color: var(--primary); }
+    
+    .cart-items { flex-grow: 1; overflow-y: auto; padding: 1.5rem; }
+    .cart-item { display: grid; grid-template-columns: 70px 1fr; gap: 1rem; margin-bottom: 1.5rem; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+    .cart-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .cart-item-img { width: 70px; height: 70px; border-radius: 4px; overflow: hidden; background: #000; border: 1px solid var(--border); }
+    .cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
+    .cart-item-info h4 { font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.3; color: var(--text-main); font-weight: 500; font-family: var(--font-heading); }
+    .cart-item-controls { display: flex; align-items: center; gap: 0.75rem; }
+    .qty-btn { width: 28px; height: 28px; background: var(--bg); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 500; cursor: pointer; transition: 0.2s; font-family: var(--font-body); }
+    .qty-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .remove-btn { color: #ff4444; font-size: 0.8rem; margin-left: auto; cursor: pointer; text-transform: uppercase; border: none; background: transparent; font-family: var(--font-body); }
+    
+    .cart-footer { padding: 1.5rem; border-top: 1px solid var(--border); background: var(--bg); }
+    .cart-input { width: 100%; padding: 0.8rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem; font-family: var(--font-body); outline: none; font-size: 0.95rem; }
+    .cart-input:focus { border-color: var(--primary); }
+    .cart-submit { width: 100%; padding: 1rem; background: #25D366; color: white; border-radius: 4px; font-weight: 500; font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem; transition: background 0.2s; font-family: var(--font-body); border: none; cursor: pointer; }
+    .cart-submit:hover { background: #128C7E; }
+
+    .footer { background: #000; color: var(--text-main); padding: 4rem 0 2rem; margin-top: auto; border-top: 1px solid var(--border); }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+    .footer h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary); }
+    .footer p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .footer a { color: var(--text-muted); display: block; margin-bottom: 0.75rem; transition: color 0.2s; font-size: 0.95rem; }
+    .footer a:hover { color: var(--primary); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
   </style>
 </head>
 <body>
-  <nav id="navbar">
-    <a href="#/" class="logo" data-link>De Creative</a>
-    <div class="nav-links" id="navLinks">
-      <a href="#/catalog" data-link class="nav-link">Specification Catalog</a>
-      <a href="#/about" data-link class="nav-link">Studio Manifesto</a>
-      <a href="#/projects" data-link class="nav-link">Index of Works</a>
-      <a href="#/contact" data-link class="nav-link">Inquiries</a>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#/" data-route class="logo">DE CREATIVE</a>
+      
+      <div class="nav-links">
+        <a href="#/catalog" data-route>Products</a>
+        <a href="#/works" data-route>Our Work</a>
+        <a href="#/about" data-route>About Us</a>
+        <a href="#/contact" data-route>Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="cart-btn" id="openCartBtn">
+          Quote List <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="menuToggle">☰</button>
+      </div>
     </div>
-    <a href="#/catalog" data-link class="nav-cta">VIEW INVENTORY</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-      <span></span><span></span>
-    </button>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#/catalog" data-link>Specification Catalog</a>
-    <a href="#/about" data-link>Studio Manifesto</a>
-    <a href="#/projects" data-link>Index of Works</a>
-    <a href="#/contact" data-link>Inquiries</a>
+    <a href="#/catalog" data-route>Products</a>
+    <a href="#/works" data-route>Our Work</a>
+    <a href="#/about" data-route>About Us</a>
+    <a href="#/contact" data-route>Contact</a>
   </div>
 
-  <main id="app"></main>
+  <div id="stickyBackBar" class="sticky-back-bar">
+    <div class="container">
+      <button onclick="window.history.length > 1 ? window.history.back() : window.location.hash = '#/'" class="btn-back">
+        ← Go Back
+      </button>
+    </div>
+  </div>
 
-  <footer id="footer"></footer>
-  <div id="commandBar" class="cmd-bar"></div>
+  <main id="app" style="min-height: 80vh;"></main>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h2>Your Quote Request</h2>
+      <button class="close-cart" id="closeCartBtn">✕</button>
+    </div>
+    <div class="cart-items" id="cartItemsList">
+      <!-- Items inject here -->
+    </div>
+    <div class="cart-footer">
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Enter your details and we will send you a formal quote via WhatsApp.</p>
+      <input type="text" id="clientName" class="cart-input" placeholder="Your Name">
+      <input type="tel" id="clientPhone" class="cart-input" placeholder="Your Phone Number">
+      <button class="cart-submit" id="sendQuoteBtn">Send on WhatsApp</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4 style="margin-bottom: 1rem; color: var(--text-main);">Locations</h4>
+          <p><strong>Main Office:</strong><br>Main Chowk Kangan, Ganderbal<br><span style="color:var(--primary); font-size: 0.8rem;">(Near Tehzeeb Restaurant)</span></p>
+          <p style="margin-top:1rem;"><strong>Branch:</strong><br>Branch office at Rainawari</p>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 1rem; color: var(--text-main); font-family: var(--font-heading); font-size: 1.2rem;">Locations</h4>
+          <p><strong>Main Office:</strong><br>Main Chowk Kangan, Ganderbal<br><span style="color:var(--primary); font-size: 0.85rem;">(Near Tehzeeb Restaurant)</span></p>
+          <p style="margin-top:1rem;"><strong>Branch:</strong><br>Surtaing Rainawari, Srinagar</p>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 1rem; color: var(--text-main); font-family: var(--font-heading); font-size: 1.2rem;">Quick Links</h4>
+          <a href="#/catalog" data-route>Product Catalog</a>
+          <a href="#/works" data-route>Previous Works</a>
+          <a href="#/contact" data-route>Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 De Creative. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
 
   <script>
     const PRODUCTS = [
-      { id:'wp-001', name:'Natural Oak Fluted', category:'Wood Paneling', price:2800, unit:'/ sq.ft', description:'Premium natural oak fluted panels with deep vertical grooves. Precision-milled for seamless joinery.', specs:{ Material:'Solid Oak', Thickness:'18mm', Finish:'Matte Natural', Rating:'Class B', Warranty:'10 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/e587cd5f4_generated_7066ac66.png' },
-      { id:'wp-002', name:'Charcoal Louver', category:'Wood Paneling', price:3200, unit:'/ sq.ft', description:'Dramatic charcoal-stained louver panels creating deep architectural shadow lines.', specs:{ Material:'Engineered Hardwood', Thickness:'22mm', Finish:'Charcoal Stain', Rating:'Class A', Warranty:'12 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/440bf879d_generated_ecaf3bb2.png' },
-      { id:'wp-003', name:'Walnut Horizontal Slat', category:'Wood Paneling', price:3500, unit:'/ sq.ft', description:'Rich walnut horizontal slats bringing warmth and linear rhythm. Hand-finished with organic oil.', specs:{ Material:'American Walnut', Thickness:'20mm', Finish:'Oil-Rubbed', Rating:'Class B', Warranty:'15 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/e50f4834e_generated_e84c126b.png' },
-      { id:'wp-004', name:'Burmese Teak Groove', category:'Wood Paneling', price:4100, unit:'/ sq.ft', description:'Golden teak with deep vertical channeling. Naturally resistant to moisture.', specs:{ Material:'Burmese Teak', Thickness:'20mm', Finish:'Semi-Gloss', Rating:'Class A', Warranty:'20 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/6a4791ee6f887f072913fd56/e587cd5f4_generated_7066ac66.png' },
-      { id:'pvc-001', name:'Calacatta PVC Cladding', category:'PVC Products', price:1200, unit:'/ sq.ft', description:'Marble-effect PVC panels. 100% waterproof structural alternative for wet zones.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute', Warranty:'10 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/288a4c925_generated_7e2409cd.png' },
-      { id:'pvc-002', name:'Origami 3D Matrix', category:'PVC Products', price:1500, unit:'/ sq.ft', description:'Contemporary 3D geometric patterns that dictate light and shadow across flat planes.', specs:{ Material:'Rigid PVC', Thickness:'12mm', Finish:'Matte White', Waterproof:'Absolute', Warranty:'8 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/dc5e7af8c_generated_ae27db11.png' },
-      { id:'svc-001', name:'Spatial Consultation', category:'Services', price:15000, unit:'/ session', description:'On-site consultation with senior interior architect. Spatial planning and material palette definition.', specs:{ Duration:'3 Hours', Deliverable:'Palette & Blueprint', Scope:'Single Volume', Revisions:'2 Rounds' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/1760917ac_generated_85cef4be.png' },
-      { id:'svc-002', name:'Bespoke Fabrication', category:'Services', price:5000, unit:'/ sq.ft', description:'Custom architectural panel design and workshop fabrication to exact site specifications.', specs:{ Duration:'2-4 Weeks', Deliverable:'Fabricated Units', Scope:'Bespoke', Warranty:'5 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/440bf879d_generated_ecaf3bb2.png' },
+      // Wallpapers (13 Items)
+      { id:'wp-001', name:'Royal Damask Gold Wallpaper', category:'Wallpapers', description:'Classic gold damask patterns for a luxurious, regal interior atmosphere.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/QvZB2Shd/IMG-20260705-WA0022.jpg' },
+      { id:'wp-002', name:'Abstract Geometric Wallpaper', category:'Wallpapers', description:'Modern geometric lines to give spatial depth and a contemporary feel.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/1tWsbs26/IMG-20260705-WA0021.jpg' },
+      { id:'wp-003', name:'Textured Fabric Effect Wallpaper', category:'Wallpapers', description:'Subtle fabric-like texture bringing warmth and acoustic softening to rooms.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/ZRrbwhXB/IMG-20260705-WA0020-1.jpg' },
+      { id:'wp-004', name:'Vintage Floral Motif Wallpaper', category:'Wallpapers', description:'Elegant floral motifs over a muted background for classic aesthetics.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/ym0n4kqN/IMG-20260705-WA0019-1.jpg' },
+      { id:'wp-005', name:'Industrial Concrete Look Wallpaper', category:'Wallpapers', description:'Raw industrial concrete finish captured flawlessly in premium vinyl.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/Xr46403c/IMG-20260705-WA0018-1.jpg' },
+      { id:'wp-006', name:'Metallic Accent Wallpaper', category:'Wallpapers', description:'Rich metallic undertones that play beautifully with interior lighting.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/7dXrZ7GN/IMG-20260705-WA0023-1.jpg' },
+      { id:'wp-007', name:'Botanical Print Wallpaper', category:'Wallpapers', description:'Lush botanical prints bridging the gap between nature and architecture.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/rRFvy64S/IMG-20260705-WA0016-1.jpg' },
+      { id:'wp-008', name:'Subtle Linen Texture Wallpaper', category:'Wallpapers', description:'Minimalist linen texture designed to quietly elevate background spaces.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/b5StFw2W/IMG-20260705-WA0015-1.jpg' },
+      { id:'wp-009', name:'Classic Stripe Wallpaper', category:'Wallpapers', description:'Vertical stripes to increase perceived ceiling height and add structure.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/hJPT3z4L/IMG-20260705-WA0017-1.jpg' },
+      { id:'wp-010', name:'Charcoal Slate Wallpaper', category:'Wallpapers', description:'Deep charcoal stone aesthetic for dramatic, moody feature walls.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/xKz7HjwS/IMG-20260705-WA0024-1.jpg' },
+      { id:'wp-011', name:'Pastel Geometric Wallpaper', category:'Wallpapers', description:'Soft pastel geometries for bright, airy, and inviting spaces.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/bMspQdzv/IMG-20260705-WA0026-1.jpg' },
+      { id:'wp-012', name:'Victorian Tapestry Wallpaper', category:'Wallpapers', description:'Intricate Victorian-era tapestry replication for heritage aesthetics.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/hJLv11hy/IMG-20260705-WA0014-1.jpg' },
+      { id:'wp-013', name:'Satin Silk Wallpaper', category:'Wallpapers', description:'Smooth satin-like finish providing a soft, luxurious sheen.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/wrSxGb7q/IMG-20260705-WA0025.jpg' },
+
+      // Services (1 Item)
+      { id:'svc-001', name:'Spatial Consultation & Installation', category:'Services', description:'On-site consultation with our interior experts followed by professional installation of all our products.', specs:{ Scope:'Full Interior', Deliverable:'End-to-End Execution', Area:'Kashmir Valley' }, image:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800' },
+      
+      // PVC Panels Inventory (35 Items)
+      { id:'pvc-001', name:'Marble-Effect PVC Cladding - Calacatta', category:'PVC Paneling', description:'100% waterproof structural alternative for wet zones. Replicates high-end marble.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/spJmRs23/IMG-20260703-WA0099.jpg' },
+      { id:'pvc-002', name:'Classic Onyx PVC Board', category:'PVC Paneling', description:'Elegant onyx stone finish for luxury interior walls and ceilings.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/k21gLmBM/IMG-20260703-WA0098.jpg' },
+      { id:'pvc-003', name:'Wood Grain PVC Panel - Walnut', category:'PVC Paneling', description:'Warm natural wood texture with the moisture resistance of premium PVC.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Textured Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/Rpdw9SdB/IMG-20260703-WA0096.jpg' },
+      { id:'pvc-004', name:'Abstract Geometric PVC Matrix', category:'PVC Paneling', description:'Contemporary pattern designed to dictate light and shadow across flat planes.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Satin', Waterproof:'Absolute' }, image:'https://i.ibb.co/kggdMMZ3/IMG-20260703-WA0094.jpg' },
+      { id:'pvc-005', name:'Floral Damask PVC Cladding', category:'PVC Paneling', description:'Classic damask print infused directly into a rigid, waterproof PVC core.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/d0bzR59Q/IMG-20260703-WA0093.jpg' },
+      { id:'pvc-006', name:'Venetian Plaster PVC Sheet', category:'PVC Paneling', description:'Industrial chic aesthetic mimicking the raw texture of Venetian plaster.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/XZwFT0dH/IMG-20260703-WA0090.jpg' },
+      { id:'pvc-007', name:'Golden Vein Marble PVC', category:'PVC Paneling', description:'Striking dark marble effect with rich golden veins for statement walls.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/nM4gTgsj/IMG-20260703-WA0091.jpg' },
+      { id:'pvc-008', name:'Brushed Steel Effect PVC', category:'PVC Paneling', description:'Modern metallic finish panel, perfect for commercial spaces and modern homes.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Brushed Metallic', Waterproof:'Absolute' }, image:'https://i.ibb.co/1Grfvwcv/IMG-20260703-WA0092.jpg' },
+      { id:'pvc-009', name:'White Ash Wood PVC Panel', category:'PVC Paneling', description:'Light, airy wood grain finish ideal for Scandinavian-inspired interior volumes.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/VYqXZ8y9/IMG-20260703-WA0086.jpg' },
+      { id:'pvc-010', name:'Charcoal Fluted PVC', category:'PVC Paneling', description:'Dramatic charcoal-stained louver profile creating deep architectural shadows.', specs:{ Material:'Rigid PVC', Thickness:'12mm', Finish:'Matte Charcoal', Waterproof:'Absolute' }, image:'https://i.ibb.co/0yX34rc8/IMG-20260703-WA0085.jpg' },
+      { id:'pvc-011', name:'Seamless Concrete PVC', category:'PVC Paneling', description:'Urban industrial concrete look with zero porosity and simple installation.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/tMf5S8nv/IMG-20260703-WA0087.jpg' },
+      { id:'pvc-012', name:'Royal Motif PVC Board', category:'PVC Paneling', description:'Intricate traditional motifs designed for high-end residential ceilings.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Satin', Waterproof:'Absolute' }, image:'https://i.ibb.co/FL92pCcN/IMG-20260703-WA0088.jpg' },
+      { id:'pvc-013', name:'Travertine Stone PVC Panel', category:'PVC Paneling', description:'Warm, earthy travertine stone finish for a sophisticated organic aesthetic.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/Rpjh6G9T/IMG-20260703-WA0083.jpg' },
+      { id:'pvc-014', name:'Midnight Granite PVC', category:'PVC Paneling', description:'Deep, dark granite aesthetic. Impervious to moisture and simple to clean.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/3yTKXRdF/IMG-20260703-WA0084.jpg' },
+      { id:'pvc-015', name:'Woven Rattan Effect PVC', category:'PVC Paneling', description:'Tropical rattan texture replicated in highly durable, moisture-proof PVC.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Textured', Waterproof:'Absolute' }, image:'https://i.ibb.co/FLSqrG1R/IMG-20260703-WA0082.jpg' },
+      { id:'pvc-016', name:'Statvario Marble PVC', category:'PVC Paneling', description:'Classic Italian marble aesthetic with crisp white background and grey veining.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/qXL5f0N/IMG-20260703-WA0074.jpg' },
+      { id:'pvc-017', name:'Smoked Oak Wood PVC', category:'PVC Paneling', description:'Deep, rich smoked oak finish for a traditional and warm spatial atmosphere.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/p6DnGyHn/IMG-20260703-WA0078.jpg' },
+      { id:'pvc-018', name:'Geometric Grid PVC Matrix', category:'PVC Paneling', description:'Crisp, modern grid pattern for accent walls and contemporary ceilings.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Satin White', Waterproof:'Absolute' }, image:'https://i.ibb.co/DDh3VdSB/IMG-20260703-WA0077.jpg' },
+      { id:'pvc-019', name:'Rustic Pine PVC Cladding', category:'PVC Paneling', description:'Knotty pine wood texture bringing rustic cabin aesthetics to modern spaces.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/0VyMwPLD/IMG-20260703-WA0079.jpg' },
+      { id:'pvc-020', name:'Emperador Dark Marble PVC', category:'PVC Paneling', description:'Luxurious dark brown marble finish with striking crystalline accents.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/9kG6W7pH/IMG-20260703-WA0075.jpg' },
+      { id:'pvc-021', name:'Silk Plaster PVC Sheet', category:'PVC Paneling', description:'Soft, subtle texture mimicking the look of applied silk plaster.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/svtyYpKY/IMG-20260703-WA0073.jpg' },
+      { id:'pvc-022', name:'Burmese Teak PVC Panel', category:'PVC Paneling', description:'Golden teak wood grain, perfect for adding warmth to commercial interiors.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Satin', Waterproof:'Absolute' }, image:'https://i.ibb.co/6RjMVhZs/IMG-20260703-WA0076.jpg' },
+      { id:'pvc-023', name:'Quartzite Stone PVC', category:'PVC Paneling', description:'Sparkling quartzite finish providing a premium look for feature walls.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Gloss Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/5grHQrvc/IMG-20260703-WA0070.jpg' },
+      { id:'pvc-024', name:'Herringbone Wood PVC', category:'PVC Paneling', description:'Classic herringbone wood pattern integrated into a single seamless panel.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/HLgYwgqw/IMG-20260703-WA0071.jpg' },
+      { id:'pvc-025', name:'Oxidized Copper PVC', category:'PVC Paneling', description:'Industrial oxidized metal finish for bold, brutalist architectural designs.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/sJDvnZdJ/IMG-20260703-WA0072.jpg' },
+      { id:'pvc-026', name:'Minimalist White PVC', category:'PVC Paneling', description:'Pure, untextured white panel for clean lines and absolute minimalism.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/RkrTCLZJ/IMG-20260703-WA0068.jpg' },
+      { id:'pvc-027', name:'Vintage Damask PVC', category:'PVC Paneling', description:'Faded vintage damask pattern providing a shabby-chic aesthetic.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/n4Ptw3Q/IMG-20260703-WA0080.jpg' },
+      { id:'pvc-028', name:'Limestone Texture PVC', category:'PVC Paneling', description:'Subtle, porous limestone look for soft organic interior layouts.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/Sh7x8Y1/IMG-20260703-WA0081.jpg' },
+      { id:'pvc-029', name:'High-Gloss Black PVC', category:'PVC Paneling', description:'Absolute black panel with a mirror-like high gloss finish.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/sv0nM3LY/IMG-20260703-WA0089.jpg' },
+      { id:'pvc-030', name:'Terrazzo Print PVC Panel', category:'PVC Paneling', description:'Playful terrazzo stone pattern bringing modern flair to any volume.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Satin', Waterproof:'Absolute' }, image:'https://i.ibb.co/4nWTRqK3/IMG-20260703-WA0095.jpg' },
+      { id:'pvc-031', name:'Ebony Wood Grain PVC', category:'PVC Paneling', description:'Striking black ebony wood texture for dramatic spatial accents.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/pjBx31nF/IMG-20260703-WA0097.jpg' },
+      { id:'pvc-032', name:'Slate Stone Cladding PVC', category:'PVC Paneling', description:'Rough slate stone texture perfectly replicated in lightweight PVC.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Textured', Waterproof:'Absolute' }, image:'https://i.ibb.co/DZzX1dD/IMG-20260703-WA0100.jpg' },
+      { id:'pvc-033', name:'Arabesque Pattern PVC', category:'PVC Paneling', description:'Intricate Middle-Eastern inspired geometry for unique ceiling installations.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/1YbbS6yJ/IMG-20260703-WA0106.jpg' },
+      { id:'pvc-034', name:'Carrara Marble PVC Sheet', category:'PVC Paneling', description:'Soft grey veining on a pristine white background. Classic Carrara look.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/5hHwNhXS/IMG-20260703-WA0107.jpg' },
+      { id:'pvc-035', name:'Acoustic Slat PVC Panel', category:'PVC Paneling', description:'Modern vertical slat design that mimics architectural acoustic panels.', specs:{ Material:'Rigid PVC', Thickness:'12mm', Finish:'Matte Wood', Waterproof:'Absolute' }, image:'https://i.ibb.co/kscvr7tT/IMG-20260703-WA0101.jpg' }
     ];
 
-    const CATEGORIES = ['All', 'Wood Paneling', 'PVC Products', 'Services'];
+    const PREVIOUS_WORKS = [
+      { image: 'https://i.ibb.co/mV2HWRHb/IMG-20260705-WA0063.jpg' },
+      { image: 'https://i.ibb.co/DD9tmypj/IMG-20260705-WA0059.jpg' },
+      { image: 'https://i.ibb.co/xK7ffMvQ/IMG-20260705-WA0060.jpg' },
+      { image: 'https://i.ibb.co/nNwgSqT6/IMG-20260705-WA0061.jpg' },
+      { image: 'https://i.ibb.co/HfS76xzj/IMG-20260705-WA0065.jpg' },
+      { image: 'https://i.ibb.co/Kc3gXs7w/IMG-20260705-WA0055.jpg' },
+      { image: 'https://i.ibb.co/DPsq1BDT/IMG-20260705-WA0043.jpg' },
+      { image: 'https://i.ibb.co/gQHwgKZ/IMG-20260705-WA0039.jpg' },
+      { image: 'https://i.ibb.co/G3ntbt2H/IMG-20260705-WA0044.jpg' },
+      { image: 'https://i.ibb.co/XZyy8K8X/IMG-20260705-WA0042.jpg' },
+      { image: 'https://i.ibb.co/x867jvb6/IMG-20260705-WA0048.jpg' },
+      { image: 'https://i.ibb.co/HpR6KrvX/IMG-20260705-WA0049.jpg' },
+      { image: 'https://i.ibb.co/MxM97GVv/IMG-20260705-WA0052.jpg' },
+      { image: 'https://i.ibb.co/hRwSWgf3/IMG-20260705-WA0057.jpg' },
+      { image: 'https://i.ibb.co/6RRzR0jf/IMG-20260705-WA0062.jpg' }
+    ];
+
+    const CATEGORIES = ['All', 'Wallpapers', 'PVC Paneling', 'Services'];
     const WA_NUMBER = '916006824595';
 
     let cart = [];
@@ -373,21 +427,50 @@
 
     function saveCart() { try { localStorage.setItem('deCreativeCart', JSON.stringify(cart)); } catch (e) {} }
     function isInCart(id) { return cart.some(i => i.id === id); }
-    function addItem(product) { if (isInCart(product.id)) return; cart.push({ ...product, qty: 1 }); saveCart(); renderCommandBar(); updateAddButtons(); }
-    function removeItem(id) { cart = cart.filter(i => i.id !== id); saveCart(); renderCommandBar(); updateAddButtons(); }
-    function updateQty(id, qty) { if (qty < 1) return removeItem(id); cart = cart.map(i => i.id === id ? { ...i, qty } : i); saveCart(); renderCommandBar(); }
-    function clearCart() { cart = []; saveCart(); renderCommandBar(); updateAddButtons(); }
-    function cartTotal() { return cart.reduce((s, i) => s + i.price * i.qty, 0); }
-
-    function sendToWhatsApp(name, phone) {
-      const lines = cart.map(i => `[${i.id}] ${i.name} — ₹${i.price.toLocaleString('en-IN')} x ${i.qty}`).join('\n');
-      const msg = `SPECIFICATION MANIFEST:\n\n${lines}\n\nEST. TOTAL: ₹${cartTotal().toLocaleString('en-IN')}\n\nCLIENT: ${name}\nCONTACT: ${phone}\n\nRequesting formal review and structural quote.`;
-      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+    
+    function addItem(product) { 
+      if (!isInCart(product.id)) {
+        cart.push({ ...product, qty: 1 }); 
+        saveCart(); 
+        renderCart(); 
+        updateAddButtons(); 
+      }
+    }
+    
+    function removeItem(id) { 
+      cart = cart.filter(i => i.id !== id); 
+      saveCart(); 
+      renderCart(); 
+      updateAddButtons(); 
+    }
+    
+    function updateQty(id, qty) { 
+      if (qty < 1) return removeItem(id); 
+      cart = cart.map(i => i.id === id ? { ...i, qty } : i); 
+      saveCart(); 
+      renderCart(); 
     }
 
-    function fmt(n) { return n.toLocaleString('en-IN'); }
+    // Handles ALL "Add to Quote" button clicks cleanly using event delegation
+    document.body.addEventListener('click', function(e) {
+      if (e.target.classList.contains('btn-add')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const id = e.target.dataset.id;
+        const product = PRODUCTS.find(p => p.id === id);
+        if (product && !isInCart(id)) {
+          addItem(product);
+        }
+      }
+    });
 
-    const routes = { '/': renderHome, '/catalog': renderCatalog, '/about': renderAbout, '/projects': renderProjects, '/contact': renderContact };
+    const routes = {
+      '/': renderHome,
+      '/catalog': renderCatalog,
+      '/works': renderWorks,
+      '/about': renderAbout,
+      '/contact': renderContact
+    };
 
     function getRoute() {
       const hash = window.location.hash.replace('#', '') || '/';
@@ -399,19 +482,26 @@
       const route = getRoute();
       const app = document.getElementById('app');
       window.scrollTo(0, 0);
+      
+      const stickyBar = document.getElementById('stickyBackBar');
+      if (route.page === '/' || route.page === '') {
+        stickyBar.style.display = 'none';
+      } else {
+        stickyBar.style.display = 'block';
+      }
+      
       if (route.page === 'product') renderProductDetail(route.id);
       else if (routes[route.page]) routes[route.page](app);
-      else renderHome(app); // Fallback
-      renderFooter();
-      renderCommandBar();
+      else renderHome(app);
+      
       updateActiveNav();
-      closeMobileMenu();
-      setTimeout(triggerReveal, 50);
+      document.getElementById('mobileMenu').classList.remove('open');
+      updateAddButtons();
     }
 
     function updateActiveNav() {
       const route = getRoute();
-      document.querySelectorAll('.nav-link').forEach(link => {
+      document.querySelectorAll('.nav-links a').forEach(link => {
         const href = link.getAttribute('href').replace('#', '');
         link.classList.toggle('active', href === route.page || (route.page === 'product' && href === '/catalog'));
       });
@@ -420,450 +510,341 @@
     function renderHome(app) {
       app.innerHTML = `
         <div class="hero">
-          <div class="hero-text-col">
-            <div class="hero-meta tech clip-reveal">
-              <span>MANIFESTO VOL.01</span>
-              <span>SRINAGAR, INDIA</span>
+          <div class="hero-overlay"></div>
+          <div class="container hero-container">
+            <div class="hero-main">
+              <div class="hero-logo-wrapper">
+                <img src="https://i.ibb.co/p6nDgt03/file-000000008e0471f8be66a85d17cc2997.png" alt="De Creative Logo">
+              </div>
+              <h1 class="hero-title">DE CREATIVE</h1>
+              <p class="hero-tagline">Architectural Surfaces & Premium Paneling</p>
+              
+              <div class="hero-services">
+                <span class="service-tag">Premium Wallpapers</span>
+                <span class="service-tag">PVC Paneling</span>
+                <span class="service-tag">Professional Installation</span>
+              </div>
+
+              <div class="hero-actions">
+                <a href="#/catalog" data-route class="btn btn-primary">View Products</a>
+                <a href="#/works" data-route class="btn btn-outline" style="color:var(--text-main); border-color:var(--text-main);">Our Work</a>
+              </div>
             </div>
-            <h1 class="clip-reveal delay-1">ARCHITECTURAL<br><span>Surfaces</span></h1>
-            <p class="hero-desc clip-reveal delay-2">We engineer the tactile boundaries of interior volumes through precision wood paneling and advanced composites. Reject the ordinary.</p>
-            <div class="clip-reveal delay-3" style="margin-top: 3rem;">
-              <a href="#/catalog" data-link class="btn btn-solid">Specify Materials</a>
+
+            <div class="glass-card">
+              <h3>Our Branches</h3>
+              <div class="branch">
+                <h4>Kangan, Ganderbal</h4>
+                <p>Main Office at Main Chowk.</p>
+                <small>Near Tehzeeb Restaurant</small>
+              </div>
+              <div class="branch">
+                <h4>Rainawari, Srinagar</h4>
+                <p>Branch office at Rainawari.</p>
+              </div>
+              <a href="#/contact" data-route class="btn btn-outline" style="width: 100%; margin-top: 1rem;">Contact Us</a>
             </div>
-          </div>
-          <div class="hero-visual clip-reveal delay-1">
-            <img src="https://media.base44.com/images/public/6a4791ee6f887f072913fd56/6718e2ac8_generated_24385447.png" alt="Wood Surface Texture">
-            <div class="overlay-text">IMG_001 // NATURAL OAK PROFILE</div>
           </div>
         </div>
-
-        <section class="section-editorial">
-          <div class="section-header-col">
-            <h2 class="tech clip-reveal">Disciplines</h2>
-            <p class="clip-reveal delay-1" style="font-size: 1.25rem;">Three core avenues of spatial transformation. Controlled execution from raw material to installed surface.</p>
-          </div>
-          <div class="section-content-col discipline-grid">
-            <div class="discipline-card clip-reveal">
-              <span class="num">01.</span>
-              <h3>Timber</h3>
-              <p>Architectural grade fluted, louver, and slat profiles in solid and engineered hardwoods.</p>
+        
+        <section class="section">
+          <div class="container">
+            <h2 class="title" style="text-align:center; margin-bottom: 3rem;">Popular Products</h2>
+            <div class="product-grid">
+              ${PRODUCTS.slice(13, 17).map(p => createProductCard(p)).join('')}
             </div>
-            <div class="discipline-card clip-reveal delay-1">
-              <span class="num">02.</span>
-              <h3>Composite</h3>
-              <p>Absolute waterproof PVC structural cladding and 3D geometric matrix surfaces.</p>
+            <div style="text-align: center; margin-top: 3rem;">
+              <a href="#/catalog" data-route class="btn btn-primary">See All Products</a>
             </div>
-            <div class="discipline-card clip-reveal delay-2">
-              <span class="num">03.</span>
-              <h3>Design</h3>
-              <p>Full-volume interior architecture, spatial planning, and bespoke material palette curation.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="statement">
-          <h2 class="clip-reveal">Material is the <i>language</i> of space.</h2>
-        </section>
-
-        <section class="section-editorial" style="border-bottom:none;">
-          <div class="section-header-col">
-            <h2 class="tech clip-reveal">Featured Inventory</h2>
-            <a href="#/catalog" data-link class="btn clip-reveal delay-1">View Complete Catalog</a>
-          </div>
-          <div class="section-content-col manifest-grid">
-            ${PRODUCTS.slice(0,4).map((p,i) => `
-              <div class="manifest-item clip-reveal delay-${i}">
-                <a href="#/product/${p.id}" data-link class="img-box">
-                  <img src="${p.image}" alt="${p.name}">
-                </a>
-                <div class="info">
-                  <span class="tech" style="color:var(--muted)">${p.id}</span>
-                  <a href="#/product/${p.id}" data-link style="text-decoration:none; color:inherit;"><h3>${p.name}</h3></a>
-                  <div class="price-row">
-                    <span class="tech">₹${fmt(p.price)}${p.unit}</span>
-                    <button class="add-action ${isInCart(p.id)?'added':''}" data-id="${p.id}" style="width:auto; padding: 0.5rem 1rem;">${isInCart(p.id)?'ADDED':'+'}</button>
-                  </div>
-                </div>
-              </div>
-            `).join('')}
           </div>
         </section>
       `;
     }
 
-    function renderCatalog(app) {
-      app.innerHTML = `
-        <div class="catalog-header">
-          <div class="tech clip-reveal" style="margin-bottom: 1rem; color: var(--accent);">INDEX: 001-008</div>
-          <h1 class="clip-reveal delay-1">Specification <br><i>Inventory</i></h1>
-        </div>
-        
-        <div class="filter-bar clip-reveal delay-2">
-          <div class="filters" id="filterTabs">
-            ${CATEGORIES.map(c => `<button class="filter-btn ${c==='All'?'active':''}" data-cat="${c}">${c.toUpperCase()}</button>`).join('')}
+    function createProductCard(p) {
+      const added = isInCart(p.id);
+      return `
+        <a href="#/product/${p.id}" data-route class="product-card">
+          <div class="product-img">
+            <img src="${p.image}" alt="${p.name}">
           </div>
-          <input type="text" class="search-input" id="searchInput" placeholder="SEARCH BY SKU OR NAME...">
-        </div>
-
-        <div class="inventory-list" id="catalogList"></div>
-        <div class="mobile-catalog" id="mobileCatalog"></div>
-        <div style="height:150px;"></div>
+          <div class="product-info">
+            <div class="product-cat">${p.category}</div>
+            <h3 class="product-name">${p.name}</h3>
+            <div class="product-action">
+              <button class="btn-add ${added ? 'added' : ''}" data-id="${p.id}">
+                ${added ? 'Added to Quote' : 'Add to Quote +'}
+              </button>
+            </div>
+          </div>
+        </a>
       `;
-      filterAndRender();
-      document.getElementById('filterTabs').addEventListener('click', e => {
-        if (e.target.classList.contains('filter-btn')) {
-          document.querySelectorAll('.filter-btn').forEach(t => t.classList.remove('active'));
-          e.target.classList.add('active');
-          filterAndRender();
-        }
-      });
-      document.getElementById('searchInput').addEventListener('input', filterAndRender);
     }
 
     let catalogState = { category: 'All', search: '' };
 
-    function filterAndRender() {
-      const activeTab = document.querySelector('.filter-btn.active');
-      catalogState.category = activeTab ? activeTab.dataset.cat : 'All';
-      catalogState.search = (document.getElementById('searchInput')?.value || '').toLowerCase();
+    function renderCatalog(app) {
+      app.innerHTML = `
+        <div class="container section">
+          <h1 class="title">Our Products</h1>
+          <p style="color:var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; max-width: 600px;">Browse our complete range of premium materials. Add items to your quote list, and we'll send you a formal estimate via WhatsApp.</p>
+          
+          <div class="filter-bar">
+            <div class="category-tabs" id="filterTabs">
+              ${CATEGORIES.map(c => `<button class="tab-btn ${c === catalogState.category ? 'active' : ''}" data-cat="${c}">${c}</button>`).join('')}
+            </div>
+            <input type="text" class="search-box" id="searchInput" placeholder="Search products..." value="${catalogState.search}">
+          </div>
+
+          <div class="product-grid" id="catalogGrid"></div>
+        </div>
+      `;
+      
+      updateCatalogGrid();
+
+      document.getElementById('filterTabs').addEventListener('click', e => {
+        if (e.target.classList.contains('tab-btn')) {
+          document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+          e.target.classList.add('active');
+          catalogState.category = e.target.dataset.cat;
+          updateCatalogGrid();
+        }
+      });
+
+      document.getElementById('searchInput').addEventListener('input', e => {
+        catalogState.search = e.target.value.toLowerCase();
+        updateCatalogGrid();
+      });
+    }
+
+    function updateCatalogGrid() {
+      const grid = document.getElementById('catalogGrid');
+      if (!grid) return;
       
       const filtered = PRODUCTS.filter(p => {
         const matchCat = catalogState.category === 'All' || p.category === catalogState.category;
-        const matchSearch = p.name.toLowerCase().includes(catalogState.search) || p.id.toLowerCase().includes(catalogState.search);
+        const matchSearch = p.name.toLowerCase().includes(catalogState.search) || p.category.toLowerCase().includes(catalogState.search);
         return matchCat && matchSearch;
       });
 
-      const listEl = document.getElementById('catalogList');
-      const mobileEl = document.getElementById('mobileCatalog');
-      
-      if (listEl) {
-        listEl.innerHTML = `
-          <div class="inventory-row tech" style="background: var(--ink); color: var(--bg); pointer-events: none;">
-            <div>SEQ</div><div>SKU</div><div>NOMENCLATURE</div><div>CATEGORY</div><div>RATE</div><div>ACTION</div>
-          </div>
-          ${filtered.map((p, idx) => `
-            <a href="#/product/${p.id}" data-link class="inventory-row clip-reveal delay-${idx%4}">
-              <div class="tech" style="color:var(--muted)">${String(idx+1).padStart(2,'0')}</div>
-              <div class="tech">${p.id.toUpperCase()}</div>
-              <div>
-                <div style="display:flex; align-items:center; gap: 2rem;">
-                  <div class="inv-thumb" style="width: 60px;"><img src="${p.image}" alt=""></div>
-                  <span class="inv-title">${p.name}</span>
-                </div>
-              </div>
-              <div class="tech">${p.category}</div>
-              <div class="tech">₹${fmt(p.price)}</div>
-              <div>
-                <button class="add-action ${isInCart(p.id) ? 'added' : ''}" data-id="${p.id}" onclick="event.preventDefault(); event.stopPropagation();">
-                  ${isInCart(p.id) ? 'SPECIFIED' : 'SPECIFY +'}
-                </button>
-              </div>
-            </a>
-          `).join('')}
-          ${filtered.length === 0 ? '<div class="p-lg tech" style="text-align:center;">NULL RESULTS</div>' : ''}
-        `;
+      if (filtered.length === 0) {
+        grid.innerHTML = `<p style="grid-column: 1/-1; color: var(--text-muted); padding: 2rem 0;">No products found matching your criteria.</p>`;
+        return;
       }
 
-      if (mobileEl) {
-        mobileEl.innerHTML = filtered.map(p => `
-          <div class="mobile-inv-card clip-reveal">
-            <a href="#/product/${p.id}" data-link class="thumb"><img src="${p.image}" alt=""></a>
-            <div>
-              <div class="tech" style="color:var(--muted); margin-bottom:0.5rem;">${p.id.toUpperCase()} // ${p.category}</div>
-              <a href="#/product/${p.id}" data-link style="text-decoration:none; color:inherit;"><h3>${p.name}</h3></a>
-              <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:1rem;">
-                <span class="tech">₹${fmt(p.price)}${p.unit}</span>
-                <button class="btn btn-solid ${isInCart(p.id) ? 'added' : ''}" data-id="${p.id}" style="padding: 0.5rem 1rem;">
-                  ${isInCart(p.id) ? '✓' : '+'}
-                </button>
-              </div>
-            </div>
-          </div>
-        `).join('');
-      }
-      updateAddButtons();
-      triggerReveal();
+      grid.innerHTML = filtered.map(p => createProductCard(p)).join('');
     }
 
     function renderProductDetail(id) {
-      const product = PRODUCTS.find(p => p.id === id);
+      const p = PRODUCTS.find(x => x.id === id);
       const app = document.getElementById('app');
-      if (!product) return renderCatalog(app);
       
-      app.innerHTML = `
-        <div class="spec-grid">
-          <div class="spec-visual clip-reveal">
-            <img src="${product.image}" alt="${product.name}">
-            <div class="tech" style="position:absolute; bottom: 2rem; left: 2rem; background: var(--bg); padding: 0.5rem 1rem; border: var(--border-heavy);">${product.id.toUpperCase()}</div>
-          </div>
-          <div class="spec-data">
-            <a href="#/catalog" data-link class="tech" style="color:var(--muted); text-decoration:none;">← BACK TO INVENTORY</a>
-            <h1 class="clip-reveal delay-1"><i>${product.name}</i></h1>
-            <p class="clip-reveal delay-2" style="font-size: 1.25rem; max-width: 500px;">${product.description}</p>
-            
-            <div class="spec-table clip-reveal delay-3">
-              <div class="tech" style="padding: 1rem 0; border-bottom: var(--border-heavy);">TECHNICAL SPECIFICATIONS</div>
-              ${Object.entries(product.specs).map(([k,v]) => `
-                <div class="spec-row">
-                  <div class="tech" style="color:var(--muted)">${k}</div>
-                  <div style="font-weight: 700;">${v}</div>
-                </div>
-              `).join('')}
-            </div>
+      if (!p) {
+        app.innerHTML = `<div class="container section"><h1 class="title">Product Not Found</h1><a href="#/catalog" data-route class="btn btn-outline">Back to Catalog</a></div>`;
+        return;
+      }
 
-            <div class="spec-price-block clip-reveal delay-3">
-              <div class="tech" style="color:var(--muted); margin-bottom: 0.5rem;">ESTIMATED RATE</div>
-              <div style="font-family: var(--font-display); font-size: 4rem; line-height: 1;">₹${fmt(product.price)}</div>
-              <div class="tech" style="margin-bottom: 2rem;">${product.unit.toUpperCase()}</div>
+      const added = isInCart(p.id);
+
+      app.innerHTML = `
+        <div class="container section">
+          <a href="#/catalog" data-route style="color:var(--primary); font-size: 0.9rem; margin-bottom: 2rem; display: inline-block;">← Back to Products</a>
+          
+          <div class="detail-grid">
+            <div class="detail-img">
+              <img src="${p.image}" alt="${p.name}">
+            </div>
+            <div class="detail-info">
+              <div style="color:var(--primary); text-transform:uppercase; font-size:0.85rem; margin-bottom: 1rem; font-weight:600; letter-spacing:1px;">${p.category}</div>
+              <h1>${p.name}</h1>
+              <p class="detail-desc">${p.description}</p>
               
-              <button class="btn btn-solid ${isInCart(product.id) ? 'added' : ''}" data-id="${product.id}" style="width: 100%; font-size: 1rem;">
-                ${isInCart(product.id) ? 'ADDED TO MANIFEST' : 'ADD TO SPECIFICATION MANIFEST'}
+              <div class="specs-list">
+                <h3 style="font-size:1.1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; font-family: var(--font-heading);">Specifications</h3>
+                ${Object.entries(p.specs).map(([k,v]) => `
+                  <div class="spec-item">
+                    <span class="spec-label">${k}</span>
+                    <span class="spec-value">${v}</span>
+                  </div>
+                `).join('')}
+              </div>
+
+              <button class="btn-add ${added ? 'added' : ''}" data-id="${p.id}" style="padding: 1rem; font-size: 1rem; background: ${added ? 'var(--primary)' : 'transparent'};">
+                ${added ? 'Added to Quote Request' : 'Add to Quote Request +'}
               </button>
             </div>
           </div>
         </div>
-        <div style="height:150px;"></div>
       `;
-      updateAddButtons();
-      triggerReveal();
+    }
+
+    function renderWorks(app) {
+      app.innerHTML = `
+        <div class="container section">
+          <h1 class="title" style="text-align:center; margin-bottom: 1rem;">Our Installations</h1>
+          <p style="text-align:center; color:var(--text-muted); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Explore our recent interior transformations, featuring our premium wallpapers and PVC paneling installed by our experts across Kashmir.</p>
+          
+          <div class="works-grid">
+            ${PREVIOUS_WORKS.map(w => `
+              <div class="work-item">
+                <img src="${w.image}" loading="lazy" alt="Installation Work by De Creative">
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
     }
 
     function renderAbout(app) {
       app.innerHTML = `
-        <div class="catalog-header" style="text-align: center;">
-          <h1 class="clip-reveal">Studio <br><i>Manifesto</i></h1>
-        </div>
-        <div class="article-grid">
-          <div class="article-text">
-            <p class="clip-reveal delay-1">De Creative was founded on a singular brutal truth: the structural envelope of a space dictates human psychological response. We do not decorate walls; we engineer atmospheres.</p>
-            <div class="pull-quote clip-reveal delay-2">"Materials are not just surfaces. They are the language of space."</div>
-            <p class="clip-reveal delay-3">Operating from our workshop in Srinagar, we bypass the generic retail supply chain to source, mill, and fabricate architectural-grade surfaces directly for leading interior architects and discerning purists.</p>
-            <p class="clip-reveal delay-3">We reject artificial warmth. We embrace raw grain, deep shadows, and absolute geometric precision. This is interior architecture stripped of compromise.</p>
-          </div>
-          <div class="clip-reveal delay-2">
-            <img class="article-img" src="https://media.base44.com/images/public/6a4791ee6f887f072913fd56/e50f4834e_generated_e84c126b.png" alt="Workshop">
-          </div>
-        </div>
-      `;
-    }
-
-    function renderProjects(app) {
-      app.innerHTML = `
-        <div class="catalog-header">
-          <h1 class="clip-reveal">Index of <br><i>Works</i></h1>
-        </div>
-        <div class="manifest-grid">
-           ${[
-             {n:'Lakeside Residence', l:'Srinagar', y:'25'},
-             {n:'Meridian Corporate', l:'Rajbagh', y:'24'},
-             {n:'Alpine Bar', l:'Gulmarg', y:'24'},
-             {n:'Saffron Suite', l:'Boulevard', y:'23'}
-           ].map((p,i) => `
-            <div class="manifest-item clip-reveal delay-${i}" style="padding: 4rem 2rem; justify-content: center; background: ${i%2===0 ? 'var(--ink)' : 'transparent'}; color: ${i%2===0 ? 'var(--bg)' : 'var(--ink)'}">
-              <div class="tech" style="color:var(--accent); margin-bottom: 1rem;">ID // ${p.y}</div>
-              <h3 style="font-size: 2.5rem; font-style: italic;">${p.n}</h3>
-              <div class="tech" style="margin-top: 2rem; border-top: 1px solid currentColor; padding-top: 1rem;">LOC: ${p.l.toUpperCase()}</div>
+        <div class="container section">
+          <div class="detail-grid" style="align-items: center;">
+            <div>
+              <h1 class="title">About De Creative</h1>
+              <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1.5rem;">We believe the materials surrounding you shape your everyday experience. Based in the heart of Kashmir, De Creative is a specialized supplier and installer of architectural surfaces.</p>
+              <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem;">We bypass generic retail to bring you direct access to premium wallpapers and robust PVC paneling. From the initial consultation at our Ganderbal or Srinagar offices to the final installation in your home, we ensure flawless execution.</p>
+              
+              <div style="display:flex; gap: 1rem;">
+                <a href="#/catalog" data-route class="btn btn-primary">View Products</a>
+                <a href="#/contact" data-route class="btn btn-outline">Contact Us</a>
+              </div>
             </div>
-           `).join('')}
+            <div class="detail-img">
+              <img src="https://i.ibb.co/p6nDgt03/file-000000008e0471f8be66a85d17cc2997.png" alt="De Creative Logo" style="background: var(--surface); padding: 4rem;">
+            </div>
+          </div>
         </div>
       `;
     }
 
     function renderContact(app) {
       app.innerHTML = `
-        <div class="contact-container">
-          <div class="contact-info">
-            <div>
-              <div class="tech clip-reveal" style="color:var(--accent); margin-bottom:1rem;">DIRECT LINE</div>
-              <h1 class="clip-reveal delay-1"><i>Inquiries</i></h1>
-              <p class="clip-reveal delay-2" style="font-size: 1.25rem; max-width: 400px;">For architectural specifications, bespoke fabrication, or formal quotations, transmit your requirements directly to the studio.</p>
+        <div class="container section">
+          <div class="contact-grid">
+            <div class="contact-details">
+              <h1 class="title" style="margin-bottom: 2rem;">Get in Touch</h1>
+              
+              <div class="contact-block">
+                <h3>Main Office (Ganderbal)</h3>
+                <p>Main Chowk Kangan<br>Near Tehzeeb Restaurant<br>Jammu & Kashmir</p>
+              </div>
+              
+              <div class="contact-block">
+                <h3>Branch (Srinagar)</h3>
+                <p>Branch office at Rainawari<br>Srinagar, Jammu & Kashmir</p>
+              </div>
+              
+              <div class="contact-block">
+                <h3>Direct Contact</h3>
+                <p>Phone: +91 600 682 4595</p>
+              </div>
             </div>
             
-            <div class="info-block clip-reveal delay-3">
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                <div>
-                  <div class="tech" style="color:var(--muted); margin-bottom: 0.5rem;">TELEMETRY</div>
-                  <div style="font-weight:700;">+91 600 682 4595</div>
-                  <div style="font-weight:700;">hello@decreative.in</div>
-                </div>
-                <div>
-                  <div class="tech" style="color:var(--muted); margin-bottom: 0.5rem;">COORDINATES</div>
-                  <div style="font-weight:700;">Srinagar, J&K<br>India 190001</div>
-                </div>
-              </div>
+            <div style="background: var(--bg); padding: 3rem;">
+              <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary);">Send an Inquiry</h3>
+              <form id="contactForm">
+                <input type="text" id="genName" class="cart-input" placeholder="Your Name" required>
+                <input type="tel" id="genPhone" class="cart-input" placeholder="Your Phone Number" required>
+                <textarea id="genMessage" class="cart-input" placeholder="How can we help you?" rows="4" required style="resize:vertical;"></textarea>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Send Message via WhatsApp</button>
+              </form>
             </div>
-          </div>
-          
-          <div class="contact-form-wrap clip-reveal delay-2">
-            <form id="contactForm">
-              <div class="form-group">
-                <label>IDENTIFICATION / NAME</label>
-                <input type="text" id="cName" class="form-input" required>
-              </div>
-              <div class="form-group">
-                <label>SECURE COMMS / PHONE</label>
-                <input type="tel" id="cPhone" class="form-input" required>
-              </div>
-              <div class="form-group">
-                <label>SPECIFICATION DETAILS / MESSAGE</label>
-                <input type="text" id="cMessage" class="form-input" required>
-              </div>
-              <button type="submit" class="btn btn-solid" style="background:var(--accent); border-color:var(--accent); color:var(--bg); width: 100%; margin-top: 2rem;">
-                TRANSMIT VIA WHATSAPP
-              </button>
-            </form>
           </div>
         </div>
       `;
+
       setTimeout(() => {
-        const form = document.getElementById('contactForm');
-        if(form) form.addEventListener('submit', e => {
+        document.getElementById('contactForm')?.addEventListener('submit', (e) => {
           e.preventDefault();
-          const msg = `INQUIRY TRANSMISSION:\n\nCLIENT: ${document.getElementById('cName').value}\nCONTACT: ${document.getElementById('cPhone').value}\n\nDETAILS: ${document.getElementById('cMessage').value}`;
+          const name = document.getElementById('genName').value || 'a Customer';
+          const details = document.getElementById('genMessage').value;
+          const msg = `Hey Akeel sir, my name is ${name}.\n\n${details}`;
           window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         });
-      }, 100);
-    }
-
-    function renderFooter() {
-      document.getElementById('footer').innerHTML = `
-        <div class="footer-grid">
-          <div>
-            <div class="footer-logo"><i>De Creative</i></div>
-            <p class="tech" style="max-width: 300px; opacity: 0.6;">Architectural surfaces engineered for spatial permanence. Designed in Srinagar.</p>
-          </div>
-          <div class="footer-links">
-            <div class="tech" style="margin-bottom: 1.5rem; color:var(--muted);">INDEX</div>
-            <a href="#/catalog" data-link>INVENTORY</a>
-            <a href="#/about" data-link>MANIFESTO</a>
-            <a href="#/projects" data-link>WORKS</a>
-          </div>
-          <div class="footer-links">
-            <div class="tech" style="margin-bottom: 1.5rem; color:var(--muted);">LEGAL</div>
-            <a href="#/" data-link>PRIVACY DOCTRINE</a>
-            <a href="#/" data-link>TERMS OF SPECIFICATION</a>
-            <p class="tech" style="margin-top: 2rem; opacity: 0.4;">© 2026 DE CREATIVE</p>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderCommandBar() {
-      const el = document.getElementById('commandBar');
-      if (cart.length === 0) { el.classList.remove('peek', 'open'); return; }
-      
-      const isOpen = el.classList.contains('open');
-      
-      el.innerHTML = `
-        <div class="cmd-header" id="cmdHeader">
-          <div>SPECIFICATION MANIFEST [ ${cart.length} ITEM${cart.length > 1 ? 'S' : ''} ]</div>
-          <div style="display:flex; gap: 2rem; align-items:center;">
-            <span>EST: ₹${fmt(cartTotal())}</span>
-            <span style="color:var(--accent)">${isOpen ? 'CLOSE ▼' : 'REVIEW & TRANSMIT ▲'}</span>
-          </div>
-        </div>
-        <div class="cmd-content">
-          <div class="cmd-list">
-            <div class="tech" style="padding-bottom: 1rem; border-bottom: var(--border-heavy); color:var(--muted);">INVENTORY SCHEDULE</div>
-            ${cart.map(item => `
-              <div class="cmd-item">
-                <div>
-                  <div class="tech" style="color:var(--muted); margin-bottom: 0.25rem;">${item.id.toUpperCase()}</div>
-                  <div class="cmd-item-title">${item.name}</div>
-                </div>
-                <div class="cmd-controls">
-                  <button data-qty="dec" data-id="${item.id}">-</button>
-                  <span style="width: 20px; text-align:center;">${item.qty}</span>
-                  <button data-qty="inc" data-id="${item.id}">+</button>
-                </div>
-                <div class="tech" style="text-align: right;">
-                  <button data-remove="${item.id}" style="background:none; border:none; color:var(--accent); cursor:pointer; font-family:var(--font-tech); margin-bottom:0.5rem;">REMOVE</button><br>
-                  ₹${fmt(item.price * item.qty)}
-                </div>
-              </div>
-            `).join('')}
-          </div>
-          <div class="cmd-summary">
-            <div class="tech" style="margin-bottom: 2rem; border-bottom: var(--border-heavy); padding-bottom: 1rem;">FINALIZATION</div>
-            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 2rem;">
-              <span class="tech" style="color:var(--muted)">GROSS ESTIMATE</span>
-              <span style="font-family: var(--font-display); font-size: 2.5rem; line-height: 1;">₹${fmt(cartTotal())}</span>
-            </div>
-            <input type="text" id="cmdName" class="form-input" style="border-color: var(--border-heavy); color: var(--ink); margin-bottom: 1rem;" placeholder="CLIENT NAME">
-            <input type="tel" id="cmdPhone" class="form-input" style="border-color: var(--border-heavy); color: var(--ink); margin-bottom: 2rem;" placeholder="CONTACT NUMBER">
-            <button class="btn btn-solid" id="cmdSend" style="width: 100%; background: var(--accent); border-color: var(--accent);">TRANSMIT MANIFEST</button>
-          </div>
-        </div>
-      `;
-      
-      el.classList.add('peek');
-      
-      document.getElementById('cmdHeader').onclick = () => {
-        el.classList.toggle('open');
-      };
-
-      el.querySelectorAll('[data-qty]').forEach(btn => {
-        btn.onclick = e => {
-          e.stopPropagation();
-          const id = btn.dataset.id;
-          const item = cart.find(i => i.id === id);
-          if (btn.dataset.qty === 'inc') updateQty(id, item.qty + 1);
-          else updateQty(id, item.qty - 1);
-        };
-      });
-      
-      el.querySelectorAll('[data-remove]').forEach(btn => {
-        btn.onclick = e => { e.stopPropagation(); removeItem(btn.dataset.remove); };
-      });
-      
-      document.getElementById('cmdSend').onclick = e => {
-        e.stopPropagation();
-        sendToWhatsApp(document.getElementById('cmdName').value || 'UNSPECIFIED', document.getElementById('cmdPhone').value || 'UNSPECIFIED');
-      };
+      }, 50);
     }
 
     function updateAddButtons() {
-      document.querySelectorAll('.add-action').forEach(btn => {
+      document.querySelectorAll('.btn-add').forEach(btn => {
         const id = btn.dataset.id;
-        const product = PRODUCTS.find(p => p.id === id);
-        if (!product) return;
-        btn.onclick = (e) => { 
-          e.preventDefault(); e.stopPropagation(); 
-          if (isInCart(id)) return; 
-          addItem(product); 
-        };
+        if (isInCart(id)) {
+          btn.classList.add('added');
+          btn.textContent = btn.textContent.includes('+') ? 'Added to Quote' : 'Added to Quote Request';
+        } else {
+          btn.classList.remove('added');
+          btn.textContent = btn.textContent.includes('Request') ? 'Add to Quote Request +' : 'Add to Quote +';
+        }
       });
     }
 
-    function closeMobileMenu() {
-      document.getElementById('mobileMenu').classList.remove('open');
-    }
-
-    function triggerReveal() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.clip-reveal').forEach(el => observer.observe(el));
+    function renderCart() {
+      document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+      
+      const list = document.getElementById('cartItemsList');
+      if (cart.length === 0) {
+        list.innerHTML = `<div style="color:var(--text-muted); text-align:center; margin-top:2rem;">Your quote list is empty.</div>`;
+        return;
+      }
+      
+      list.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-img"><img src="${item.image}" alt=""></div>
+          <div>
+            <h4>${item.name}</h4>
+            <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 0.5rem; text-transform:uppercase;">${item.category}</div>
+            <div class="cart-item-controls">
+              <button class="qty-btn" onclick="updateQty('${item.id}', ${item.qty - 1})">-</button>
+              <span style="width: 20px; text-align: center; font-size: 0.9rem;">${item.qty}</span>
+              <button class="qty-btn" onclick="updateQty('${item.id}', ${item.qty + 1})">+</button>
+              <button class="remove-btn" onclick="removeItem('${item.id}')">Remove</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('menuToggle').addEventListener('click', () => {
-        document.getElementById('mobileMenu').classList.toggle('open');
-      });
-      document.addEventListener('click', e => {
-        const link = e.target.closest('[data-link]');
+      // Setup Routing
+      document.body.addEventListener('click', e => {
+        const link = e.target.closest('[data-route]');
         if (link) {
           e.preventDefault();
           window.location.hash = link.getAttribute('href');
-          closeMobileMenu();
         }
       });
       window.addEventListener('hashchange', navigate);
+      
+      // Setup UI Toggles
+      document.getElementById('menuToggle').addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.toggle('open');
+      });
+      
+      document.getElementById('openCartBtn').addEventListener('click', () => {
+        document.getElementById('cartOverlay').classList.add('open');
+        document.getElementById('cartDrawer').classList.add('open');
+      });
+      
+      const closeCart = () => {
+        document.getElementById('cartOverlay').classList.remove('open');
+        document.getElementById('cartDrawer').classList.remove('open');
+      };
+      
+      document.getElementById('closeCartBtn').addEventListener('click', closeCart);
+      document.getElementById('cartOverlay').addEventListener('click', closeCart);
+
+      // WhatsApp Quote Submission
+      document.getElementById('sendQuoteBtn').addEventListener('click', () => {
+        if (cart.length === 0) return alert('Your quote list is empty.');
+        
+        const name = document.getElementById('clientName').value || 'a Customer';
+        const lines = cart.map(i => `- ${i.qty}x ${i.name}`).join('\n');
+        
+        const msg = `Hey Akeel sir, my name is ${name}. I need the following products:\n\n${lines}`;
+        window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+      });
+
+      // Initial Load
+      renderCart();
       navigate();
     });
   </script>
