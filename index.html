@@ -1,423 +1,871 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De Creative | Architectural Materials</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De Creative — Architectural Surfaces</title>
+  <meta name="description" content="De Creative — Premium wooden paneling, PVC products and interior design services.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #EBE8E3; /* Drafting paper */
+      --ink: #0A0A0A; /* Architectural black */
+      --accent: #D73A15; /* Industrial Rust */
+      --muted: #666666;
+      
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Manrope', sans-serif;
+      --font-tech: 'JetBrains Mono', monospace;
+      
+      --border-heavy: 2px solid var(--ink);
+      --border-light: 1px solid rgba(10, 10, 10, 0.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-    <style>
-        :root {
-            --color-linen: #F5F2EB;
-            --color-charcoal: #1C1A19;
-            --color-walnut: #7A4B3A;
-            --color-taupe: #A89F91;
-            
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body: 'Syne', sans-serif;
-        }
+    /* Aggressive paper grain texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.45;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
 
-        body {
-            background-color: var(--color-linen);
-            color: var(--color-charcoal);
-            font-family: var(--font-body);
-            overflow-x: hidden;
-            position: relative;
-        }
+    ::selection { background: var(--accent); color: var(--bg); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 0; }
+    ::-webkit-scrollbar { width: 8px; border-left: var(--border-heavy); }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--ink); }
 
-        /* The ONE thing: Tactile Grain Overlay */
-        .noise-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.45;
-            mix-blend-mode: multiply;
-            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
+    /* Typography */
+    h1, h2, h3, .display { font-family: var(--font-display); line-height: 1; }
+    .tech { font-family: var(--font-tech); text-transform: uppercase; letter-spacing: -0.02em; font-size: 0.75rem; }
+    
+    /* Layout Primitives */
+    .grid-wrap { display: grid; border-bottom: var(--border-heavy); }
+    .col-border { border-right: var(--border-heavy); }
+    .p-md { padding: 2rem; }
+    .p-lg { padding: 4rem; }
+    
+    /* Navigation - Brutalist structural header */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: var(--bg);
+      border-bottom: var(--border-heavy);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+    }
+    .logo {
+      font-family: var(--font-display); font-weight: 700; font-size: 1.5rem;
+      text-decoration: none; color: var(--ink);
+      padding: 1rem 2rem; border-right: var(--border-heavy);
+      text-transform: uppercase; letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; height: 100%; }
+    .nav-link {
+      font-family: var(--font-tech); font-size: 0.75rem;
+      text-decoration: none; color: var(--ink);
+      padding: 0 2rem; display: flex; align-items: center;
+      border-right: var(--border-light);
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-link:hover, .nav-link.active { background: var(--ink); color: var(--bg); }
+    .nav-cta {
+      font-family: var(--font-tech); font-size: 0.75rem; font-weight: 700;
+      background: var(--accent); color: var(--bg);
+      text-decoration: none; padding: 0 2rem;
+      display: flex; align-items: center; height: 100%;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.8; }
+    .menu-toggle { display: none; padding: 1.5rem; background: none; border: none; border-left: var(--border-heavy); cursor: pointer; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--ink); margin-bottom: 4px; transition: 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 58px; left: 0; width: 100%;
+      background: var(--bg); border-bottom: var(--border-heavy); z-index: 40;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block; padding: 1.5rem; border-bottom: var(--border-light);
+      font-family: var(--font-tech); text-decoration: none; color: var(--ink);
+    }
+    
+    main { margin-top: 59px; min-height: 100vh; }
 
-        .font-display { font-family: var(--font-display); }
-        .font-body { font-family: var(--font-body); }
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 1rem 2rem; border: var(--border-heavy);
+      font-family: var(--font-tech); font-size: 0.75rem; font-weight: 700;
+      text-decoration: none; color: var(--ink); background: transparent;
+      cursor: pointer; transition: all 0.2s ease;
+      text-transform: uppercase;
+    }
+    .btn:hover { background: var(--ink); color: var(--bg); }
+    .btn-solid { background: var(--ink); color: var(--bg); }
+    .btn-solid:hover { background: var(--accent); border-color: var(--accent); }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--color-linen); }
-        ::-webkit-scrollbar-thumb { background: var(--color-taupe); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--color-walnut); }
+    /* Hero Section - Editorial Spread */
+    .hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 59px);
+      border-bottom: var(--border-heavy);
+    }
+    .hero-text-col {
+      display: flex; flex-direction: column; justify-content: space-between;
+      border-right: var(--border-heavy); padding: 4rem;
+      position: relative;
+    }
+    .hero-meta { display: flex; justify-content: space-between; border-bottom: var(--border-heavy); padding-bottom: 1rem; margin-bottom: 4rem; }
+    .hero h1 { font-size: clamp(4rem, 10vw, 8rem); font-style: italic; letter-spacing: -0.04em; margin-left: -0.05em; }
+    .hero h1 span { display: block; font-style: normal; font-weight: 700; color: var(--accent); margin-top: -0.2em; }
+    .hero-desc { font-size: 1.25rem; max-width: 400px; margin-top: 4rem; }
+    .hero-visual { position: relative; overflow: hidden; background: var(--ink); }
+    .hero-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; filter: grayscale(20%) contrast(1.2); }
+    .hero-visual .overlay-text {
+      position: absolute; bottom: 2rem; left: 2rem; color: var(--bg);
+      font-family: var(--font-tech); font-size: 0.75rem; mix-blend-mode: difference;
+    }
 
-        /* Editorial Staggered Layout for Products */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem 2rem;
-            align-items: start;
-        }
-        
-        @media (min-width: 768px) {
-            .product-card:nth-child(even) {
-                margin-top: 6rem;
-            }
-        }
+    /* Grid Sections */
+    .section-editorial { display: grid; grid-template-columns: 300px 1fr; border-bottom: var(--border-heavy); }
+    .section-header-col { border-right: var(--border-heavy); padding: 4rem 2rem; display: flex; flex-direction: column; justify-content: space-between; }
+    .section-content-col { padding: 0; }
+    
+    .discipline-grid { display: grid; grid-template-columns: repeat(3, 1fr); height: 100%; }
+    .discipline-card { padding: 3rem; border-right: var(--border-heavy); display: flex; flex-direction: column; }
+    .discipline-card:last-child { border-right: none; }
+    .discipline-card .num { font-family: var(--font-tech); font-size: 2rem; color: var(--accent); margin-bottom: auto; }
+    .discipline-card h3 { font-size: 2.5rem; margin: 2rem 0 1rem; }
+    
+    /* Feature Manifest (Catalog Preview) */
+    .manifest-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .manifest-item { border-right: var(--border-heavy); display: flex; flex-direction: column; }
+    .manifest-item:last-child { border-right: none; }
+    .manifest-item .img-box { aspect-ratio: 4/5; border-bottom: var(--border-heavy); overflow: hidden; position: relative; }
+    .manifest-item .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.5s, transform 0.5s; }
+    .manifest-item:hover .img-box img { filter: grayscale(0%); transform: scale(1.05); }
+    .manifest-item .info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    .manifest-item h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .manifest-item .price-row { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 1rem; }
 
-        /* Motion & Reveal Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    /* Statement Marquee / Banner */
+    .statement { background: var(--ink); color: var(--bg); padding: 6rem 4rem; text-align: center; border-bottom: var(--border-heavy); }
+    .statement h2 { font-size: clamp(3rem, 7vw, 6rem); line-height: 0.9; text-transform: uppercase; }
+    .statement i { color: var(--accent); }
 
-        /* Image treatment */
-        .img-editorial {
-            transition: transform 0.7s ease, filter 0.7s ease;
-            filter: grayscale(20%) contrast(110%);
-        }
-        .group:hover .img-editorial {
-            transform: scale(1.03);
-            filter: grayscale(0%) contrast(100%);
-        }
+    /* Full Catalog Page */
+    .catalog-header { padding: 6rem 4rem; border-bottom: var(--border-heavy); }
+    .catalog-header h1 { font-size: clamp(4rem, 8vw, 7rem); }
+    
+    .filter-bar {
+      display: grid; grid-template-columns: 1fr 300px; border-bottom: var(--border-heavy);
+      position: sticky; top: 59px; background: var(--bg); z-index: 30;
+    }
+    .filters { display: flex; border-right: var(--border-heavy); }
+    .filter-btn {
+      padding: 1.5rem 2rem; background: none; border: none; border-right: var(--border-light);
+      font-family: var(--font-tech); font-size: 0.75rem; cursor: pointer; transition: 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover { background: var(--ink); color: var(--bg); }
+    .search-input { width: 100%; border: none; background: transparent; padding: 0 2rem; font-family: var(--font-tech); font-size: 0.875rem; color: var(--ink); outline: none; }
+    .search-input::placeholder { color: var(--muted); }
 
-        /* Toast Notification */
-        #toast-container {
-            position: fixed;
-            bottom: 6rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5000;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            pointer-events: none;
-        }
-        .toast {
-            background-color: var(--color-charcoal);
-            color: var(--color-linen);
-            padding: 0.75rem 1.5rem;
-            border-radius: 999px;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            animation: slideUpFade 0.4s ease forwards, fadeOut 0.4s ease 2.5s forwards;
-        }
+    /* Inventory Rows (Brutalist Table) */
+    .inventory-list { display: flex; flex-direction: column; }
+    .inventory-row {
+      display: grid; grid-template-columns: 80px 100px 3fr 1.5fr 1fr 150px;
+      align-items: center; border-bottom: var(--border-light);
+      transition: background 0.3s, color 0.3s;
+      text-decoration: none; color: var(--ink);
+    }
+    .inventory-row:hover { background: var(--ink); color: var(--bg); border-bottom-color: var(--ink); }
+    .inventory-row > div { padding: 1.5rem; border-right: var(--border-light); height: 100%; display: flex; align-items: center; }
+    .inventory-row:hover > div { border-right-color: rgba(235, 232, 227, 0.2); }
+    .inventory-row > div:last-child { border-right: none; justify-content: center; }
+    .inv-thumb { width: 100%; aspect-ratio: 1; overflow: hidden; background: #000; }
+    .inv-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+    .inventory-row:hover .inv-thumb img { opacity: 1; }
+    .inv-title { font-family: var(--font-display); font-size: 2rem; font-weight: 600; line-height: 1.1; }
+    
+    .add-action {
+      background: transparent; border: 1px solid currentColor; color: inherit;
+      width: 100%; padding: 0.75rem; font-family: var(--font-tech); font-size: 0.75rem;
+      cursor: pointer; transition: 0.2s;
+    }
+    .inventory-row:hover .add-action { border-color: var(--bg); }
+    .add-action:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+    .add-action.added { background: var(--bg); color: var(--ink); }
+    .inventory-row:hover .add-action.added { background: var(--bg); color: var(--ink); }
 
-        @keyframes slideUpFade {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-    </style>
+    /* Product Detail */
+    .spec-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 59px); }
+    .spec-visual { border-right: var(--border-heavy); position: sticky; top: 59px; height: calc(100vh - 59px); overflow: hidden; padding: 2rem; background: #fff; }
+    .spec-visual img { width: 100%; height: 100%; object-fit: contain; }
+    .spec-data { padding: 4rem; display: flex; flex-direction: column; }
+    .spec-data h1 { font-size: clamp(3rem, 6vw, 5rem); margin: 1rem 0 2rem; line-height: 0.9; }
+    .spec-table { border-top: var(--border-heavy); margin-top: 3rem; }
+    .spec-row { display: grid; grid-template-columns: 150px 1fr; border-bottom: var(--border-light); padding: 1.5rem 0; }
+    .spec-price-block { margin-top: 4rem; padding: 3rem; border: var(--border-heavy); text-align: center; }
+
+    /* About / Editorial Text */
+    .article-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border-heavy); }
+    .article-text { padding: 6rem 4rem; border-right: var(--border-heavy); }
+    .article-text p { font-size: 1.25rem; margin-bottom: 2rem; max-width: 500px; }
+    .pull-quote { font-family: var(--font-display); font-size: 3rem; font-style: italic; line-height: 1.1; margin: 4rem 0; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 2rem; }
+    .article-img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Contact Form - Structural */
+    .contact-container { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
+    .contact-info { padding: 6rem 4rem; border-right: var(--border-heavy); display: flex; flex-direction: column; justify-content: space-between; }
+    .contact-info h1 { font-size: clamp(4rem, 8vw, 7rem); margin-bottom: 2rem; }
+    .info-block { border-top: var(--border-heavy); padding-top: 2rem; margin-top: 2rem; }
+    .contact-form-wrap { padding: 6rem 4rem; background: var(--ink); color: var(--bg); }
+    .form-group { margin-bottom: 3rem; }
+    .form-group label { display: block; font-family: var(--font-tech); font-size: 0.75rem; margin-bottom: 1rem; color: var(--muted); }
+    .form-input { 
+      width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(235, 232, 227, 0.3);
+      padding: 1rem 0; font-family: var(--font-body); font-size: 1.25rem; color: var(--bg); outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-input:focus { border-bottom-color: var(--accent); }
+    
+    /* Command Bar (Cart) */
+    .cmd-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
+      background: var(--bg); border-top: var(--border-heavy);
+      display: flex; flex-direction: column;
+      transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cmd-bar.peek { transform: translateY(calc(100% - 60px)); }
+    .cmd-bar.open { transform: translateY(0); box-shadow: 0 -20px 40px rgba(0,0,0,0.2); }
+    .cmd-header {
+      height: 60px; display: flex; justify-content: space-between; align-items: center;
+      padding: 0 2rem; cursor: pointer; font-family: var(--font-tech); font-size: 0.875rem;
+      background: var(--ink); color: var(--bg);
+    }
+    .cmd-header:hover { background: #000; }
+    .cmd-content { max-height: 60vh; overflow-y: auto; padding: 2rem; display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; }
+    .cmd-list { border-top: var(--border-heavy); }
+    .cmd-item { display: grid; grid-template-columns: 2fr 1fr auto; padding: 1.5rem 0; border-bottom: var(--border-light); align-items: center; }
+    .cmd-item-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
+    .cmd-controls { display: flex; align-items: center; gap: 1rem; font-family: var(--font-tech); }
+    .cmd-controls button { background: none; border: var(--border-light); width: 30px; height: 30px; cursor: pointer; font-family: var(--font-tech); }
+    .cmd-summary { background: rgba(10,10,10,0.03); padding: 2rem; border: var(--border-light); height: fit-content; }
+    
+    /* Footer */
+    #footer { background: var(--ink); color: var(--bg); padding: 6rem 4rem 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; border-bottom: 1px solid rgba(235, 232, 227, 0.2); padding-bottom: 4rem; margin-bottom: 2rem; }
+    .footer-logo { font-family: var(--font-display); font-size: 3rem; margin-bottom: 1rem; }
+    .footer-links a { display: block; color: var(--bg); text-decoration: none; font-family: var(--font-tech); font-size: 0.75rem; margin-bottom: 1rem; opacity: 0.7; transition: 0.2s; }
+    .footer-links a:hover { opacity: 1; color: var(--accent); }
+
+    /* Motion & Reveals */
+    .clip-reveal {
+      clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    .clip-reveal.visible {
+      animation: brutalReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes brutalReveal {
+      0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); transform: translateY(20px); opacity: 0; }
+      100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateY(0); opacity: 1; }
+    }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+
+    /* Mobile Adaptations */
+    @media (max-width: 1024px) {
+      .hero, .section-editorial, .spec-grid, .article-grid, .contact-container, .cmd-content { grid-template-columns: 1fr; }
+      .hero-text-col, .section-header-col, .discipline-card, .manifest-item, .article-text, .contact-info { border-right: none; border-bottom: var(--border-heavy); }
+      .discipline-grid, .manifest-grid { grid-template-columns: 1fr 1fr; }
+      .filter-bar { grid-template-columns: 1fr; }
+      .filters { border-right: none; overflow-x: auto; }
+      .search-input { padding: 1.5rem 2rem; border-top: var(--border-heavy); }
+      .inventory-row { display: none; } /* Hide complex table on mobile */
+      .mobile-catalog { display: block; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .menu-toggle { display: block; }
+      .discipline-grid, .manifest-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 4rem; }
+      .p-lg { padding: 2rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    
+    .mobile-catalog { display: none; }
+    @media (max-width: 1024px) {
+      .mobile-catalog { display: block; }
+      .mobile-inv-card { border-bottom: var(--border-heavy); padding: 2rem; display: grid; grid-template-columns: 80px 1fr; gap: 2rem; }
+      .mobile-inv-card .thumb { aspect-ratio: 1; background: #000; }
+      .mobile-inv-card .thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+      .mobile-inv-card h3 { font-family: var(--font-display); font-size: 1.75rem; margin-bottom: 0.5rem; }
+    }
+  </style>
 </head>
-<body class="antialiased selection:bg-[#7A4B3A] selection:text-[#F5F2EB]">
+<body>
+  <nav id="navbar">
+    <a href="#/" class="logo" data-link>De Creative</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#/catalog" data-link class="nav-link">Specification Catalog</a>
+      <a href="#/about" data-link class="nav-link">Studio Manifesto</a>
+      <a href="#/projects" data-link class="nav-link">Index of Works</a>
+      <a href="#/contact" data-link class="nav-link">Inquiries</a>
+    </div>
+    <a href="#/catalog" data-link class="nav-cta">VIEW INVENTORY</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </nav>
 
-    <div class="noise-overlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#/catalog" data-link>Specification Catalog</a>
+    <a href="#/about" data-link>Studio Manifesto</a>
+    <a href="#/projects" data-link>Index of Works</a>
+    <a href="#/contact" data-link>Inquiries</a>
+  </div>
 
-    <header class="fixed w-full top-0 z-50 px-6 py-8 flex justify-between items-center mix-blend-difference text-[#F5F2EB] pointer-events-none">
-        <div class="font-display text-2xl lg:text-3xl tracking-wide pointer-events-auto cursor-pointer">
-            DE CREATIVE
+  <main id="app"></main>
+
+  <footer id="footer"></footer>
+  <div id="commandBar" class="cmd-bar"></div>
+
+  <script>
+    const PRODUCTS = [
+      { id:'wp-001', name:'Natural Oak Fluted', category:'Wood Paneling', price:2800, unit:'/ sq.ft', description:'Premium natural oak fluted panels with deep vertical grooves. Precision-milled for seamless joinery.', specs:{ Material:'Solid Oak', Thickness:'18mm', Finish:'Matte Natural', Rating:'Class B', Warranty:'10 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/e587cd5f4_generated_7066ac66.png' },
+      { id:'wp-002', name:'Charcoal Louver', category:'Wood Paneling', price:3200, unit:'/ sq.ft', description:'Dramatic charcoal-stained louver panels creating deep architectural shadow lines.', specs:{ Material:'Engineered Hardwood', Thickness:'22mm', Finish:'Charcoal Stain', Rating:'Class A', Warranty:'12 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/440bf879d_generated_ecaf3bb2.png' },
+      { id:'wp-003', name:'Walnut Horizontal Slat', category:'Wood Paneling', price:3500, unit:'/ sq.ft', description:'Rich walnut horizontal slats bringing warmth and linear rhythm. Hand-finished with organic oil.', specs:{ Material:'American Walnut', Thickness:'20mm', Finish:'Oil-Rubbed', Rating:'Class B', Warranty:'15 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/e50f4834e_generated_e84c126b.png' },
+      { id:'wp-004', name:'Burmese Teak Groove', category:'Wood Paneling', price:4100, unit:'/ sq.ft', description:'Golden teak with deep vertical channeling. Naturally resistant to moisture.', specs:{ Material:'Burmese Teak', Thickness:'20mm', Finish:'Semi-Gloss', Rating:'Class A', Warranty:'20 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/6a4791ee6f887f072913fd56/e587cd5f4_generated_7066ac66.png' },
+      { id:'pvc-001', name:'Calacatta PVC Cladding', category:'PVC Products', price:1200, unit:'/ sq.ft', description:'Marble-effect PVC panels. 100% waterproof structural alternative for wet zones.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute', Warranty:'10 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/288a4c925_generated_7e2409cd.png' },
+      { id:'pvc-002', name:'Origami 3D Matrix', category:'PVC Products', price:1500, unit:'/ sq.ft', description:'Contemporary 3D geometric patterns that dictate light and shadow across flat planes.', specs:{ Material:'Rigid PVC', Thickness:'12mm', Finish:'Matte White', Waterproof:'Absolute', Warranty:'8 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/dc5e7af8c_generated_ae27db11.png' },
+      { id:'svc-001', name:'Spatial Consultation', category:'Services', price:15000, unit:'/ session', description:'On-site consultation with senior interior architect. Spatial planning and material palette definition.', specs:{ Duration:'3 Hours', Deliverable:'Palette & Blueprint', Scope:'Single Volume', Revisions:'2 Rounds' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/1760917ac_generated_85cef4be.png' },
+      { id:'svc-002', name:'Bespoke Fabrication', category:'Services', price:5000, unit:'/ sq.ft', description:'Custom architectural panel design and workshop fabrication to exact site specifications.', specs:{ Duration:'2-4 Weeks', Deliverable:'Fabricated Units', Scope:'Bespoke', Warranty:'5 Yrs' }, image:'https://media.base44.com/images/public/6a4791ee6f887f072913fd56/440bf879d_generated_ecaf3bb2.png' },
+    ];
+
+    const CATEGORIES = ['All', 'Wood Paneling', 'PVC Products', 'Services'];
+    const WA_NUMBER = '916006824595';
+
+    let cart = [];
+    try { cart = JSON.parse(localStorage.getItem('deCreativeCart') || '[]'); } catch (e) {}
+
+    function saveCart() { try { localStorage.setItem('deCreativeCart', JSON.stringify(cart)); } catch (e) {} }
+    function isInCart(id) { return cart.some(i => i.id === id); }
+    function addItem(product) { if (isInCart(product.id)) return; cart.push({ ...product, qty: 1 }); saveCart(); renderCommandBar(); updateAddButtons(); }
+    function removeItem(id) { cart = cart.filter(i => i.id !== id); saveCart(); renderCommandBar(); updateAddButtons(); }
+    function updateQty(id, qty) { if (qty < 1) return removeItem(id); cart = cart.map(i => i.id === id ? { ...i, qty } : i); saveCart(); renderCommandBar(); }
+    function clearCart() { cart = []; saveCart(); renderCommandBar(); updateAddButtons(); }
+    function cartTotal() { return cart.reduce((s, i) => s + i.price * i.qty, 0); }
+
+    function sendToWhatsApp(name, phone) {
+      const lines = cart.map(i => `[${i.id}] ${i.name} — ₹${i.price.toLocaleString('en-IN')} x ${i.qty}`).join('\n');
+      const msg = `SPECIFICATION MANIFEST:\n\n${lines}\n\nEST. TOTAL: ₹${cartTotal().toLocaleString('en-IN')}\n\nCLIENT: ${name}\nCONTACT: ${phone}\n\nRequesting formal review and structural quote.`;
+      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function fmt(n) { return n.toLocaleString('en-IN'); }
+
+    const routes = { '/': renderHome, '/catalog': renderCatalog, '/about': renderAbout, '/projects': renderProjects, '/contact': renderContact };
+
+    function getRoute() {
+      const hash = window.location.hash.replace('#', '') || '/';
+      if (hash.startsWith('/product/')) return { page: 'product', id: hash.replace('/product/', '') };
+      return { page: hash };
+    }
+
+    function navigate() {
+      const route = getRoute();
+      const app = document.getElementById('app');
+      window.scrollTo(0, 0);
+      if (route.page === 'product') renderProductDetail(route.id);
+      else if (routes[route.page]) routes[route.page](app);
+      else renderHome(app); // Fallback
+      renderFooter();
+      renderCommandBar();
+      updateActiveNav();
+      closeMobileMenu();
+      setTimeout(triggerReveal, 50);
+    }
+
+    function updateActiveNav() {
+      const route = getRoute();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        const href = link.getAttribute('href').replace('#', '');
+        link.classList.toggle('active', href === route.page || (route.page === 'product' && href === '/catalog'));
+      });
+    }
+
+    function renderHome(app) {
+      app.innerHTML = `
+        <div class="hero">
+          <div class="hero-text-col">
+            <div class="hero-meta tech clip-reveal">
+              <span>MANIFESTO VOL.01</span>
+              <span>SRINAGAR, INDIA</span>
+            </div>
+            <h1 class="clip-reveal delay-1">ARCHITECTURAL<br><span>Surfaces</span></h1>
+            <p class="hero-desc clip-reveal delay-2">We engineer the tactile boundaries of interior volumes through precision wood paneling and advanced composites. Reject the ordinary.</p>
+            <div class="clip-reveal delay-3" style="margin-top: 3rem;">
+              <a href="#/catalog" data-link class="btn btn-solid">Specify Materials</a>
+            </div>
+          </div>
+          <div class="hero-visual clip-reveal delay-1">
+            <img src="https://media.base44.com/images/public/6a4791ee6f887f072913fd56/6718e2ac8_generated_24385447.png" alt="Wood Surface Texture">
+            <div class="overlay-text">IMG_001 // NATURAL OAK PROFILE</div>
+          </div>
         </div>
-        <nav class="hidden md:flex gap-12 font-body text-xs uppercase tracking-[0.2em] pointer-events-auto">
-            <a href="#studio" class="hover:text-[#A89F91] transition-colors">The Studio</a>
-            <a href="#collection" class="hover:text-[#A89F91] transition-colors">Collection</a>
-            <a href="#services" class="hover:text-[#A89F91] transition-colors">Services</a>
-        </nav>
-    </header>
 
-    <section class="relative min-h-[90vh] flex flex-col justify-center px-6 lg:px-20 pt-32 overflow-hidden">
-        <div class="absolute right-0 top-20 w-3/4 md:w-1/2 h-[70vh] opacity-60 mix-blend-multiply z-0">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="Abstract interior wood textures" class="w-full h-full object-cover object-center" style="filter: sepia(30%) hue-rotate(-15deg);">
+        <section class="section-editorial">
+          <div class="section-header-col">
+            <h2 class="tech clip-reveal">Disciplines</h2>
+            <p class="clip-reveal delay-1" style="font-size: 1.25rem;">Three core avenues of spatial transformation. Controlled execution from raw material to installed surface.</p>
+          </div>
+          <div class="section-content-col discipline-grid">
+            <div class="discipline-card clip-reveal">
+              <span class="num">01.</span>
+              <h3>Timber</h3>
+              <p>Architectural grade fluted, louver, and slat profiles in solid and engineered hardwoods.</p>
+            </div>
+            <div class="discipline-card clip-reveal delay-1">
+              <span class="num">02.</span>
+              <h3>Composite</h3>
+              <p>Absolute waterproof PVC structural cladding and 3D geometric matrix surfaces.</p>
+            </div>
+            <div class="discipline-card clip-reveal delay-2">
+              <span class="num">03.</span>
+              <h3>Design</h3>
+              <p>Full-volume interior architecture, spatial planning, and bespoke material palette curation.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="statement">
+          <h2 class="clip-reveal">Material is the <i>language</i> of space.</h2>
+        </section>
+
+        <section class="section-editorial" style="border-bottom:none;">
+          <div class="section-header-col">
+            <h2 class="tech clip-reveal">Featured Inventory</h2>
+            <a href="#/catalog" data-link class="btn clip-reveal delay-1">View Complete Catalog</a>
+          </div>
+          <div class="section-content-col manifest-grid">
+            ${PRODUCTS.slice(0,4).map((p,i) => `
+              <div class="manifest-item clip-reveal delay-${i}">
+                <a href="#/product/${p.id}" data-link class="img-box">
+                  <img src="${p.image}" alt="${p.name}">
+                </a>
+                <div class="info">
+                  <span class="tech" style="color:var(--muted)">${p.id}</span>
+                  <a href="#/product/${p.id}" data-link style="text-decoration:none; color:inherit;"><h3>${p.name}</h3></a>
+                  <div class="price-row">
+                    <span class="tech">₹${fmt(p.price)}${p.unit}</span>
+                    <button class="add-action ${isInCart(p.id)?'added':''}" data-id="${p.id}" style="width:auto; padding: 0.5rem 1rem;">${isInCart(p.id)?'ADDED':'+'}</button>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderCatalog(app) {
+      app.innerHTML = `
+        <div class="catalog-header">
+          <div class="tech clip-reveal" style="margin-bottom: 1rem; color: var(--accent);">INDEX: 001-008</div>
+          <h1 class="clip-reveal delay-1">Specification <br><i>Inventory</i></h1>
         </div>
         
-        <div class="relative z-10 max-w-4xl reveal active">
-            <p class="font-body text-sm uppercase tracking-[0.3em] mb-6 text-[#7A4B3A]">Curators of Tactile Spaces</p>
-            <h1 class="font-display text-6xl md:text-8xl lg:text-[9rem] leading-[0.9] tracking-tight">
-                Form.<br>
-                <span class="ml-12 md:ml-32 italic text-[#7A4B3A]">Texture.</span><br>
-                Substance.
-            </h1>
-            <div class="mt-16 ml-2 md:ml-12 max-w-sm">
-                <p class="text-lg leading-relaxed text-gray-700">
-                    Elevating architectural interiors through premium wooden paneling, fluted PVC innovations, and bespoke design services.
-                </p>
-                <a href="#collection" class="inline-block mt-8 border-b border-[#1C1A19] pb-1 font-body text-sm uppercase tracking-widest hover:text-[#7A4B3A] hover:border-[#7A4B3A] transition-colors">
-                    Explore Materials
-                </a>
-            </div>
+        <div class="filter-bar clip-reveal delay-2">
+          <div class="filters" id="filterTabs">
+            ${CATEGORIES.map(c => `<button class="filter-btn ${c==='All'?'active':''}" data-cat="${c}">${c.toUpperCase()}</button>`).join('')}
+          </div>
+          <input type="text" class="search-input" id="searchInput" placeholder="SEARCH BY SKU OR NAME...">
         </div>
-    </section>
 
-    <section id="studio" class="py-32 px-6 lg:px-20 bg-[#1C1A19] text-[#F5F2EB]">
-        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
-            <div class="w-full lg:w-5/12 reveal">
-                <div class="aspect-[3/4] overflow-hidden rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1932&auto=format&fit=crop" alt="Interior Details" class="w-full h-full object-cover img-editorial">
-                </div>
-            </div>
-            <div class="w-full lg:w-7/12 reveal">
-                <h2 class="font-display text-5xl md:text-7xl mb-8 italic text-[#A89F91]">The Philosophy</h2>
-                <p class="font-body text-xl md:text-2xl leading-relaxed font-light mb-8 max-w-2xl">
-                    We believe walls should not merely enclose a room; they should give it character. De Creative bridges the gap between raw natural aesthetics and modern synthetic durability.
-                </p>
-                <p class="text-sm tracking-widest uppercase text-[#A89F91] leading-loose max-w-md">
-                    Based in Srinagar, delivering tactile excellence. Our curated selection of wooden louvers and PVC fluted panels redefines modern spatial boundaries.
-                </p>
-            </div>
-        </div>
-    </section>
+        <div class="inventory-list" id="catalogList"></div>
+        <div class="mobile-catalog" id="mobileCatalog"></div>
+        <div style="height:150px;"></div>
+      `;
+      filterAndRender();
+      document.getElementById('filterTabs').addEventListener('click', e => {
+        if (e.target.classList.contains('filter-btn')) {
+          document.querySelectorAll('.filter-btn').forEach(t => t.classList.remove('active'));
+          e.target.classList.add('active');
+          filterAndRender();
+        }
+      });
+      document.getElementById('searchInput').addEventListener('input', filterAndRender);
+    }
 
-    <section id="collection" class="py-32 px-6 lg:px-20">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
-                <h2 class="font-display text-6xl md:text-8xl">Material<br>Archive</h2>
-                <p class="font-body text-sm uppercase tracking-[0.2em] mb-4 text-[#7A4B3A]">Vol. 01 / Paneling</p>
-            </div>
-            
-            <!-- Products injected here via JS -->
-            <div id="product-container" class="product-grid"></div>
-        </div>
-    </section>
+    let catalogState = { category: 'All', search: '' };
 
-    <section id="services" class="py-32 px-6 lg:px-20 bg-[#e8e4db]">
-        <div class="max-w-7xl mx-auto text-center reveal">
-            <h2 class="font-display text-5xl md:text-7xl mb-16">Bespoke Consultations</h2>
-            
-            <div class="grid md:grid-cols-3 gap-12 text-left">
-                <div class="border-t border-[#1C1A19] pt-6">
-                    <h3 class="font-body text-xl font-semibold mb-4">01. Spatial Planning</h3>
-                    <p class="text-gray-700 leading-relaxed">Strategic layout configurations maximizing natural light and material flow within your residential or commercial space.</p>
-                </div>
-                <div class="border-t border-[#1C1A19] pt-6">
-                    <h3 class="font-body text-xl font-semibold mb-4">02. Material Curation</h3>
-                    <p class="text-gray-700 leading-relaxed">Hand-selected pairings of our premium wooden and PVC panels to match your specific atmospheric requirements.</p>
-                </div>
-                <div class="border-t border-[#1C1A19] pt-6">
-                    <h3 class="font-body text-xl font-semibold mb-4">03. Turnkey Execution</h3>
-                    <p class="text-gray-700 leading-relaxed">From initial concept sketches to final installation by our master craftsmen, ensuring uncompromised quality.</p>
-                </div>
-            </div>
+    function filterAndRender() {
+      const activeTab = document.querySelector('.filter-btn.active');
+      catalogState.category = activeTab ? activeTab.dataset.cat : 'All';
+      catalogState.search = (document.getElementById('searchInput')?.value || '').toLowerCase();
+      
+      const filtered = PRODUCTS.filter(p => {
+        const matchCat = catalogState.category === 'All' || p.category === catalogState.category;
+        const matchSearch = p.name.toLowerCase().includes(catalogState.search) || p.id.toLowerCase().includes(catalogState.search);
+        return matchCat && matchSearch;
+      });
 
-            <div class="mt-20">
-                <button onclick="addServiceToCart()" class="group relative px-8 py-4 bg-[#1C1A19] text-[#F5F2EB] font-body uppercase text-sm tracking-widest overflow-hidden rounded-sm">
-                    <span class="relative z-10 group-hover:text-[#1C1A19] transition-colors duration-500">Inquire About Services</span>
-                    <div class="absolute inset-0 bg-[#A89F91] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-0"></div>
+      const listEl = document.getElementById('catalogList');
+      const mobileEl = document.getElementById('mobileCatalog');
+      
+      if (listEl) {
+        listEl.innerHTML = `
+          <div class="inventory-row tech" style="background: var(--ink); color: var(--bg); pointer-events: none;">
+            <div>SEQ</div><div>SKU</div><div>NOMENCLATURE</div><div>CATEGORY</div><div>RATE</div><div>ACTION</div>
+          </div>
+          ${filtered.map((p, idx) => `
+            <a href="#/product/${p.id}" data-link class="inventory-row clip-reveal delay-${idx%4}">
+              <div class="tech" style="color:var(--muted)">${String(idx+1).padStart(2,'0')}</div>
+              <div class="tech">${p.id.toUpperCase()}</div>
+              <div>
+                <div style="display:flex; align-items:center; gap: 2rem;">
+                  <div class="inv-thumb" style="width: 60px;"><img src="${p.image}" alt=""></div>
+                  <span class="inv-title">${p.name}</span>
+                </div>
+              </div>
+              <div class="tech">${p.category}</div>
+              <div class="tech">₹${fmt(p.price)}</div>
+              <div>
+                <button class="add-action ${isInCart(p.id) ? 'added' : ''}" data-id="${p.id}" onclick="event.preventDefault(); event.stopPropagation();">
+                  ${isInCart(p.id) ? 'SPECIFIED' : 'SPECIFY +'}
                 </button>
-            </div>
-        </div>
-    </section>
+              </div>
+            </a>
+          `).join('')}
+          ${filtered.length === 0 ? '<div class="p-lg tech" style="text-align:center;">NULL RESULTS</div>' : ''}
+        `;
+      }
 
-    <footer class="py-20 px-6 lg:px-20 bg-[#1C1A19] text-[#F5F2EB] border-t border-[#333]">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+      if (mobileEl) {
+        mobileEl.innerHTML = filtered.map(p => `
+          <div class="mobile-inv-card clip-reveal">
+            <a href="#/product/${p.id}" data-link class="thumb"><img src="${p.image}" alt=""></a>
             <div>
-                <h2 class="font-display text-3xl md:text-5xl mb-6">De Creative</h2>
-                <p class="font-body text-sm text-[#A89F91] max-w-xs leading-relaxed">
-                    Elevating interiors with uncompromising texture and form.
-                </p>
+              <div class="tech" style="color:var(--muted); margin-bottom:0.5rem;">${p.id.toUpperCase()} // ${p.category}</div>
+              <a href="#/product/${p.id}" data-link style="text-decoration:none; color:inherit;"><h3>${p.name}</h3></a>
+              <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:1rem;">
+                <span class="tech">₹${fmt(p.price)}${p.unit}</span>
+                <button class="btn btn-solid ${isInCart(p.id) ? 'added' : ''}" data-id="${p.id}" style="padding: 0.5rem 1rem;">
+                  ${isInCart(p.id) ? '✓' : '+'}
+                </button>
+              </div>
             </div>
-            <div class="font-body text-sm uppercase tracking-widest space-y-4 text-[#A89F91]">
-                <p>Srinagar, J&K, India</p>
-                <p>WhatsApp: +91 6006824595</p>
-                <p>Mon - Sat, 10am - 7pm</p>
+          </div>
+        `).join('');
+      }
+      updateAddButtons();
+      triggerReveal();
+    }
+
+    function renderProductDetail(id) {
+      const product = PRODUCTS.find(p => p.id === id);
+      const app = document.getElementById('app');
+      if (!product) return renderCatalog(app);
+      
+      app.innerHTML = `
+        <div class="spec-grid">
+          <div class="spec-visual clip-reveal">
+            <img src="${product.image}" alt="${product.name}">
+            <div class="tech" style="position:absolute; bottom: 2rem; left: 2rem; background: var(--bg); padding: 0.5rem 1rem; border: var(--border-heavy);">${product.id.toUpperCase()}</div>
+          </div>
+          <div class="spec-data">
+            <a href="#/catalog" data-link class="tech" style="color:var(--muted); text-decoration:none;">← BACK TO INVENTORY</a>
+            <h1 class="clip-reveal delay-1"><i>${product.name}</i></h1>
+            <p class="clip-reveal delay-2" style="font-size: 1.25rem; max-width: 500px;">${product.description}</p>
+            
+            <div class="spec-table clip-reveal delay-3">
+              <div class="tech" style="padding: 1rem 0; border-bottom: var(--border-heavy);">TECHNICAL SPECIFICATIONS</div>
+              ${Object.entries(product.specs).map(([k,v]) => `
+                <div class="spec-row">
+                  <div class="tech" style="color:var(--muted)">${k}</div>
+                  <div style="font-weight: 700;">${v}</div>
+                </div>
+              `).join('')}
             </div>
+
+            <div class="spec-price-block clip-reveal delay-3">
+              <div class="tech" style="color:var(--muted); margin-bottom: 0.5rem;">ESTIMATED RATE</div>
+              <div style="font-family: var(--font-display); font-size: 4rem; line-height: 1;">₹${fmt(product.price)}</div>
+              <div class="tech" style="margin-bottom: 2rem;">${product.unit.toUpperCase()}</div>
+              
+              <button class="btn btn-solid ${isInCart(product.id) ? 'added' : ''}" data-id="${product.id}" style="width: 100%; font-size: 1rem;">
+                ${isInCart(product.id) ? 'ADDED TO MANIFEST' : 'ADD TO SPECIFICATION MANIFEST'}
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-[#333] flex justify-between font-body text-xs text-[#A89F91] uppercase tracking-widest">
-            <p>&copy; 2026 De Creative.</p>
-            <p>All Rights Reserved.</p>
+        <div style="height:150px;"></div>
+      `;
+      updateAddButtons();
+      triggerReveal();
+    }
+
+    function renderAbout(app) {
+      app.innerHTML = `
+        <div class="catalog-header" style="text-align: center;">
+          <h1 class="clip-reveal">Studio <br><i>Manifesto</i></h1>
         </div>
-    </footer>
+        <div class="article-grid">
+          <div class="article-text">
+            <p class="clip-reveal delay-1">De Creative was founded on a singular brutal truth: the structural envelope of a space dictates human psychological response. We do not decorate walls; we engineer atmospheres.</p>
+            <div class="pull-quote clip-reveal delay-2">"Materials are not just surfaces. They are the language of space."</div>
+            <p class="clip-reveal delay-3">Operating from our workshop in Srinagar, we bypass the generic retail supply chain to source, mill, and fabricate architectural-grade surfaces directly for leading interior architects and discerning purists.</p>
+            <p class="clip-reveal delay-3">We reject artificial warmth. We embrace raw grain, deep shadows, and absolute geometric precision. This is interior architecture stripped of compromise.</p>
+          </div>
+          <div class="clip-reveal delay-2">
+            <img class="article-img" src="https://media.base44.com/images/public/6a4791ee6f887f072913fd56/e50f4834e_generated_e84c126b.png" alt="Workshop">
+          </div>
+        </div>
+      `;
+    }
 
-    <button id="whatsapp-fab" onclick="checkoutViaWhatsApp()" class="fixed bottom-8 right-8 z-50 bg-[#1C1A19] text-[#F5F2EB] px-6 py-4 rounded-full shadow-2xl font-body text-sm uppercase tracking-widest hover:bg-[#7A4B3A] transition-all duration-300 flex items-center gap-3 transform translate-y-20 opacity-0">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-        <span id="cart-text">Inquire (0)</span>
-    </button>
+    function renderProjects(app) {
+      app.innerHTML = `
+        <div class="catalog-header">
+          <h1 class="clip-reveal">Index of <br><i>Works</i></h1>
+        </div>
+        <div class="manifest-grid">
+           ${[
+             {n:'Lakeside Residence', l:'Srinagar', y:'25'},
+             {n:'Meridian Corporate', l:'Rajbagh', y:'24'},
+             {n:'Alpine Bar', l:'Gulmarg', y:'24'},
+             {n:'Saffron Suite', l:'Boulevard', y:'23'}
+           ].map((p,i) => `
+            <div class="manifest-item clip-reveal delay-${i}" style="padding: 4rem 2rem; justify-content: center; background: ${i%2===0 ? 'var(--ink)' : 'transparent'}; color: ${i%2===0 ? 'var(--bg)' : 'var(--ink)'}">
+              <div class="tech" style="color:var(--accent); margin-bottom: 1rem;">ID // ${p.y}</div>
+              <h3 style="font-size: 2.5rem; font-style: italic;">${p.n}</h3>
+              <div class="tech" style="margin-top: 2rem; border-top: 1px solid currentColor; padding-top: 1rem;">LOC: ${p.l.toUpperCase()}</div>
+            </div>
+           `).join('')}
+        </div>
+      `;
+    }
 
-    <div id="toast-container"></div>
-
-    <script>
-        // Data Store
-        const products = [
-            {
-                id: 'p1',
-                title: 'Walnut Acoustic Slat Wood',
-                price: 1850,
-                unit: 'per panel',
-                category: 'Wooden Paneling',
-                image: 'https://images.unsplash.com/photo-1510629731650-f8df4eb1fb05?q=80&w=2070&auto=format&fit=crop'
-            },
-            {
-                id: 'p2',
-                title: 'Charcoal Fluted PVC Cladding',
-                price: 950,
-                unit: 'per sq.ft',
-                category: 'PVC Innovations',
-                image: 'https://images.unsplash.com/photo-1620626011761-9ea0189d2c6e?q=80&w=1972&auto=format&fit=crop'
-            },
-            {
-                id: 'p3',
-                title: 'Natural Teak WPC Louvers',
-                price: 2100,
-                unit: 'per panel',
-                category: 'Wooden Paneling',
-                image: 'https://images.unsplash.com/photo-1616137517178-57d69288e734?q=80&w=1974&auto=format&fit=crop'
-            },
-            {
-                id: 'p4',
-                title: 'Matte Greige Flat Wall Panel',
-                price: 1200,
-                unit: 'per sq.ft',
-                category: 'PVC Innovations',
-                image: 'https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?q=80&w=1974&auto=format&fit=crop'
-            }
-        ];
-
-        // Cart State
-        let cart = {}; // Format: { 'p1': 2, 'service': 1 }
-
-        // DOM Elements
-        const container = document.getElementById('product-container');
-        const fab = document.getElementById('whatsapp-fab');
-        const cartText = document.getElementById('cart-text');
-        const toastContainer = document.getElementById('toast-container');
-
-        // Render Products
-        function renderProducts() {
-            container.innerHTML = '';
-            products.forEach((product, index) => {
-                const card = document.createElement('div');
-                card.className = 'product-card group reveal';
-                card.innerHTML = `
-                    <div class="relative overflow-hidden aspect-[4/5] mb-6 rounded-sm bg-[#e8e4db]">
-                        <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover img-editorial">
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                            <button onclick="addToCart('${product.id}')" class="bg-[#F5F2EB] text-[#1C1A19] font-body text-xs uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#7A4B3A] hover:text-[#F5F2EB] transition-colors duration-300 transform translate-y-4 group-hover:translate-y-0 shadow-lg">
-                                Add to Collection
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <p class="font-body text-xs text-[#A89F91] uppercase tracking-[0.2em] mb-2">${product.category}</p>
-                            <h3 class="font-display text-2xl lg:text-3xl leading-snug mb-2 pr-4">${product.title}</h3>
-                        </div>
-                        <div class="text-right whitespace-nowrap">
-                            <p class="font-body text-lg">₹${product.price}</p>
-                            <p class="font-body text-[10px] uppercase text-[#A89F91] tracking-wider">${product.unit}</p>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        // Cart Logic
-        function addToCart(id) {
-            cart[id] = (cart[id] || 0) + 1;
-            updateCartUI();
+    function renderContact(app) {
+      app.innerHTML = `
+        <div class="contact-container">
+          <div class="contact-info">
+            <div>
+              <div class="tech clip-reveal" style="color:var(--accent); margin-bottom:1rem;">DIRECT LINE</div>
+              <h1 class="clip-reveal delay-1"><i>Inquiries</i></h1>
+              <p class="clip-reveal delay-2" style="font-size: 1.25rem; max-width: 400px;">For architectural specifications, bespoke fabrication, or formal quotations, transmit your requirements directly to the studio.</p>
+            </div>
             
-            const item = products.find(p => p.id === id);
-            showToast(`Added: ${item ? item.title : 'Service Inquiry'}`);
-        }
-
-        function addServiceToCart() {
-            cart['service'] = 1;
-            updateCartUI();
-            showToast('Interior Design Consultation Added');
-        }
-
-        function updateCartUI() {
-            const totalItems = Object.values(cart).reduce((a, b) => a + b, 0);
-            cartText.innerText = `Inquire (${totalItems})`;
-            
-            if (totalItems > 0) {
-                fab.classList.remove('translate-y-20', 'opacity-0');
-                fab.classList.add('translate-y-0', 'opacity-100');
-            } else {
-                fab.classList.remove('translate-y-0', 'opacity-100');
-                fab.classList.add('translate-y-20', 'opacity-0');
-            }
-        }
-
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.innerText = message;
-            toastContainer.appendChild(toast);
-            
-            setTimeout(() => {
-                if (toastContainer.contains(toast)) {
-                    toast.remove();
-                }
-            }, 3000);
-        }
-
-        // WhatsApp Checkout Integration
-        function checkoutViaWhatsApp() {
-            if (Object.keys(cart).length === 0) return;
-
-            const phoneNumber = "916006824595";
-            let message = "Hello De Creative, I'm interested in the following materials/services from your catalog:\n\n";
-            let totalEstimate = 0;
-
-            for (const [id, quantity] of Object.entries(cart)) {
-                if (id === 'service') {
-                    message += `▪ Bespoke Interior Consultation\n`;
-                } else {
-                    const product = products.find(p => p.id === id);
-                    if (product) {
-                        message += `▪ ${quantity}x ${product.title} (₹${product.price} ${product.unit})\n`;
-                        totalEstimate += (product.price * quantity);
-                    }
-                }
-            }
-
-            if (totalEstimate > 0) {
-                message += `\n*Estimated Material Cost: ₹${totalEstimate}*\n`;
-            }
-
-            message += `\nPlease let me know the availability and next steps for procurement.`;
-            
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            
-            window.open(whatsappURL, '_blank');
-        }
-
-        // Scroll Animation Observer (The Motion Aesthetic)
-        function initScrollAnimations() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.reveal').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // Initialize App
-        window.addEventListener('DOMContentLoaded', () => {
-            renderProducts();
-            // Allow DOM to update before initializing observer
-            setTimeout(initScrollAnimations, 100);
+            <div class="info-block clip-reveal delay-3">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div>
+                  <div class="tech" style="color:var(--muted); margin-bottom: 0.5rem;">TELEMETRY</div>
+                  <div style="font-weight:700;">+91 600 682 4595</div>
+                  <div style="font-weight:700;">hello@decreative.in</div>
+                </div>
+                <div>
+                  <div class="tech" style="color:var(--muted); margin-bottom: 0.5rem;">COORDINATES</div>
+                  <div style="font-weight:700;">Srinagar, J&K<br>India 190001</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-form-wrap clip-reveal delay-2">
+            <form id="contactForm">
+              <div class="form-group">
+                <label>IDENTIFICATION / NAME</label>
+                <input type="text" id="cName" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label>SECURE COMMS / PHONE</label>
+                <input type="tel" id="cPhone" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label>SPECIFICATION DETAILS / MESSAGE</label>
+                <input type="text" id="cMessage" class="form-input" required>
+              </div>
+              <button type="submit" class="btn btn-solid" style="background:var(--accent); border-color:var(--accent); color:var(--bg); width: 100%; margin-top: 2rem;">
+                TRANSMIT VIA WHATSAPP
+              </button>
+            </form>
+          </div>
+        </div>
+      `;
+      setTimeout(() => {
+        const form = document.getElementById('contactForm');
+        if(form) form.addEventListener('submit', e => {
+          e.preventDefault();
+          const msg = `INQUIRY TRANSMISSION:\n\nCLIENT: ${document.getElementById('cName').value}\nCONTACT: ${document.getElementById('cPhone').value}\n\nDETAILS: ${document.getElementById('cMessage').value}`;
+          window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         });
-    </script>
+      }, 100);
+    }
+
+    function renderFooter() {
+      document.getElementById('footer').innerHTML = `
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo"><i>De Creative</i></div>
+            <p class="tech" style="max-width: 300px; opacity: 0.6;">Architectural surfaces engineered for spatial permanence. Designed in Srinagar.</p>
+          </div>
+          <div class="footer-links">
+            <div class="tech" style="margin-bottom: 1.5rem; color:var(--muted);">INDEX</div>
+            <a href="#/catalog" data-link>INVENTORY</a>
+            <a href="#/about" data-link>MANIFESTO</a>
+            <a href="#/projects" data-link>WORKS</a>
+          </div>
+          <div class="footer-links">
+            <div class="tech" style="margin-bottom: 1.5rem; color:var(--muted);">LEGAL</div>
+            <a href="#/" data-link>PRIVACY DOCTRINE</a>
+            <a href="#/" data-link>TERMS OF SPECIFICATION</a>
+            <p class="tech" style="margin-top: 2rem; opacity: 0.4;">© 2026 DE CREATIVE</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderCommandBar() {
+      const el = document.getElementById('commandBar');
+      if (cart.length === 0) { el.classList.remove('peek', 'open'); return; }
+      
+      const isOpen = el.classList.contains('open');
+      
+      el.innerHTML = `
+        <div class="cmd-header" id="cmdHeader">
+          <div>SPECIFICATION MANIFEST [ ${cart.length} ITEM${cart.length > 1 ? 'S' : ''} ]</div>
+          <div style="display:flex; gap: 2rem; align-items:center;">
+            <span>EST: ₹${fmt(cartTotal())}</span>
+            <span style="color:var(--accent)">${isOpen ? 'CLOSE ▼' : 'REVIEW & TRANSMIT ▲'}</span>
+          </div>
+        </div>
+        <div class="cmd-content">
+          <div class="cmd-list">
+            <div class="tech" style="padding-bottom: 1rem; border-bottom: var(--border-heavy); color:var(--muted);">INVENTORY SCHEDULE</div>
+            ${cart.map(item => `
+              <div class="cmd-item">
+                <div>
+                  <div class="tech" style="color:var(--muted); margin-bottom: 0.25rem;">${item.id.toUpperCase()}</div>
+                  <div class="cmd-item-title">${item.name}</div>
+                </div>
+                <div class="cmd-controls">
+                  <button data-qty="dec" data-id="${item.id}">-</button>
+                  <span style="width: 20px; text-align:center;">${item.qty}</span>
+                  <button data-qty="inc" data-id="${item.id}">+</button>
+                </div>
+                <div class="tech" style="text-align: right;">
+                  <button data-remove="${item.id}" style="background:none; border:none; color:var(--accent); cursor:pointer; font-family:var(--font-tech); margin-bottom:0.5rem;">REMOVE</button><br>
+                  ₹${fmt(item.price * item.qty)}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="cmd-summary">
+            <div class="tech" style="margin-bottom: 2rem; border-bottom: var(--border-heavy); padding-bottom: 1rem;">FINALIZATION</div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 2rem;">
+              <span class="tech" style="color:var(--muted)">GROSS ESTIMATE</span>
+              <span style="font-family: var(--font-display); font-size: 2.5rem; line-height: 1;">₹${fmt(cartTotal())}</span>
+            </div>
+            <input type="text" id="cmdName" class="form-input" style="border-color: var(--border-heavy); color: var(--ink); margin-bottom: 1rem;" placeholder="CLIENT NAME">
+            <input type="tel" id="cmdPhone" class="form-input" style="border-color: var(--border-heavy); color: var(--ink); margin-bottom: 2rem;" placeholder="CONTACT NUMBER">
+            <button class="btn btn-solid" id="cmdSend" style="width: 100%; background: var(--accent); border-color: var(--accent);">TRANSMIT MANIFEST</button>
+          </div>
+        </div>
+      `;
+      
+      el.classList.add('peek');
+      
+      document.getElementById('cmdHeader').onclick = () => {
+        el.classList.toggle('open');
+      };
+
+      el.querySelectorAll('[data-qty]').forEach(btn => {
+        btn.onclick = e => {
+          e.stopPropagation();
+          const id = btn.dataset.id;
+          const item = cart.find(i => i.id === id);
+          if (btn.dataset.qty === 'inc') updateQty(id, item.qty + 1);
+          else updateQty(id, item.qty - 1);
+        };
+      });
+      
+      el.querySelectorAll('[data-remove]').forEach(btn => {
+        btn.onclick = e => { e.stopPropagation(); removeItem(btn.dataset.remove); };
+      });
+      
+      document.getElementById('cmdSend').onclick = e => {
+        e.stopPropagation();
+        sendToWhatsApp(document.getElementById('cmdName').value || 'UNSPECIFIED', document.getElementById('cmdPhone').value || 'UNSPECIFIED');
+      };
+    }
+
+    function updateAddButtons() {
+      document.querySelectorAll('.add-action').forEach(btn => {
+        const id = btn.dataset.id;
+        const product = PRODUCTS.find(p => p.id === id);
+        if (!product) return;
+        btn.onclick = (e) => { 
+          e.preventDefault(); e.stopPropagation(); 
+          if (isInCart(id)) return; 
+          addItem(product); 
+        };
+      });
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    function triggerReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.clip-reveal').forEach(el => observer.observe(el));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('menuToggle').addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.toggle('open');
+      });
+      document.addEventListener('click', e => {
+        const link = e.target.closest('[data-link]');
+        if (link) {
+          e.preventDefault();
+          window.location.hash = link.getAttribute('href');
+          closeMobileMenu();
+        }
+      });
+      window.addEventListener('hashchange', navigate);
+      navigate();
+    });
+  </script>
 </body>
 </html>
