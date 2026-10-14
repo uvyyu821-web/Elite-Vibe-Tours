@@ -1,852 +1,2980 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>De Creative - Complete Home Solutions</title>
-  <meta name="description" content="De Creative — Complete home solutions, premium wallpapers, and PVC paneling in Kashmir.">
-  
-  <!-- Premium Fonts: Cormorant Garamond (Headings) & Jost (Body) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>iOS 27 iPhone Calculator — Liquid Glass Replica</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17" async></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Dark Theme Colors */
-      --bg: #121212;
-      --surface: #1E1E1E;
-      --surface-hover: #2A2A2A;
-      --text-main: #FFFFFF;
-      --text-muted: #A0A0A0;
-      
-      /* Golden Accents */
-      --primary: #D4AF37;
-      --primary-hover: #B5952F;
-      
-      /* Structure */
-      --border: #333333;
-      --font-heading: 'Cormorant Garamond', serif;
-      --font-body: 'Jost', sans-serif;
+      --ios-bg: #000000;
+      --key-num-bg: rgba(44, 44, 46, 0.82);
+      --key-num-active: rgba(99, 99, 102, 0.92);
+      --key-fn-bg: rgba(92, 92, 95, 0.78);
+      --key-fn-active: rgba(142, 142, 147, 0.92);
+      --key-sci-bg: rgba(28, 28, 30, 0.88);
+      --key-sci-active: rgba(68, 68, 72, 0.95);
+      --key-op-bg: rgba(255, 159, 10, 0.94);
+      --key-op-active: rgba(255, 196, 107, 0.98);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --glass-highlight: rgba(255, 255, 255, 0.32);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    html { scroll-behavior: smooth; }
-    
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
     body {
-      font-family: var(--font-body);
-      background-color: var(--bg);
-      color: var(--text-main);
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', sans-serif;
+      background: radial-gradient(circle at 20% 15%, #1e1b38 0%, #090a10 55%, #000000 100%);
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
       overflow-x: hidden;
-      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 0);
-      background-size: 24px 24px;
     }
 
-    img { max-width: 100%; height: auto; display: block; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    button { font-family: var(--font-body); cursor: pointer; border: none; background: none; }
-
-    .container {
-      width: 100%;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+    /* Liquid Glass Material System (iOS 26 / iOS 27) */
+    .liquid-glass {
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      box-shadow:
+        inset 0 1px 0.5px var(--glass-highlight),
+        inset 0 -0.5px 0.5px rgba(255, 255, 255, 0.08),
+        0 8px 24px rgba(0, 0, 0, 0.45);
+      border: 0.5px solid var(--glass-border);
     }
 
-    .section { padding: 4rem 0; }
-    @media (min-width: 768px) { .section { padding: 6rem 0; } }
-
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 0.75rem 1.5rem;
-      font-weight: 500; font-size: 1rem;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .liquid-pill {
+      background: rgba(44, 44, 48, 0.65);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 0.5px solid rgba(255, 255, 255, 0.2);
+      box-shadow:
+        inset 0 1px 0.5px rgba(255, 255, 255, 0.35),
+        0 4px 14px rgba(0, 0, 0, 0.35);
+      transition: all 0.16s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .btn-primary { background: var(--primary); color: #000; font-weight: 600; }
-    .btn-primary:hover { background: var(--primary-hover); }
-    .btn-outline { border: 1px solid var(--primary); color: var(--primary); }
-    .btn-outline:hover { background: var(--primary); color: #000; }
-
-    .title { font-family: var(--font-heading); font-size: 2.5rem; line-height: 1.2; margin-bottom: 1rem; color: var(--primary); font-weight: 600; }
-    @media (min-width: 768px) { .title { font-size: 3.5rem; } }
-
-    .navbar {
-      background: rgba(18, 18, 18, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0; z-index: 100;
+    .liquid-pill:hover {
+      background: rgba(64, 64, 70, 0.78);
+      border-color: rgba(255, 255, 255, 0.32);
     }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-    
-    .logo { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
-    
-    .nav-links { display: none; gap: 2rem; }
-    .nav-links a { font-weight: 400; font-size: 1rem; color: var(--text-muted); transition: color 0.2s; letter-spacing: 0.5px; }
-    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-    
-    @media (min-width: 768px) { .nav-links { display: flex; align-items: center; } }
-
-    .nav-actions { display: flex; align-items: center; gap: 1rem; }
-    .cart-btn { font-weight: 500; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; background: var(--surface); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 4px; border: 1px solid var(--border); }
-    .cart-btn:hover { border-color: var(--primary); }
-    .cart-count { background: var(--primary); color: #000; padding: 2px 8px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
-
-    .mobile-menu-btn { display: block; font-size: 1.5rem; color: var(--text-main); padding: 0.5rem; }
-    @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
-
-    .mobile-menu {
-      position: fixed; top: 70px; left: 0; width: 100%; height: calc(100vh - 70px);
-      background: var(--bg); z-index: 99; padding: 2rem;
-      display: none; flex-direction: column; gap: 1.5rem;
+    .liquid-pill:active {
+      transform: scale(0.93);
     }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-size: 1.2rem; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 1rem; color: var(--text-main); }
 
-    .sticky-back-bar { position: sticky; top: 70px; z-index: 98; background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 0.75rem 0; display: none; }
-    .btn-back { color: var(--primary); font-weight: 500; display: inline-flex; align-items: center; font-size: 0.95rem; font-family: var(--font-body); }
-    .btn-back:hover { color: var(--text-main); }
-
-    .hero {
+    /* Calculator Keys */
+    .calc-key {
       position: relative;
-      background: url('https://i.ibb.co/DDVnfJvQ/IMG-20260705-184552.jpg') center/cover no-repeat;
-      min-height: 85vh;
       display: flex;
       align-items: center;
-      padding: 4rem 0;
+      justify-content: center;
+      border-radius: 9999px;
+      font-weight: 400;
+      cursor: pointer;
+      transition:
+        transform 0.1s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.14s ease,
+        box-shadow 0.14s ease,
+        filter 0.14s ease;
+      overflow: hidden;
     }
-    
-    .hero-overlay {
+
+    /* Liquid Glass Specular Rim on Keys */
+    .glass-mode .calc-key {
+      backdrop-filter: blur(18px) saturate(175%);
+      -webkit-backdrop-filter: blur(18px) saturate(175%);
+      box-shadow:
+        inset 0 1.2px 0.8px rgba(255, 255, 255, 0.28),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.35),
+        0 4px 10px rgba(0, 0, 0, 0.32);
+      border: 0.5px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .oled-mode .calc-key {
+      box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.08);
+      border: none;
+    }
+
+    .calc-key:active, .calc-key.key-pressed {
+      transform: scale(0.93);
+      filter: brightness(1.28);
+    }
+
+    .key-num {
+      background: var(--key-num-bg);
+      color: #ffffff;
+    }
+    .key-num:active, .key-num.key-pressed {
+      background: var(--key-num-active);
+    }
+
+    .key-fn {
+      background: var(--key-fn-bg);
+      color: #ffffff;
+    }
+    .key-fn:active, .key-fn.key-pressed {
+      background: var(--key-fn-active);
+    }
+
+    .key-sci {
+      background: var(--key-sci-bg);
+      color: #ebebf5;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .key-sci:active, .key-sci.key-pressed {
+      background: var(--key-sci-active);
+    }
+    .key-sci.active-toggle {
+      background: #ebebf5;
+      color: #1c1c1e;
+      font-weight: 600;
+    }
+
+    .key-op {
+      background: var(--key-op-bg);
+      color: #ffffff;
+      font-weight: 500;
+    }
+    .key-op:active, .key-op.key-pressed {
+      background: var(--key-op-active);
+    }
+    .key-op.op-selected {
+      background: #ffffff !important;
+      color: #ff9f0a !important;
+      box-shadow: 0 0 18px rgba(255, 159, 10, 0.55);
+    }
+
+    /* Ambient Liquid Glass Glow Orbs inside Phone when Glass Mode is active */
+    .ambient-orb {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(18,18,18,0.95) 0%, rgba(18,18,18,0.8) 50%, rgba(18,18,18,0.4) 100%);
-      z-index: 1;
+      border-radius: 9999px;
+      filter: blur(55px);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.45s ease;
+    }
+    .glass-mode .ambient-orb {
+      opacity: 0.42;
     }
 
-    @media (max-width: 768px) {
-      .hero-overlay {
-        background: linear-gradient(to bottom, rgba(18,18,18,0.9) 0%, rgba(18,18,18,0.85) 100%);
-      }
+    /* Scrollbars */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
 
-    .hero-container {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    @media (min-width: 992px) {
-      .hero-container { grid-template-columns: 1.2fr 1fr; }
+    /* Math Notes Handwriting Font */
+    .math-handwriting {
+      font-family: 'Caveat', cursive, sans-serif;
     }
 
-    .hero-main { display: flex; flex-direction: column; align-items: flex-start; }
-    
-    .hero-logo-wrapper {
-      width: 100px; height: 100px; border-radius: 50%; overflow: hidden; 
-      margin-bottom: 1.5rem; border: 2px solid var(--primary);
-      background: var(--surface); padding: 0.5rem;
-      display: flex; justify-content: center; align-items: center;
+    /* Device Frame Transitions */
+    #iphone-chassis {
+      transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), height 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-radius 0.3s ease;
     }
-    .hero-logo-wrapper img { width: 100%; height: 100%; object-fit: contain; }
+
     
-    .hero-title { font-family: var(--font-heading); font-size: clamp(3rem, 6vw, 5rem); font-weight: 700; line-height: 1.1; margin-bottom: 0.5rem; color: var(--text-main); letter-spacing: 1px; }
-    .hero-tagline { font-size: 1.2rem; color: var(--primary); margin-bottom: 2rem; font-weight: 400; letter-spacing: 1px; }
+    
+    /* Complete self-contained utility CSS so 100% of styling & positioning works offline or under strict CSP */
+    .hidden { display: none !important; }
+    .block { display: block; }
+    .inline-block { display: inline-block; }
+    .flex { display: flex; }
+    .grid { display: grid; }
+    .flex-col { flex-direction: column; }
+    .flex-wrap { flex-wrap: wrap; }
+    .flex-1 { flex: 1 1 0%; }
+    .shrink-0 { flex-shrink: 0; }
+    .items-center { align-items: center; }
+    .items-end { align-items: flex-end; }
+    .justify-center { justify-content: center; }
+    .justify-between { justify-content: space-between; }
+    .justify-end { justify-content: flex-end; }
+    .grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+    .col-span-5 { grid-column: span 5 / span 5; }
+    .col-span-7 { grid-column: span 7 / span 7; }
+    .col-span-12 { grid-column: span 12 / span 12; }
+    .gap-1 { gap: 0.25rem; }
+    .gap-1\.5 { gap: 0.375rem; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-2\.5 { gap: 0.625rem; }
+    .gap-3 { gap: 0.75rem; }
+    .space-y-1 > * + * { margin-top: 0.25rem; }
+    .space-y-3 > * + * { margin-top: 0.75rem; }
 
-    .hero-services { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem; }
-    .service-tag { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; }
+    /* Positioning & Z-index */
+    .relative { position: relative; }
+    .absolute { position: absolute; }
+    .fixed { position: fixed; }
+    .inset-x-0 { left: 0; right: 0; }
+    .top-1 { top: 0.25rem; }
+    .top-2 { top: 0.5rem; }
+    .top-12 { top: 3rem; }
+    .top-14 { top: 3.5rem; }
+    .top-24 { top: 6rem; }
+    .top-28 { top: 7rem; }
+    .top-40 { top: 10rem; }
+    .top-44 { top: 11rem; }
+    .top-56 { top: 14rem; }
+    .top-1\/2 { top: 50%; }
+    .bottom-0 { bottom: 0; }
+    .bottom-3 { bottom: 0.75rem; }
+    .bottom-5 { bottom: 1.25rem; }
+    .-bottom-12 { bottom: -3rem; }
+    .left-2\.5 { left: 0.625rem; }
+    .left-1\/2 { left: 50%; }
+    .-left-16 { left: -4rem; }
+    .-left-\[3px\] { left: -3px; }
+    .right-3 { right: 0.75rem; }
+    .right-4 { right: 1rem; }
+    .right-8 { right: 2rem; }
+    .-right-10 { right: -2.5rem; }
+    .-right-\[3px\] { right: -3px; }
+    .z-10 { z-index: 10; }
+    .z-20 { z-index: 20; }
+    .z-30 { z-index: 30; }
+    .z-40 { z-index: 40; }
+    .z-50 { z-index: 50; }
 
-    .glass-card {
-      background: rgba(30, 30, 30, 0.6);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 2.5rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    /* Transforms & Opacity */
+    .opacity-0 { opacity: 0 !important; }
+    .opacity-70 { opacity: 0.7; }
+    .opacity-100 { opacity: 1 !important; }
+    .translate-y-full { transform: translateY(105%) !important; }
+    .translate-y-0 { transform: translateY(0) !important; }
+    .-translate-x-1\/2 { transform: translateX(-50%); }
+    .-translate-x-1\/2.-translate-y-1\/2 { transform: translate(-50%, -50%); }
+
+    /* Sizing */
+    .w-full { width: 100%; }
+    .h-full { height: 100%; }
+    .max-w-full { max-width: 100%; }
+    .max-w-4xl { max-width: 56rem; }
+    .min-h-screen { min-height: 100vh; }
+    .min-h-\[28px\] { min-height: 28px; }
+    .min-h-\[122px\] { min-height: 122px; }
+    .min-h-\[260px\] { min-height: 260px; }
+    .min-h-\[270px\] { min-height: 270px; }
+    .max-h-40 { max-height: 10rem; }
+    .w-1 { width: 0.25rem; } .h-1 { height: 0.25rem; }
+    .w-1\.5 { width: 0.375rem; } .h-1\.5 { height: 0.375rem; }
+    .w-2 { width: 0.5rem; } .h-2 { height: 0.5rem; }
+    .w-2\.5 { width: 0.625rem; } .h-2\.5 { height: 0.625rem; }
+    .w-3\.5 { width: 0.875rem; } .h-3 { height: 0.75rem; } .h-3\.5 { height: 0.875rem; }
+    .w-4 { width: 1rem; } .h-4 { height: 1rem; }
+    .w-5 { width: 1.25rem; } .h-5 { height: 1.25rem; }
+    .w-6 { width: 1.5rem; } .h-6 { height: 1.5rem; }
+    .w-7 { width: 1.75rem; } .h-7 { height: 1.75rem; }
+    .w-8 { width: 2rem; } .h-8 { height: 2rem; }
+    .w-10 { width: 2.5rem; } .h-10 { height: 2.5rem; }
+    .w-11 { width: 2.75rem; }
+    .w-12 { width: 3rem; } .h-12 { height: 3rem; }
+    .w-16 { width: 4rem; } .h-16 { height: 4rem; }
+    .w-32 { width: 8rem; }
+    .w-44 { width: 11rem; } .h-44 { height: 11rem; }
+    .h-48 { height: 12rem; }
+    .w-56 { width: 14rem; } .h-56 { height: 14rem; }
+    .w-60 { width: 15rem; } .h-60 { height: 15rem; }
+    .w-\[3px\] { width: 3px; }
+    .w-\[1\.5px\] { width: 1.5px; } .h-\[4px\] { height: 4px; }
+    .w-\[21px\] { width: 21px; } .h-\[11px\] { height: 11px; }
+    .w-\[112px\] { width: 112px; } .h-\[30px\] { height: 30px; }
+    .w-\[382px\] { width: 382px; } .h-\[788px\] { height: 788px; }
+    .h-\[74px\] { height: 74px; }
+
+    /* Spacing */
+    .m-0 { margin: 0; }
+    .my-auto { margin-top: auto; margin-bottom: auto; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .my-1 { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .mb-1 { margin-bottom: 0.25rem; }
+    .mb-1\.5 { margin-bottom: 0.375rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-3 { margin-bottom: 0.75rem; }
+    .mt-1 { margin-top: 0.25rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mr-1\.5 { margin-right: 0.375rem; }
+    .mr-2 { margin-right: 0.5rem; }
+    .ml-\[0\.5px\] { margin-left: 0.5px; }
+    .p-0\.5 { padding: 0.125rem; }
+    .p-1\.5 { padding: 0.375rem; }
+    .p-2 { padding: 0.5rem; }
+    .p-2\.5 { padding: 0.625rem; }
+    .p-3 { padding: 0.75rem; }
+    .p-5 { padding: 1.25rem; }
+    .p-\[1\.5px\] { padding: 1.5px; }
+    .p-\[11px\] { padding: 11px; }
+    .px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
+    .px-1\.5 { padding-left: 0.375rem; padding-right: 0.375rem; }
+    .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+    .px-2\.5 { padding-left: 0.625rem; padding-right: 0.625rem; }
+    .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+    .px-3\.5 { padding-left: 0.875rem; padding-right: 0.875rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .px-7 { padding-left: 1.75rem; padding-right: 1.75rem; }
+    .py-0\.5 { padding-top: 0.125rem; padding-bottom: 0.125rem; }
+    .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+    .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    .pt-1 { padding-top: 0.25rem; }
+    .pt-3 { padding-top: 0.75rem; }
+    .pb-1 { padding-bottom: 0.25rem; }
+    .pb-1\.5 { padding-bottom: 0.375rem; }
+    .pb-2 { padding-bottom: 0.5rem; }
+    .pb-3 { padding-bottom: 0.75rem; }
+
+    /* Borders & Radius */
+    .rounded-lg { border-radius: 0.5rem; }
+    .rounded-xl { border-radius: 0.75rem; }
+    .rounded-2xl { border-radius: 1rem; }
+    .rounded-3xl { border-radius: 1.5rem; }
+    .rounded-full { border-radius: 9999px; }
+    .rounded-\[1\.5px\] { border-radius: 1.5px; }
+    .rounded-\[3\.5px\] { border-radius: 3.5px; }
+    .rounded-\[44px\] { border-radius: 44px; }
+    .rounded-\[54px\] { border-radius: 54px; }
+    .rounded-t-\[38px\] { border-top-left-radius: 38px; border-top-right-radius: 38px; }
+    .border { border-width: 1px; border-style: solid; border-color: rgba(255,255,255,0.12); }
+    .border-t { border-top: 1px solid rgba(255,255,255,0.12); }
+    .border-b { border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .border-white\/10 { border-color: rgba(255,255,255,0.10); }
+    .border-white\/15 { border-color: rgba(255,255,255,0.15); }
+    .border-white\/20 { border-color: rgba(255,255,255,0.20); }
+    .border-white\/45 { border-color: rgba(255,255,255,0.45); }
+    .border-amber-400\/25 { border-color: rgba(251,191,36,0.25); }
+    .border-amber-400\/30 { border-color: rgba(251,191,36,0.30); }
+    .border-amber-400\/40 { border-color: rgba(251,191,36,0.40); }
+    .border-amber-500\/30 { border-color: rgba(245,158,11,0.30); }
+    .border-indigo-400\/30 { border-color: rgba(129,140,248,0.30); }
+    .border-rose-500\/20 { border-color: rgba(244,63,94,0.20); }
+    .border-rose-500\/30 { border-color: rgba(244,63,94,0.30); }
+
+    /* Backgrounds & Colors */
+    .bg-transparent { background-color: transparent; }
+    .bg-black { background-color: #000000; }
+    .bg-black\/50 { background-color: rgba(0,0,0,0.50); }
+    .bg-black\/75 { background-color: rgba(0,0,0,0.75); }
+    .bg-white { background-color: #ffffff; }
+    .bg-white\/5 { background-color: rgba(255,255,255,0.05); }
+    .bg-white\/10 { background-color: rgba(255,255,255,0.10); }
+    .bg-white\/45 { background-color: rgba(255,255,255,0.45); }
+    .bg-white\/80 { background-color: rgba(255,255,255,0.80); }
+    .bg-zinc-600 { background-color: #52525b; }
+    .bg-zinc-700 { background-color: #3f3f46; }
+    .bg-zinc-800 { background-color: #27272a; }
+    .bg-zinc-800\/90 { background-color: rgba(39,39,42,0.90); }
+    .bg-zinc-800\/95 { background-color: rgba(39,39,42,0.95); }
+    .bg-zinc-900 { background-color: #18181b; }
+    .bg-zinc-900\/70 { background-color: rgba(24,24,27,0.70); }
+    .bg-zinc-900\/75 { background-color: rgba(24,24,27,0.75); }
+    .bg-zinc-900\/80 { background-color: rgba(24,24,27,0.80); }
+    .bg-zinc-900\/90 { background-color: rgba(24,24,27,0.90); }
+    .bg-zinc-900\/95 { background-color: rgba(24,24,27,0.95); }
+    .bg-zinc-950 { background-color: #09090b; }
+    .bg-zinc-950\/90 { background-color: rgba(9,9,11,0.90); }
+    .bg-amber-400 { background-color: #fbbf24; }
+    .bg-amber-500 { background-color: #f59e0b; }
+    .bg-amber-500\/10 { background-color: rgba(245,158,11,0.10); }
+    .bg-amber-500\/15 { background-color: rgba(245,158,11,0.15); }
+    .bg-amber-500\/20 { background-color: rgba(245,158,11,0.20); }
+    .bg-amber-500\/35 { background-color: rgba(245,158,11,0.35); }
+    .bg-emerald-500 { background-color: #10b981; }
+    .bg-indigo-500\/25 { background-color: rgba(99,102,241,0.25); }
+    .bg-rose-500 { background-color: #f43f5e; }
+    .bg-rose-500\/10 { background-color: rgba(244,63,94,0.10); }
+    .bg-rose-500\/20 { background-color: rgba(244,63,94,0.20); }
+    .bg-sky-400 { background-color: #38bdf8; }
+    .bg-\[\#ff9f0a\] { background-color: #ff9f0a; }
+    .bg-\[\#141418\] { background-color: #141418; }
+    .bg-\[\#121224\] { background-color: #121224; }
+
+    .text-black { color: #000000; }
+    .text-white { color: #ffffff; }
+    .text-zinc-200 { color: #e4e4e7; }
+    .text-zinc-300 { color: #d4d4d8; }
+    .text-zinc-400 { color: #a1a1aa; }
+    .text-zinc-500 { color: #71717a; }
+    .text-amber-300 { color: #fcd34d; }
+    .text-amber-400 { color: #fbbf24; }
+    .text-indigo-300 { color: #a5b4fc; }
+    .text-rose-300 { color: #fda4af; }
+    .text-rose-400 { color: #fb7185; }
+
+    /* Typography */
+    .text-\[9px\] { font-size: 9px; }
+    .text-\[10px\] { font-size: 10px; }
+    .text-\[11px\] { font-size: 11px; }
+    .text-xs { font-size: 0.75rem; line-height: 1rem; }
+    .text-\[13px\] { font-size: 13px; }
+    .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .text-\[26px\] { font-size: 26px; }
+    .text-\[28px\] { font-size: 28px; }
+    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .text-\[32px\] { font-size: 32px; }
+    .text-\[34px\] { font-size: 34px; }
+    .text-\[64px\] { font-size: 64px; }
+    .leading-\[1\.04\] { line-height: 1.04; }
+    .leading-relaxed { line-height: 1.625; }
+    .font-light { font-weight: 300; }
+    .font-normal { font-weight: 400; }
+    .font-medium { font-weight: 500; }
+    .font-semibold { font-weight: 600; }
+    .font-bold { font-weight: 700; }
+    .font-mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .font-serif { font-family: Georgia, serif; }
+    .italic { font-style: italic; }
+    .tracking-tight { letter-spacing: -0.025em; }
+    .tracking-wider { letter-spacing: 0.05em; }
+    .uppercase { text-transform: uppercase; }
+    .whitespace-nowrap { white-space: nowrap; }
+    .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .text-right { text-align: right; }
+    .text-left { text-align: left; }
+    .text-center { text-align: center; }
+
+    /* Overflow & Interaction */
+    .overflow-hidden { overflow: hidden; }
+    .overflow-y-auto { overflow-y: auto; }
+    .overflow-x-auto { overflow-x: auto; }
+    .pointer-events-none { pointer-events: none !important; }
+    .pointer-events-auto { pointer-events: auto !important; }
+    .cursor-pointer { cursor: pointer; }
+    .cursor-crosshair { cursor: crosshair; }
+    .select-none { user-select: none; }
+    .select-text { user-select: text; }
+    .resize-none { resize: none; }
+    .calc-key > * { pointer-events: none; }
+    .liquid-pill > * { pointer-events: none; }
+    button { background: none; border: none; color: inherit; font: inherit; }
+
+    /* Popover Animation */
+    .popover-enter {
+      animation: popIn 0.18s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      transform-origin: top right;
     }
-    .glass-card h3 { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.8rem; font-family: var(--font-heading); }
-    .branch { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .branch:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .branch h4 { color: var(--text-main); font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 500; }
-    .branch p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.4; }
-    .branch small { color: var(--primary); font-size: 0.85rem; opacity: 0.9; display: block; margin-top: 0.25rem; }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.86) translateY(-6px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
 
-    .filter-bar { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; align-items: center; justify-content: space-between; }
-    .category-tabs { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: none; }
-    .category-tabs::-webkit-scrollbar { display: none; }
-    .tab-btn { padding: 0.5rem 1.2rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 20px; font-size: 0.9rem; white-space: nowrap; font-family: var(--font-body); cursor: pointer; transition: 0.2s; }
-    .tab-btn.active, .tab-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); font-weight: 500; }
-    .search-box { padding: 0.75rem 1.2rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 20px; outline: none; width: 100%; max-width: 300px; font-family: var(--font-body); }
-    .search-box:focus { border-color: var(--primary); }
-
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
-    .product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; text-decoration: none; color: inherit; cursor: pointer; }
-    .product-card:hover { transform: translateY(-5px); border-color: var(--primary); }
-    .product-img { aspect-ratio: 4/3; overflow: hidden; background: #000; }
-    .product-img img { width: 100%; height: 100%; object-fit: cover; }
-    .product-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
-    .product-cat { font-size: 0.8rem; color: var(--primary); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px; font-weight: 500; }
-    .product-name { font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem; line-height: 1.3; color: var(--text-main); font-family: var(--font-heading); }
-    .product-action { margin-top: auto; }
-    
-    .btn-add { width: 100%; padding: 0.75rem; background: transparent; border: 1px solid var(--primary); border-radius: 4px; font-weight: 500; color: var(--primary); transition: 0.2s; text-transform: uppercase; font-size: 0.85rem; font-family: var(--font-body); cursor: pointer; }
-    .btn-add:hover { background: var(--primary); color: #000; }
-    .btn-add.added { background: var(--primary); color: #000; }
-
-    .detail-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
-    @media (min-width: 768px) { .detail-grid { grid-template-columns: 1fr 1fr; align-items: start; } }
-    .detail-img { border-radius: 8px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); }
-    .detail-info h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); line-height: 1.1; }
-    .detail-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
-    
-    .specs-list { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; }
-    .spec-item { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
-    .spec-item:last-child { border-bottom: none; }
-    .spec-label { color: var(--text-muted); }
-    .spec-value { font-weight: 500; text-align: right; color: var(--text-main); }
-
-    .works-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
-    .work-item { aspect-ratio: 1; overflow: hidden; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); }
-    .work-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-    .work-item:hover img { transform: scale(1.08); }
-
-    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-    @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
-    .contact-details { padding: 3rem; background: rgba(0,0,0,0.2); border-right: 1px solid var(--border); }
-    .contact-block { margin-bottom: 2.5rem; }
-    .contact-block h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--primary); font-family: var(--font-heading); }
-    .contact-block p { color: var(--text-muted); line-height: 1.6; }
-    
-    .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 1000; opacity: 0; visibility: hidden; transition: 0.3s; }
-    .cart-overlay.open { opacity: 1; visibility: visible; }
-    .cart-drawer { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: var(--surface); border-left: 1px solid var(--border); z-index: 1001; transition: right 0.3s ease; display: flex; flex-direction: column; box-shadow: -5px 0 30px rgba(0,0,0,0.5); }
-    .cart-drawer.open { right: 0; }
-    
-    .cart-header { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg); }
-    .cart-header h2 { font-size: 1.4rem; color: var(--primary); font-family: var(--font-heading); margin: 0; }
-    .close-cart { font-size: 1.5rem; cursor: pointer; color: var(--text-muted); transition: 0.2s; padding: 0.5rem; display: flex; align-items: center; justify-content: center; }
-    .close-cart:hover { color: var(--primary); }
-    
-    .cart-items { flex-grow: 1; overflow-y: auto; padding: 1.5rem; }
-    .cart-item { display: grid; grid-template-columns: 70px 1fr; gap: 1rem; margin-bottom: 1.5rem; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
-    .cart-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .cart-item-img { width: 70px; height: 70px; border-radius: 4px; overflow: hidden; background: #000; border: 1px solid var(--border); }
-    .cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
-    .cart-item-info h4 { font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.3; color: var(--text-main); font-weight: 500; font-family: var(--font-heading); }
-    .cart-item-controls { display: flex; align-items: center; gap: 0.75rem; }
-    .qty-btn { width: 28px; height: 28px; background: var(--bg); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 500; cursor: pointer; transition: 0.2s; font-family: var(--font-body); }
-    .qty-btn:hover { border-color: var(--primary); color: var(--primary); }
-    .remove-btn { color: #ff4444; font-size: 0.8rem; margin-left: auto; cursor: pointer; text-transform: uppercase; border: none; background: transparent; font-family: var(--font-body); }
-    
-    .cart-footer { padding: 1.5rem; border-top: 1px solid var(--border); background: var(--bg); }
-    .cart-input { width: 100%; padding: 0.8rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem; font-family: var(--font-body); outline: none; font-size: 0.95rem; }
-    .cart-input:focus { border-color: var(--primary); }
-    .cart-submit { width: 100%; padding: 1rem; background: #25D366; color: white; border-radius: 4px; font-weight: 500; font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem; transition: background 0.2s; font-family: var(--font-body); border: none; cursor: pointer; }
-    .cart-submit:hover { background: #128C7E; }
-
-    .footer { background: #000; color: var(--text-main); padding: 4rem 0 2rem; margin-top: auto; border-top: 1px solid var(--border); }
-    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
-    @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
-    .footer h3 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary); }
-    .footer p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem; }
-    .footer a { color: var(--text-muted); display: block; margin-bottom: 0.75rem; transition: color 0.2s; font-size: 0.95rem; }
-    .footer a:hover { color: var(--primary); }
-    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+    /* Drawer Slide */
+    .drawer-transition {
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+    }
   </style>
 </head>
-<body>
-  <nav class="navbar">
-    <div class="container nav-container">
-      <a href="#/" data-route class="logo">DE CREATIVE</a>
-      
-      <div class="nav-links">
-        <a href="#/catalog" data-route>Products</a>
-        <a href="#/works" data-route>Our Work</a>
-        <a href="#/about" data-route>About Us</a>
-        <a href="#/contact" data-route>Contact</a>
-      </div>
+<body class="flex flex-col items-center justify-between min-h-screen p-2 sm:p-4">
 
-      <div class="nav-actions">
-        <button class="cart-btn" id="openCartBtn">
-          Quote List <span class="cart-count" id="cartCount">0</span>
-        </button>
-        <button class="mobile-menu-btn" id="menuToggle">☰</button>
+  <!-- Top External Control Bar (for inspecting iOS 27 Modes, Orientation, Material & Audio) -->
+  <header class="w-full max-w-4xl flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-2xl liquid-glass bg-zinc-900/70 mb-2 z-30">
+    <div class="flex items-center gap-2.5">
+      <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center shadow-md font-bold text-black text-sm">±</div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-xs sm:text-sm font-semibold tracking-tight text-white">iPhone Calculator</h1>
+          <span class="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30">iOS 27 Liquid Glass</span>
+        </div>
+        <p class="text-[11px] text-zinc-400 hidden sm:block">Basic • Scientific • Convert • History • Math Notes (Variables + Live Graphs + Siri AI)</p>
       </div>
     </div>
-  </nav>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#/catalog" data-route>Products</a>
-    <a href="#/works" data-route>Our Work</a>
-    <a href="#/about" data-route>About Us</a>
-    <a href="#/contact" data-route>Contact</a>
-  </div>
+    <div class="flex flex-wrap items-center gap-1.5">
+      <!-- Quick Mode Switcher Pills -->
+      <div class="flex items-center bg-black/50 p-0.5 rounded-xl border border-white/10">
+        <button id="ext-mode-basic" type="button" class="px-2.5 py-1 rounded-lg text-xs font-medium transition bg-amber-500 text-black">Basic</button>
+        <button id="ext-mode-sci" type="button" class="px-2.5 py-1 rounded-lg text-xs font-medium transition text-zinc-300 hover:text-white">Scientific</button>
+        <button id="ext-mode-convert" type="button" class="px-2.5 py-1 rounded-lg text-xs font-medium transition text-zinc-300 hover:text-white">Convert</button>
+        <button id="ext-mode-notes" type="button" class="px-2.5 py-1 rounded-lg text-xs font-medium transition text-zinc-300 hover:text-white flex items-center gap-1">
+          <span>Math Notes</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+        </button>
+      </div>
 
-  <div id="stickyBackBar" class="sticky-back-bar">
-    <div class="container">
-      <button onclick="window.history.length > 1 ? window.history.back() : window.location.hash = '#/'" class="btn-back">
-        ← Go Back
+      <!-- Portrait / Landscape Orientation Toggle -->
+      <button id="btn-orientation" type="button" title="Toggle Portrait / Landscape Scientific Layout" class="px-2.5 py-1 rounded-xl text-xs font-medium bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 border border-white/10 flex items-center gap-1.5 transition">
+        <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        <span id="orientation-label">Portrait</span>
+      </button>
+
+      <!-- Liquid Glass / Classic OLED Material Toggle -->
+      <button id="btn-material" type="button" title="Toggle iOS 27 Liquid Glass vs Classic OLED Dark" class="px-2.5 py-1 rounded-xl text-xs font-medium bg-zinc-800/90 hover:bg-zinc-700 text-amber-300 border border-amber-400/30 flex items-center gap-1 transition">
+        <span id="material-label">✨ Liquid Glass</span>
+      </button>
+
+      <!-- Key Click Audio Toggle -->
+      <button id="btn-sound" type="button" title="Toggle iOS Key Click Audio" class="p-1.5 rounded-xl text-xs font-medium bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 border border-white/10 transition" aria-label="Toggle Sound">
+        <svg id="icon-sound-on" class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14"/></svg>
+        <svg id="icon-sound-off" class="w-4 h-4 text-zinc-500 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/></svg>
       </button>
     </div>
-  </div>
+  </header>
 
-  <main id="app" style="min-height: 80vh;"></main>
+  <!-- Main Stage: iPhone 17 Pro / iOS 27 Hardware Frame -->
+  <main class="flex-1 flex items-center justify-center w-full my-auto py-1">
+    <div id="iphone-chassis" class="glass-mode relative w-[382px] max-w-full h-[788px] rounded-[54px] bg-black p-[11px] shadow-[0_0_0_2px_#3a3a3c,0_0_0_5px_#1c1c1e,0_25px_70px_rgba(0,0,0,0.85)] flex flex-col overflow-hidden select-none">
 
-  <div class="cart-overlay" id="cartOverlay"></div>
-  <div class="cart-drawer" id="cartDrawer">
-    <div class="cart-header">
-      <h2>Your Quote Request</h2>
-      <button class="close-cart" id="closeCartBtn">✕</button>
-    </div>
-    <div class="cart-items" id="cartItemsList">
-      <!-- Items inject here -->
-    </div>
-    <div class="cart-footer">
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Enter your details and we will send you a formal quote via WhatsApp.</p>
-      <input type="text" id="clientName" class="cart-input" placeholder="Your Name">
-      <input type="tel" id="clientPhone" class="cart-input" placeholder="Your Phone Number">
-      <button class="cart-submit" id="sendQuoteBtn">Send on WhatsApp</button>
-    </div>
-  </div>
+      <!-- Titanium Side Hardware Buttons (decorative) -->
+      <div class="pointer-events-none absolute -left-[3px] top-28 w-[3px] h-7 bg-zinc-600 rounded-l"></div>
+      <div class="pointer-events-none absolute -left-[3px] top-40 w-[3px] h-12 bg-zinc-600 rounded-l"></div>
+      <div class="pointer-events-none absolute -left-[3px] top-56 w-[3px] h-12 bg-zinc-600 rounded-l"></div>
+      <div class="pointer-events-none absolute -right-[3px] top-44 w-[3px] h-16 bg-zinc-600 rounded-r"></div>
+      <div class="w-full h-full flex-1 flex flex-col pointer-events-auto">
+        <!-- Inner Screen Container -->
+        <div id="iphone-screen" class="relative w-full h-full flex-1 rounded-[44px] bg-black overflow-hidden flex flex-col justify-between border border-white/10 pointer-events-auto">
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4 style="margin-bottom: 1rem; color: var(--text-main);">Locations</h4>
-          <p><strong>Main Office:</strong><br>Main Chowk Kangan, Ganderbal<br><span style="color:var(--primary); font-size: 0.8rem;">(Near Tehzeeb Restaurant)</span></p>
-          <p style="margin-top:1rem;"><strong>Branch:</strong><br>Branch office at Rainawari</p>
-        </div>
-        <div>
-          <h4 style="margin-bottom: 1rem; color: var(--text-main); font-family: var(--font-heading); font-size: 1.2rem;">Locations</h4>
-          <p><strong>Main Office:</strong><br>Main Chowk Kangan, Ganderbal<br><span style="color:var(--primary); font-size: 0.85rem;">(Near Tehzeeb Restaurant)</span></p>
-          <p style="margin-top:1rem;"><strong>Branch:</strong><br>Surtaing Rainawari, Srinagar</p>
-        </div>
-        <div>
-          <h4 style="margin-bottom: 1rem; color: var(--text-main); font-family: var(--font-heading); font-size: 1.2rem;">Quick Links</h4>
-          <a href="#/catalog" data-route>Product Catalog</a>
-          <a href="#/works" data-route>Previous Works</a>
-          <a href="#/contact" data-route>Contact Us</a>
+          <!-- Liquid Glass Ambient Background Layer -->
+          <div class="ambient-orb w-56 h-56 bg-amber-500/35 -bottom-12 -right-10"></div>
+          <div class="ambient-orb w-60 h-60 bg-indigo-500/25 top-24 -left-16"></div>
+          <div class="ambient-orb w-44 h-44 bg-rose-500/20 top-1/2 right-8"></div>
+
+          <!-- iOS 27 Status Bar + Dynamic Island -->
+          <div id="ios-statusbar" class="relative z-30 flex items-center justify-between px-7 pt-3 pb-1.5 text-white text-xs font-semibold tracking-tight shrink-0">
+            <span id="status-clock" class="w-16 text-left font-semibold text-[13px]">9:41</span>
+
+            <!-- Dynamic Island -->
+            <div id="dynamic-island" class="w-[112px] h-[30px] bg-black rounded-full border border-white/10 flex items-center justify-between px-3 shadow-inner transition-all duration-300 cursor-pointer" title="Dynamic Island — Tap to see active memory / status">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#121224] border border-indigo-900/60 flex items-center justify-center">
+                <div class="w-1 h-1 rounded-full bg-indigo-400/70"></div>
+              </div>
+              <span id="island-badge" class="text-[10px] font-medium text-amber-400 hidden">M</span>
+            </div>
+
+            <!-- Right Status Icons: 5G, Wi-Fi, Battery -->
+            <div class="w-16 flex items-center justify-end gap-1.5">
+              <!-- Cellular Bars -->
+              <svg class="w-3.5 h-3" viewBox="0 0 16 12" fill="currentColor">
+                <rect x="0" y="8" width="2.5" height="4" rx="0.7"/>
+                <rect x="4" y="6" width="2.5" height="6" rx="0.7"/>
+                <rect x="8" y="3" width="2.5" height="9" rx="0.7"/>
+                <rect x="12" y="0" width="2.5" height="12" rx="0.7"/>
+              </svg>
+              <!-- Wi-Fi -->
+              <svg class="w-3.5 h-3" viewBox="0 0 16 12" fill="currentColor">
+                <path d="M8 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm-3.6-1.8a5.5 5.5 0 017.2 0l1.2-1.2a7.2 7.2 0 00-9.6 0l1.2 1.2zm-2.8-2.8a9.5 9.5 0 0112.8 0l1.2-1.2a11.2 11.2 0 00-15.2 0l1.2 1.2z"/>
+              </svg>
+              <!-- Battery -->
+              <div class="flex items-center">
+                <div class="w-[21px] h-[11px] rounded-[3.5px] border border-white/45 p-[1.5px] flex items-center">
+                  <div class="w-full h-full bg-white rounded-[1.5px]"></div>
+                </div>
+                <div class="w-[1.5px] h-[4px] bg-white/45 rounded-r-full ml-[0.5px]"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- iOS 27 Top Navigation Toolbar (History Top-Left, Mode Switcher Top-Right) -->
+          <div id="calc-top-toolbar" class="relative z-20 flex items-center justify-between px-4 pt-1 pb-1 shrink-0">
+            <!-- History Button (Top-Left) -->
+            <button id="btn-history-drawer" type="button" class="liquid-pill w-10 h-10 rounded-full flex items-center justify-center text-white" title="Calculation History" aria-label="Calculation History">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
+              </svg>
+            </button>
+
+            <!-- Center Mode Indicator Pill -->
+            <div class="flex items-center gap-1.5">
+              <span id="rad-deg-badge" class="hidden text-[11px] font-semibold px-2 py-0.5 rounded-full bg-zinc-800/90 text-zinc-300 border border-white/10">Rad</span>
+              <span id="memory-badge" class="hidden text-[11px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30">M</span>
+            </div>
+
+            <!-- Mode Switcher Button (Relocated to Top-Right in iOS 26 / iOS 27!) -->
+            <button id="btn-mode-popover" type="button" class="liquid-pill w-10 h-10 rounded-full flex items-center justify-center text-amber-400" title="Switch Calculator Mode (Basic, Scientific, Math Notes, Convert)" aria-label="Change Calculator Mode">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                <rect x="4" y="2" width="16" height="20" rx="3"/>
+                <line x1="8" y1="6" x2="16" y2="6"/>
+                <circle cx="8.5" cy="11" r="1" fill="currentColor"/>
+                <circle cx="12" cy="11" r="1" fill="currentColor"/>
+                <circle cx="15.5" cy="11" r="1" fill="currentColor"/>
+                <circle cx="8.5" cy="14.5" r="1" fill="currentColor"/>
+                <circle cx="12" cy="14.5" r="1" fill="currentColor"/>
+                <circle cx="15.5" cy="14.5" r="1" fill="currentColor"/>
+                <circle cx="8.5" cy="18" r="1" fill="currentColor"/>
+                <line x1="12" y1="18" x2="16" y2="18"/>
+              </svg>
+            </button>
+
+            <!-- Mode Switcher Liquid Glass Popover Menu (Top-Right) -->
+            <div id="mode-popover" class="hidden absolute right-4 top-12 w-56 rounded-3xl liquid-glass bg-zinc-900/90 p-1.5 z-50 popover-enter text-sm">
+              <button id="menu-mode-basic" type="button" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl hover:bg-white/10 transition text-left">
+                <div class="flex items-center gap-3">
+                  <span id="check-basic" class="text-amber-400 font-bold w-4">✓</span>
+                  <span class="font-medium text-white">Basic</span>
+                </div>
+                <span class="text-zinc-400 text-xs font-mono">+-×÷</span>
+              </button>
+
+              <button id="menu-mode-scientific" type="button" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl hover:bg-white/10 transition text-left">
+                <div class="flex items-center gap-3">
+                  <span id="check-scientific" class="text-amber-400 font-bold w-4 opacity-0">✓</span>
+                  <span class="font-medium text-white">Scientific</span>
+                </div>
+                <span class="text-zinc-400 text-xs italic font-serif">ƒ(x)</span>
+              </button>
+
+              <button id="menu-mode-notes" type="button" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl hover:bg-white/10 transition text-left">
+                <div class="flex items-center gap-3">
+                  <span id="check-notes" class="text-amber-400 font-bold w-4 opacity-0">✓</span>
+                  <span class="font-medium text-white">Math Notes</span>
+                </div>
+                <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              </button>
+
+              <div class="my-1 border-t border-white/10"></div>
+
+              <!-- Convert Toggle Switch inside Mode Menu -->
+              <div class="flex items-center justify-between px-3.5 py-2 rounded-2xl hover:bg-white/5">
+                <div class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+                  <span class="font-medium text-white">Convert</span>
+                </div>
+                <button id="toggle-convert-switch" type="button" role="switch" aria-checked="false" class="w-11 h-6 rounded-full bg-zinc-700 p-0.5 transition-colors duration-200 flex items-center">
+                  <span id="convert-knob" class="w-5 h-5 rounded-full bg-white shadow transform transition-transform duration-200"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================================================= -->
+          <!-- VIEW 1: CALCULATOR & CONVERTER VIEW                       -->
+          <!-- ========================================================= -->
+          <div id="calculator-main-view" class="relative z-10 flex-1 flex flex-col justify-end px-3.5 pb-2 overflow-hidden">
+
+            <!-- Standard / Scientific Expression & Result Display -->
+            <div id="standard-display-area" class="flex flex-col justify-end items-end px-2 pb-3 min-h-[122px] select-text relative">
+              <!-- Copy/Paste Bubble Tooltip -->
+              <div id="copy-tooltip" class="hidden absolute top-1 right-3 z-30 flex items-center gap-1 px-3 py-1.5 rounded-full liquid-glass bg-zinc-800/95 text-xs font-medium text-white shadow-lg">
+                <button id="btn-copy-result" type="button" class="hover:text-amber-400 px-1.5 transition">Copy</button>
+                <span class="text-white/20">|</span>
+                <button id="btn-paste-result" type="button" class="hover:text-amber-400 px-1.5 transition">Paste</button>
+              </div>
+
+              <!-- Live Expression Line (PEMDAS equation preview above result) -->
+              <div id="expression-display" class="w-full text-right text-zinc-400 text-lg sm:text-xl font-normal tracking-tight overflow-x-auto no-scrollbar whitespace-nowrap min-h-[28px] transition-all"></div>
+
+              <!-- Main Numeric Output Display -->
+              <div id="result-display-wrapper" class="w-full text-right cursor-pointer group" title="Tap to Copy / Paste result">
+                <div id="result-display" class="text-[64px] leading-[1.04] font-light tracking-tight text-white overflow-x-auto no-scrollbar whitespace-nowrap transition-all">0</div>
+              </div>
+            </div>
+
+            <!-- Unit & Currency Converter Display (Shown when Convert is ON) -->
+            <div id="converter-display-area" class="hidden flex-col justify-end px-1 pb-2 gap-1.5">
+              <!-- Category Selector Bar -->
+              <div id="converter-categories" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+                <!-- Populated dynamically by JS -->
+              </div>
+
+              <!-- Dual Conversion Card -->
+              <div class="relative rounded-3xl liquid-glass bg-zinc-900/75 p-3 border border-white/10 flex flex-col gap-2">
+                <!-- Top Unit Row -->
+                <div id="conv-row-top" class="flex items-center justify-between gap-2 pb-2 border-b border-white/10 cursor-pointer">
+                  <div class="flex flex-col">
+                    <select id="conv-unit-from" aria-label="Convert from unit" class="bg-transparent text-amber-400 font-semibold text-sm focus:outline-none cursor-pointer"></select>
+                    <span id="conv-unit-from-label" class="text-[11px] text-zinc-400">US Dollar</span>
+                  </div>
+                  <div id="conv-val-top" class="text-3xl font-light tracking-tight text-white text-right overflow-x-auto no-scrollbar">1</div>
+                </div>
+
+                <!-- Swap Button Floating Left/Center -->
+                <button id="btn-swap-units" type="button" title="Swap Units" class="liquid-pill absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center text-amber-400 z-10">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+                </button>
+
+                <!-- Bottom Unit Row -->
+                <div id="conv-row-bottom" class="flex items-center justify-between gap-2 pt-1 cursor-pointer">
+                  <div class="flex flex-col">
+                    <select id="conv-unit-to" aria-label="Convert to unit" class="bg-transparent text-zinc-200 font-semibold text-sm focus:outline-none cursor-pointer"></select>
+                    <span id="conv-unit-to-label" class="text-[11px] text-zinc-400">Euro</span>
+                  </div>
+                  <div id="conv-val-bottom" class="text-3xl font-light tracking-tight text-zinc-300 text-right overflow-x-auto no-scrollbar">0.92</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- KEYPADS CONTAINER (Adapts to Portrait Basic, Portrait Scientific, and Landscape Scientific) -->
+            <div id="keypads-wrapper" class="flex flex-col gap-2">
+
+              <!-- PORTRAIT SCIENTIFIC DRAWER (3 rows × 6 cols of scientific keys above the main grid) -->
+              <div id="scientific-keypad" class="hidden grid-cols-6 gap-1.5 pb-1">
+                <button type="button" data-sci="2nd" id="key-2nd" class="calc-key key-sci h-10">2<sup class="text-[9px]">nd</sup></button>
+                <button type="button" data-sci="(" class="calc-key key-sci h-10">(</button>
+                <button type="button" data-sci=")" class="calc-key key-sci h-10">)</button>
+                <button type="button" data-sci="mc" class="calc-key key-sci h-10">mc</button>
+                <button type="button" data-sci="m+" class="calc-key key-sci h-10">m+</button>
+                <button type="button" data-sci="m-" class="calc-key key-sci h-10">m−</button>
+
+                <button type="button" data-sci="x2" class="calc-key key-sci h-10">x²</button>
+                <button type="button" data-sci="x3" class="calc-key key-sci h-10">x³</button>
+                <button type="button" data-sci="xy" class="calc-key key-sci h-10">xʸ</button>
+                <button type="button" data-sci="ex" id="sci-ex" class="calc-key key-sci h-10">eˣ</button>
+                <button type="button" data-sci="10x" id="sci-10x" class="calc-key key-sci h-10">10ˣ</button>
+                <button type="button" data-sci="mr" class="calc-key key-sci h-10">mr</button>
+
+                <button type="button" data-sci="1/x" class="calc-key key-sci h-10">¹/ₓ</button>
+                <button type="button" data-sci="sqrt2" class="calc-key key-sci h-10">²√x</button>
+                <button type="button" data-sci="sqrt3" class="calc-key key-sci h-10">³√x</button>
+                <button type="button" data-sci="sqrty" class="calc-key key-sci h-10">ʸ√x</button>
+                <button type="button" data-sci="ln" id="sci-ln" class="calc-key key-sci h-10">ln</button>
+                <button type="button" data-sci="log10" id="sci-log" class="calc-key key-sci h-10">log₁₀</button>
+
+                <button type="button" data-sci="fact" class="calc-key key-sci h-10">x!</button>
+                <button type="button" data-sci="sin" id="sci-sin" class="calc-key key-sci h-10">sin</button>
+                <button type="button" data-sci="cos" id="sci-cos" class="calc-key key-sci h-10">cos</button>
+                <button type="button" data-sci="tan" id="sci-tan" class="calc-key key-sci h-10">tan</button>
+                <button type="button" data-sci="e" class="calc-key key-sci h-10">e</button>
+                <button type="button" data-sci="EE" class="calc-key key-sci h-10">EE</button>
+
+                <button type="button" data-sci="rad" id="sci-rad" class="calc-key key-sci h-10">Rad</button>
+                <button type="button" data-sci="sinh" id="sci-sinh" class="calc-key key-sci h-10">sinh</button>
+                <button type="button" data-sci="cosh" id="sci-cosh" class="calc-key key-sci h-10">cosh</button>
+                <button type="button" data-sci="tanh" id="sci-tanh" class="calc-key key-sci h-10">tanh</button>
+                <button type="button" data-sci="pi" class="calc-key key-sci h-10">π</button>
+                <button type="button" data-sci="rand" class="calc-key key-sci h-10">Rand</button>
+              </div>
+
+              <!-- MAIN 5×4 iOS 26 / iOS 27 BASIC KEYPAD -->
+              <!-- Exact iOS 26 / 27 Layout:
+                   Row 1: [⌫ Backspace] [AC / C] [%] [÷]
+                   Row 2: [7] [8] [9] [×]
+                   Row 3: [4] [5] [6] [−]
+                   Row 4: [1] [2] [3] [+]
+                   Row 5: [+/−] [0] [.] [=]
+              -->
+              <div id="basic-keypad" class="grid grid-cols-4 gap-2.5">
+                <!-- Row 1 -->
+                <button type="button" id="key-backspace" data-action="backspace" title="Delete last digit (Double-click to Clear All)" class="calc-key key-fn h-[74px] text-2xl" aria-label="Backspace">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"/>
+                  </svg>
+                </button>
+                <button type="button" id="key-clear" data-action="clear" title="Clear current number (C) or All Clear (AC)" class="calc-key key-fn h-[74px] text-[26px] font-medium">AC</button>
+                <button type="button" data-action="percent" class="calc-key key-fn h-[74px] text-[28px] font-medium">%</button>
+                <button type="button" data-op="÷" class="calc-key key-op h-[74px] text-[34px]">÷</button>
+
+                <!-- Row 2 -->
+                <button type="button" data-num="7" class="calc-key key-num h-[74px] text-[32px]">7</button>
+                <button type="button" data-num="8" class="calc-key key-num h-[74px] text-[32px]">8</button>
+                <button type="button" data-num="9" class="calc-key key-num h-[74px] text-[32px]">9</button>
+                <button type="button" data-op="×" class="calc-key key-op h-[74px] text-[34px]">×</button>
+
+                <!-- Row 3 -->
+                <button type="button" data-num="4" class="calc-key key-num h-[74px] text-[32px]">4</button>
+                <button type="button" data-num="5" class="calc-key key-num h-[74px] text-[32px]">5</button>
+                <button type="button" data-num="6" class="calc-key key-num h-[74px] text-[32px]">6</button>
+                <button type="button" data-op="−" class="calc-key key-op h-[74px] text-[34px]">−</button>
+
+                <!-- Row 4 -->
+                <button type="button" data-num="1" class="calc-key key-num h-[74px] text-[32px]">1</button>
+                <button type="button" data-num="2" class="calc-key key-num h-[74px] text-[32px]">2</button>
+                <button type="button" data-num="3" class="calc-key key-num h-[74px] text-[32px]">3</button>
+                <button type="button" data-op="+" class="calc-key key-op h-[74px] text-[34px]">+</button>
+
+                <!-- Row 5 (iOS 26 / 27 bottom-left is +/-) -->
+                <button type="button" data-action="negate" title="Toggle Positive/Negative (±)" class="calc-key key-num h-[74px] text-[26px] font-medium">+/−</button>
+                <button type="button" data-num="0" class="calc-key key-num h-[74px] text-[32px]">0</button>
+                <button type="button" data-num="." class="calc-key key-num h-[74px] text-[32px]">.</button>
+                <button type="button" id="key-equals" data-action="equals" class="calc-key key-op h-[74px] text-[34px]">=</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================================================= -->
+          <!-- VIEW 2: iOS 27 MATH NOTES MODE (Variables, Sliders, Graph)-->
+          <!-- ========================================================= -->
+          <div id="math-notes-view" class="hidden relative z-10 flex-1 flex-col justify-between px-3.5 pb-2 overflow-hidden">
+            <!-- Math Notes Header -->
+            <div class="flex items-center justify-between py-1.5 border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <span class="text-amber-400 font-semibold text-sm">Math Notes</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30">iOS 27 Engine</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button id="btn-notes-tab-sheet" type="button" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500 text-black">Equations</button>
+                <button id="btn-notes-tab-graph" type="button" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-zinc-800 text-zinc-300 hover:text-white">Live Graph</button>
+                <button id="btn-notes-tab-sketch" type="button" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-zinc-800 text-zinc-300 hover:text-white">Sketch</button>
+              </div>
+            </div>
+
+            <!-- Sub-tab A: Interactive Variable Pills, Scrubber & Siri AI Formula Sheet -->
+            <div id="notes-panel-sheet" class="flex-1 flex flex-col gap-2 py-2 overflow-y-auto no-scrollbar">
+              <!-- Siri AI Equation Generator Bar (iOS 27 Feature) -->
+              <div class="rounded-2xl liquid-glass bg-gradient-to-r from-indigo-950/70 via-purple-950/60 to-amber-950/50 p-2.5 border border-indigo-400/30">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-[11px] font-semibold text-indigo-300 flex items-center gap-1">
+                    <span class="inline-block w-2 h-2 rounded-full bg-gradient-to-r from-pink-400 to-amber-400 animate-pulse"></span>
+                    Siri AI Math Assistant (iOS 27)
+                  </span>
+                  <span class="text-[10px] text-zinc-400">Tap preset or type formula</span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                  <button type="button" data-preset="airship" class="px-2 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-[11px] text-white transition">✈️ Aerodynamic Drag</button>
+                  <button type="button" data-preset="loan" class="px-2 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-[11px] text-white transition">🏦 Mortgage & Tip</button>
+                  <button type="button" data-preset="physics" class="px-2 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-[11px] text-white transition">🚀 Projectile Orbit</button>
+                </div>
+              </div>
+
+              <!-- Interactive Variable Pills Bar (Tap any variable pill to scrub its value with a live slider!) -->
+              <div class="rounded-2xl bg-zinc-900/80 border border-white/10 p-2.5">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-[11px] font-medium text-zinc-400">Active Variable Pills (Tap to scrub value):</span>
+                  <span id="active-var-indicator" class="text-[11px] font-mono text-amber-400">speed = 20</span>
+                </div>
+                <div id="variable-pills-container" class="flex flex-wrap gap-1.5 mb-2">
+                  <!-- Populated dynamically from Math Notes variables -->
+                </div>
+                <!-- Live Scrubber Wheel Slider -->
+                <div id="var-scrubber-box" class="flex items-center gap-2 bg-black/50 px-3 py-1.5 rounded-xl border border-amber-500/30">
+                  <span id="scrubber-var-name" class="text-xs font-mono text-amber-300 w-16 truncate">speed</span>
+                  <input id="var-scrubber-slider" type="range" min="-100" max="500" step="1" value="20" class="flex-1 accent-amber-400 cursor-pointer" aria-label="Variable scrubber slider" />
+                  <span id="scrubber-var-val" class="text-xs font-mono text-white w-12 text-right">20</span>
+                </div>
+              </div>
+
+              <!-- Live Editable Math Notes Sheet (evaluates every line ending with '=' or variable assignment) -->
+              <div class="flex-1 flex flex-col rounded-2xl bg-zinc-950/90 border border-white/10 p-3 relative">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] text-zinc-400">Write variables (<code class="text-amber-300">x = 12</code>) or expressions ending with <code class="text-amber-300">=</code></span>
+                  <button id="btn-evaluate-notes" type="button" class="text-[11px] font-semibold text-amber-400 hover:underline">Solve All (=)</button>
+                </div>
+                <textarea id="math-notes-textarea" rows="6" class="w-full bg-transparent text-white font-mono text-xs leading-relaxed focus:outline-none resize-none border-b border-white/10 pb-2" spellcheck="false" aria-label="Math Notes Equations">speed = 20
+area = 250
+density = 1.225
+cd = 0.04
+drag = 0.5 * density * (speed ^ 2) * cd * area =
+power_kw = (drag * speed) / 1000 =</textarea>
+
+                <!-- Evaluated Results Output with Handwritten Orange Math Notes Styling -->
+                <div id="math-notes-results" class="mt-2 space-y-1 overflow-y-auto max-h-40 no-scrollbar">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub-tab B: Interactive 2D Live Graphing Engine -->
+            <div id="notes-panel-graph" class="hidden flex-1 flex-col gap-2 py-2 overflow-hidden">
+              <div class="flex items-center gap-1.5">
+                <div class="flex-1 flex items-center bg-zinc-900 border border-white/15 rounded-xl px-2.5 py-1.5">
+                  <span class="text-amber-400 font-serif italic mr-1.5 text-sm">y =</span>
+                  <input id="graph-equation-input" type="text" value="sin(x) * (speed / 10)" class="w-full bg-transparent text-white text-xs font-mono focus:outline-none" aria-label="Graph equation y equals" />
+                </div>
+                <button id="btn-plot-graph" type="button" class="px-3 py-1.5 rounded-xl bg-amber-500 text-black font-semibold text-xs">Plot</button>
+              </div>
+
+              <!-- Secondary Curve & Zoom Controls -->
+              <div class="flex items-center justify-between gap-1 text-[11px]">
+                <div class="flex items-center gap-1">
+                  <button type="button" data-graphfn="sin(x)" class="px-2 py-0.5 rounded-lg bg-zinc-800 text-zinc-300 hover:text-white">sin(x)</button>
+                  <button type="button" data-graphfn="cos(x) * 2" class="px-2 py-0.5 rounded-lg bg-zinc-800 text-zinc-300 hover:text-white">2·cos(x)</button>
+                  <button type="button" data-graphfn="0.2 * x^2 - 3" class="px-2 py-0.5 rounded-lg bg-zinc-800 text-zinc-300 hover:text-white">0.2x²−3</button>
+                  <button type="button" data-graphfn="sin(x) * (speed / 10)" class="px-2 py-0.5 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-400/30">Link: speed</button>
+                </div>
+                <div class="flex items-center gap-1">
+                  <button id="btn-graph-zoom-in" type="button" class="px-2 py-0.5 rounded-lg bg-zinc-800 text-white" title="Zoom In">+</button>
+                  <button id="btn-graph-zoom-out" type="button" class="px-2 py-0.5 rounded-lg bg-zinc-800 text-white" title="Zoom Out">−</button>
+                </div>
+              </div>
+
+              <!-- Interactive Graph Canvas Container -->
+              <div class="relative flex-1 rounded-2xl bg-zinc-950 border border-white/15 overflow-hidden flex items-center justify-center min-h-[260px]">
+                <canvas id="math-graph-canvas" class="w-full h-full block cursor-crosshair"></canvas>
+                <div id="graph-Readout" class="absolute top-2 left-2.5 px-2 py-1 rounded-lg bg-black/75 border border-white/10 text-[11px] font-mono text-amber-300 pointer-events-none">
+                  Hover/drag on curve to inspect (x, y)
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub-tab C: Freehand Apple Pencil Sketch & Handwritten Solver -->
+            <div id="notes-panel-sketch" class="hidden flex-1 flex-col gap-2 py-2 overflow-hidden">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5">
+                  <button type="button" data-pen="#ff9f0a" class="pen-color-btn w-6 h-6 rounded-full bg-[#ff9f0a] ring-2 ring-white" aria-label="Orange Ink"></button>
+                  <button type="button" data-pen="#ffffff" class="pen-color-btn w-6 h-6 rounded-full bg-white" aria-label="White Ink"></button>
+                  <button type="button" data-pen="#38bdf8" class="pen-color-btn w-6 h-6 rounded-full bg-sky-400" aria-label="Blue Ink"></button>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button id="btn-sketch-recognize" type="button" class="px-2.5 py-1 rounded-lg bg-amber-500 text-black text-xs font-semibold">✨ Solve Written Math</button>
+                  <button id="btn-sketch-clear" type="button" class="px-2.5 py-1 rounded-lg bg-zinc-800 text-zinc-300 text-xs">Clear Pad</button>
+                </div>
+              </div>
+
+              <div class="relative flex-1 rounded-2xl bg-[#141418] border border-white/15 overflow-hidden min-h-[270px]" style="background-image: radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px); background-size: 18px 18px;">
+                <canvas id="sketch-canvas" class="w-full h-full block cursor-crosshair touch-none"></canvas>
+                <div id="sketch-solved-overlay" class="absolute bottom-3 right-3 px-3 py-1.5 rounded-2xl bg-amber-500/20 border border-amber-400/40 text-amber-300 math-handwriting text-2xl">
+                  ∫₀^π sin(x) dx = 2
+                </div>
+              </div>
+            </div>
+
+            <!-- Back to Calculator Footer Button -->
+            <button id="btn-return-calc" type="button" class="mt-1 w-full py-2 rounded-2xl liquid-pill text-xs font-semibold text-amber-400 flex items-center justify-center gap-1.5">
+              <span>← Return to Keypad Calculator</span>
+            </button>
+          </div>
+
+          <!-- ========================================================= -->
+          <!-- SLIDE-UP / OVERLAY DRAWER: CALCULATION HISTORY            -->
+          <!-- ========================================================= -->
+          <div id="history-drawer" class="pointer-events-none opacity-0 translate-y-full drawer-transition absolute inset-x-0 bottom-0 top-14 z-40 rounded-t-[38px] liquid-glass bg-zinc-900/95 flex flex-col justify-between p-5 border-t border-white/20">
+            <!-- Grabber Handle & Header -->
+            <div>
+              <div class="w-10 h-1.5 bg-zinc-600 rounded-full mx-auto mb-3"></div>
+              <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                <button id="btn-history-edit" type="button" class="text-amber-400 text-sm font-medium hover:underline">Edit</button>
+                <h2 class="text-sm font-semibold text-white">History</h2>
+                <button id="btn-history-close" type="button" class="text-amber-400 text-sm font-semibold hover:underline">Done</button>
+              </div>
+            </div>
+
+            <!-- History List -->
+            <div id="history-list" class="flex-1 overflow-y-auto py-3 space-y-3 no-scrollbar">
+              <!-- Populated dynamically -->
+            </div>
+
+            <!-- History Footer -->
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span id="history-count-label" class="text-xs text-zinc-400">0 calculations</span>
+              <button id="btn-history-clear-all" type="button" class="text-xs font-semibold text-rose-400 hover:text-rose-300 px-2.5 py-1 rounded-lg bg-rose-500/10 border border-rose-500/20">Clear All</button>
+            </div>
+          </div>
+
+          <!-- iOS Home Indicator Bar -->
+          <div class="relative z-30 flex justify-center pt-1 pb-2 shrink-0">
+            <div class="w-32 h-1 bg-white/80 rounded-full"></div>
+          </div>
+
         </div>
       </div>
-      <div class="footer-bottom">
-        &copy; 2026 De Creative. All Rights Reserved.
-      </div>
     </div>
-  </footer>
+  </main>
+
+  <!-- Toast Notification (for Copy/Paste/Memory feedback) -->
+  <div id="ios-toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-opacity duration-200 px-4 py-2 rounded-full liquid-glass bg-zinc-900/90 text-xs font-medium text-amber-300 shadow-xl">
+    Copied to clipboard
+  </div>
 
   <script>
-    const PRODUCTS = [
-      // Wallpapers (13 Items)
-      { id:'wp-001', name:'Royal Damask Gold Wallpaper', category:'Wallpapers', description:'Classic gold damask patterns for a luxurious, regal interior atmosphere.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/QvZB2Shd/IMG-20260705-WA0022.jpg' },
-      { id:'wp-002', name:'Abstract Geometric Wallpaper', category:'Wallpapers', description:'Modern geometric lines to give spatial depth and a contemporary feel.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/1tWsbs26/IMG-20260705-WA0021.jpg' },
-      { id:'wp-003', name:'Textured Fabric Effect Wallpaper', category:'Wallpapers', description:'Subtle fabric-like texture bringing warmth and acoustic softening to rooms.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/ZRrbwhXB/IMG-20260705-WA0020-1.jpg' },
-      { id:'wp-004', name:'Vintage Floral Motif Wallpaper', category:'Wallpapers', description:'Elegant floral motifs over a muted background for classic aesthetics.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/ym0n4kqN/IMG-20260705-WA0019-1.jpg' },
-      { id:'wp-005', name:'Industrial Concrete Look Wallpaper', category:'Wallpapers', description:'Raw industrial concrete finish captured flawlessly in premium vinyl.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/Xr46403c/IMG-20260705-WA0018-1.jpg' },
-      { id:'wp-006', name:'Metallic Accent Wallpaper', category:'Wallpapers', description:'Rich metallic undertones that play beautifully with interior lighting.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/7dXrZ7GN/IMG-20260705-WA0023-1.jpg' },
-      { id:'wp-007', name:'Botanical Print Wallpaper', category:'Wallpapers', description:'Lush botanical prints bridging the gap between nature and architecture.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/rRFvy64S/IMG-20260705-WA0016-1.jpg' },
-      { id:'wp-008', name:'Subtle Linen Texture Wallpaper', category:'Wallpapers', description:'Minimalist linen texture designed to quietly elevate background spaces.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/b5StFw2W/IMG-20260705-WA0015-1.jpg' },
-      { id:'wp-009', name:'Classic Stripe Wallpaper', category:'Wallpapers', description:'Vertical stripes to increase perceived ceiling height and add structure.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/hJPT3z4L/IMG-20260705-WA0017-1.jpg' },
-      { id:'wp-010', name:'Charcoal Slate Wallpaper', category:'Wallpapers', description:'Deep charcoal stone aesthetic for dramatic, moody feature walls.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/xKz7HjwS/IMG-20260705-WA0024-1.jpg' },
-      { id:'wp-011', name:'Pastel Geometric Wallpaper', category:'Wallpapers', description:'Soft pastel geometries for bright, airy, and inviting spaces.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/bMspQdzv/IMG-20260705-WA0026-1.jpg' },
-      { id:'wp-012', name:'Victorian Tapestry Wallpaper', category:'Wallpapers', description:'Intricate Victorian-era tapestry replication for heritage aesthetics.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/hJLv11hy/IMG-20260705-WA0014-1.jpg' },
-      { id:'wp-013', name:'Satin Silk Wallpaper', category:'Wallpapers', description:'Smooth satin-like finish providing a soft, luxurious sheen.', specs:{ Material:'Non-Woven Vinyl', Durability:'Washable', Application:'Paste the Wall' }, image:'https://i.ibb.co/wrSxGb7q/IMG-20260705-WA0025.jpg' },
+    (function () {
+      'use strict';
 
-      // Services (1 Item)
-      { id:'svc-001', name:'Spatial Consultation & Installation', category:'Services', description:'On-site consultation with our interior experts followed by professional installation of all our products.', specs:{ Scope:'Full Interior', Deliverable:'End-to-End Execution', Area:'Kashmir Valley' }, image:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800' },
-      
-      // PVC Panels Inventory (35 Items)
-      { id:'pvc-001', name:'Marble-Effect PVC Cladding - Calacatta', category:'PVC Paneling', description:'100% waterproof structural alternative for wet zones. Replicates high-end marble.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/spJmRs23/IMG-20260703-WA0099.jpg' },
-      { id:'pvc-002', name:'Classic Onyx PVC Board', category:'PVC Paneling', description:'Elegant onyx stone finish for luxury interior walls and ceilings.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/k21gLmBM/IMG-20260703-WA0098.jpg' },
-      { id:'pvc-003', name:'Wood Grain PVC Panel - Walnut', category:'PVC Paneling', description:'Warm natural wood texture with the moisture resistance of premium PVC.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Textured Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/Rpdw9SdB/IMG-20260703-WA0096.jpg' },
-      { id:'pvc-004', name:'Abstract Geometric PVC Matrix', category:'PVC Paneling', description:'Contemporary pattern designed to dictate light and shadow across flat planes.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Satin', Waterproof:'Absolute' }, image:'https://i.ibb.co/kggdMMZ3/IMG-20260703-WA0094.jpg' },
-      { id:'pvc-005', name:'Floral Damask PVC Cladding', category:'PVC Paneling', description:'Classic damask print infused directly into a rigid, waterproof PVC core.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/d0bzR59Q/IMG-20260703-WA0093.jpg' },
-      { id:'pvc-006', name:'Venetian Plaster PVC Sheet', category:'PVC Paneling', description:'Industrial chic aesthetic mimicking the raw texture of Venetian plaster.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/XZwFT0dH/IMG-20260703-WA0090.jpg' },
-      { id:'pvc-007', name:'Golden Vein Marble PVC', category:'PVC Paneling', description:'Striking dark marble effect with rich golden veins for statement walls.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/nM4gTgsj/IMG-20260703-WA0091.jpg' },
-      { id:'pvc-008', name:'Brushed Steel Effect PVC', category:'PVC Paneling', description:'Modern metallic finish panel, perfect for commercial spaces and modern homes.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Brushed Metallic', Waterproof:'Absolute' }, image:'https://i.ibb.co/1Grfvwcv/IMG-20260703-WA0092.jpg' },
-      { id:'pvc-009', name:'White Ash Wood PVC Panel', category:'PVC Paneling', description:'Light, airy wood grain finish ideal for Scandinavian-inspired interior volumes.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/VYqXZ8y9/IMG-20260703-WA0086.jpg' },
-      { id:'pvc-010', name:'Charcoal Fluted PVC', category:'PVC Paneling', description:'Dramatic charcoal-stained louver profile creating deep architectural shadows.', specs:{ Material:'Rigid PVC', Thickness:'12mm', Finish:'Matte Charcoal', Waterproof:'Absolute' }, image:'https://i.ibb.co/0yX34rc8/IMG-20260703-WA0085.jpg' },
-      { id:'pvc-011', name:'Seamless Concrete PVC', category:'PVC Paneling', description:'Urban industrial concrete look with zero porosity and simple installation.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/tMf5S8nv/IMG-20260703-WA0087.jpg' },
-      { id:'pvc-012', name:'Royal Motif PVC Board', category:'PVC Paneling', description:'Intricate traditional motifs designed for high-end residential ceilings.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Satin', Waterproof:'Absolute' }, image:'https://i.ibb.co/FL92pCcN/IMG-20260703-WA0088.jpg' },
-      { id:'pvc-013', name:'Travertine Stone PVC Panel', category:'PVC Paneling', description:'Warm, earthy travertine stone finish for a sophisticated organic aesthetic.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/Rpjh6G9T/IMG-20260703-WA0083.jpg' },
-      { id:'pvc-014', name:'Midnight Granite PVC', category:'PVC Paneling', description:'Deep, dark granite aesthetic. Impervious to moisture and simple to clean.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/3yTKXRdF/IMG-20260703-WA0084.jpg' },
-      { id:'pvc-015', name:'Woven Rattan Effect PVC', category:'PVC Paneling', description:'Tropical rattan texture replicated in highly durable, moisture-proof PVC.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Textured', Waterproof:'Absolute' }, image:'https://i.ibb.co/FLSqrG1R/IMG-20260703-WA0082.jpg' },
-      { id:'pvc-016', name:'Statvario Marble PVC', category:'PVC Paneling', description:'Classic Italian marble aesthetic with crisp white background and grey veining.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/qXL5f0N/IMG-20260703-WA0074.jpg' },
-      { id:'pvc-017', name:'Smoked Oak Wood PVC', category:'PVC Paneling', description:'Deep, rich smoked oak finish for a traditional and warm spatial atmosphere.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/p6DnGyHn/IMG-20260703-WA0078.jpg' },
-      { id:'pvc-018', name:'Geometric Grid PVC Matrix', category:'PVC Paneling', description:'Crisp, modern grid pattern for accent walls and contemporary ceilings.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Satin White', Waterproof:'Absolute' }, image:'https://i.ibb.co/DDh3VdSB/IMG-20260703-WA0077.jpg' },
-      { id:'pvc-019', name:'Rustic Pine PVC Cladding', category:'PVC Paneling', description:'Knotty pine wood texture bringing rustic cabin aesthetics to modern spaces.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/0VyMwPLD/IMG-20260703-WA0079.jpg' },
-      { id:'pvc-020', name:'Emperador Dark Marble PVC', category:'PVC Paneling', description:'Luxurious dark brown marble finish with striking crystalline accents.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/9kG6W7pH/IMG-20260703-WA0075.jpg' },
-      { id:'pvc-021', name:'Silk Plaster PVC Sheet', category:'PVC Paneling', description:'Soft, subtle texture mimicking the look of applied silk plaster.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/svtyYpKY/IMG-20260703-WA0073.jpg' },
-      { id:'pvc-022', name:'Burmese Teak PVC Panel', category:'PVC Paneling', description:'Golden teak wood grain, perfect for adding warmth to commercial interiors.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Satin', Waterproof:'Absolute' }, image:'https://i.ibb.co/6RjMVhZs/IMG-20260703-WA0076.jpg' },
-      { id:'pvc-023', name:'Quartzite Stone PVC', category:'PVC Paneling', description:'Sparkling quartzite finish providing a premium look for feature walls.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Gloss Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/5grHQrvc/IMG-20260703-WA0070.jpg' },
-      { id:'pvc-024', name:'Herringbone Wood PVC', category:'PVC Paneling', description:'Classic herringbone wood pattern integrated into a single seamless panel.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/HLgYwgqw/IMG-20260703-WA0071.jpg' },
-      { id:'pvc-025', name:'Oxidized Copper PVC', category:'PVC Paneling', description:'Industrial oxidized metal finish for bold, brutalist architectural designs.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/sJDvnZdJ/IMG-20260703-WA0072.jpg' },
-      { id:'pvc-026', name:'Minimalist White PVC', category:'PVC Paneling', description:'Pure, untextured white panel for clean lines and absolute minimalism.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/RkrTCLZJ/IMG-20260703-WA0068.jpg' },
-      { id:'pvc-027', name:'Vintage Damask PVC', category:'PVC Paneling', description:'Faded vintage damask pattern providing a shabby-chic aesthetic.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/n4Ptw3Q/IMG-20260703-WA0080.jpg' },
-      { id:'pvc-028', name:'Limestone Texture PVC', category:'PVC Paneling', description:'Subtle, porous limestone look for soft organic interior layouts.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/Sh7x8Y1/IMG-20260703-WA0081.jpg' },
-      { id:'pvc-029', name:'High-Gloss Black PVC', category:'PVC Paneling', description:'Absolute black panel with a mirror-like high gloss finish.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/sv0nM3LY/IMG-20260703-WA0089.jpg' },
-      { id:'pvc-030', name:'Terrazzo Print PVC Panel', category:'PVC Paneling', description:'Playful terrazzo stone pattern bringing modern flair to any volume.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'Satin', Waterproof:'Absolute' }, image:'https://i.ibb.co/4nWTRqK3/IMG-20260703-WA0095.jpg' },
-      { id:'pvc-031', name:'Ebony Wood Grain PVC', category:'PVC Paneling', description:'Striking black ebony wood texture for dramatic spatial accents.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Matte Texture', Waterproof:'Absolute' }, image:'https://i.ibb.co/pjBx31nF/IMG-20260703-WA0097.jpg' },
-      { id:'pvc-032', name:'Slate Stone Cladding PVC', category:'PVC Paneling', description:'Rough slate stone texture perfectly replicated in lightweight PVC.', specs:{ Material:'Rigid PVC', Thickness:'10mm', Finish:'Textured', Waterproof:'Absolute' }, image:'https://i.ibb.co/DZzX1dD/IMG-20260703-WA0100.jpg' },
-      { id:'pvc-033', name:'Arabesque Pattern PVC', category:'PVC Paneling', description:'Intricate Middle-Eastern inspired geometry for unique ceiling installations.', specs:{ Material:'Rigid PVC', Thickness:'9mm', Finish:'Matte', Waterproof:'Absolute' }, image:'https://i.ibb.co/1YbbS6yJ/IMG-20260703-WA0106.jpg' },
-      { id:'pvc-034', name:'Carrara Marble PVC Sheet', category:'PVC Paneling', description:'Soft grey veining on a pristine white background. Classic Carrara look.', specs:{ Material:'Rigid PVC', Thickness:'8mm', Finish:'High Gloss', Waterproof:'Absolute' }, image:'https://i.ibb.co/5hHwNhXS/IMG-20260703-WA0107.jpg' },
-      { id:'pvc-035', name:'Acoustic Slat PVC Panel', category:'PVC Paneling', description:'Modern vertical slat design that mimics architectural acoustic panels.', specs:{ Material:'Rigid PVC', Thickness:'12mm', Finish:'Matte Wood', Waterproof:'Absolute' }, image:'https://i.ibb.co/kscvr7tT/IMG-20260703-WA0101.jpg' }
-    ];
+      // =========================================================================
+      // 1. STATE & CONFIGURATION
+      // =========================================================================
+      const state = {
+        mode: 'basic',          // 'basic' | 'scientific' | 'notes'
+        convertEnabled: false,  // true when Convert toggle is active
+        orientation: 'portrait',// 'portrait' | 'landscape'
+        material: 'glass',      // 'glass' | 'oled'
+        soundEnabled: true,
 
-    const PREVIOUS_WORKS = [
-      { image: 'https://i.ibb.co/mV2HWRHb/IMG-20260705-WA0063.jpg' },
-      { image: 'https://i.ibb.co/DD9tmypj/IMG-20260705-WA0059.jpg' },
-      { image: 'https://i.ibb.co/xK7ffMvQ/IMG-20260705-WA0060.jpg' },
-      { image: 'https://i.ibb.co/nNwgSqT6/IMG-20260705-WA0061.jpg' },
-      { image: 'https://i.ibb.co/HfS76xzj/IMG-20260705-WA0065.jpg' },
-      { image: 'https://i.ibb.co/Kc3gXs7w/IMG-20260705-WA0055.jpg' },
-      { image: 'https://i.ibb.co/DPsq1BDT/IMG-20260705-WA0043.jpg' },
-      { image: 'https://i.ibb.co/gQHwgKZ/IMG-20260705-WA0039.jpg' },
-      { image: 'https://i.ibb.co/G3ntbt2H/IMG-20260705-WA0044.jpg' },
-      { image: 'https://i.ibb.co/XZyy8K8X/IMG-20260705-WA0042.jpg' },
-      { image: 'https://i.ibb.co/x867jvb6/IMG-20260705-WA0048.jpg' },
-      { image: 'https://i.ibb.co/HpR6KrvX/IMG-20260705-WA0049.jpg' },
-      { image: 'https://i.ibb.co/MxM97GVv/IMG-20260705-WA0052.jpg' },
-      { image: 'https://i.ibb.co/hRwSWgf3/IMG-20260705-WA0057.jpg' },
-      { image: 'https://i.ibb.co/6RRzR0jf/IMG-20260705-WA0062.jpg' }
-    ];
+        // Calculator Engine State
+        currentInput: '0',      // String currently being typed (e.g. '270')
+        tokens: [],             // Array of tokens in current expression, e.g. ['32', '+', '45', '+']
+        justEvaluated: false,   // True right after pressing '='
+        lastOperator: null,     // For repeating last operation on '=' (e.g. '×')
+        lastOperand: null,      // For repeating last operation on '=' (e.g. 2)
+        lastExpressionText: '', // Shown in muted top line after '='
+        openParens: 0,
 
-    const CATEGORIES = ['All', 'Wallpapers', 'PVC Paneling', 'Services'];
-    const WA_NUMBER = '916006824595';
+        // Scientific State
+        secondActive: false,
+        radiansMode: false,     // false = Degrees, true = Radians
+        memoryValue: 0,
+        hasMemory: false,
 
-    let cart = [];
-    try { cart = JSON.parse(localStorage.getItem('deCreativeCart') || '[]'); } catch (e) {}
+        // Converter State
+        convCategory: 'Currency',
+        convFromUnit: 'USD',
+        convToUnit: 'EUR',
+        convActiveRow: 'top',   // 'top' | 'bottom'
 
-    function saveCart() { try { localStorage.setItem('deCreativeCart', JSON.stringify(cart)); } catch (e) {} }
-    function isInCart(id) { return cart.some(i => i.id === id); }
-    
-    function addItem(product) { 
-      if (!isInCart(product.id)) {
-        cart.push({ ...product, qty: 1 }); 
-        saveCart(); 
-        renderCart(); 
-        updateAddButtons(); 
-      }
-    }
-    
-    function removeItem(id) { 
-      cart = cart.filter(i => i.id !== id); 
-      saveCart(); 
-      renderCart(); 
-      updateAddButtons(); 
-    }
-    
-    function updateQty(id, qty) { 
-      if (qty < 1) return removeItem(id); 
-      cart = cart.map(i => i.id === id ? { ...i, qty } : i); 
-      saveCart(); 
-      renderCart(); 
-    }
+        // History State
+        historyEditMode: false,
+        history: [
+          { id: 'h1', expr: '32 + 45 + 198', result: '275', group: 'Today' },
+          { id: 'h2', expr: '1,250 × 18%', result: '225', group: 'Today' },
+          { id: 'h3', expr: 'sin(30°) × 100', result: '50', group: 'Previous 7 Days' }
+        ],
 
-    // Handles ALL "Add to Quote" button clicks cleanly using event delegation
-    document.body.addEventListener('click', function(e) {
-      if (e.target.classList.contains('btn-add')) {
-        e.preventDefault();
-        e.stopPropagation();
-        const id = e.target.dataset.id;
-        const product = PRODUCTS.find(p => p.id === id);
-        if (product && !isInCart(id)) {
-          addItem(product);
-        }
-      }
-    });
-
-    const routes = {
-      '/': renderHome,
-      '/catalog': renderCatalog,
-      '/works': renderWorks,
-      '/about': renderAbout,
-      '/contact': renderContact
-    };
-
-    function getRoute() {
-      const hash = window.location.hash.replace('#', '') || '/';
-      if (hash.startsWith('/product/')) return { page: 'product', id: hash.replace('/product/', '') };
-      return { page: hash };
-    }
-
-    function navigate() {
-      const route = getRoute();
-      const app = document.getElementById('app');
-      window.scrollTo(0, 0);
-      
-      const stickyBar = document.getElementById('stickyBackBar');
-      if (route.page === '/' || route.page === '') {
-        stickyBar.style.display = 'none';
-      } else {
-        stickyBar.style.display = 'block';
-      }
-      
-      if (route.page === 'product') renderProductDetail(route.id);
-      else if (routes[route.page]) routes[route.page](app);
-      else renderHome(app);
-      
-      updateActiveNav();
-      document.getElementById('mobileMenu').classList.remove('open');
-      updateAddButtons();
-    }
-
-    function updateActiveNav() {
-      const route = getRoute();
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        const href = link.getAttribute('href').replace('#', '');
-        link.classList.toggle('active', href === route.page || (route.page === 'product' && href === '/catalog'));
-      });
-    }
-
-    function renderHome(app) {
-      app.innerHTML = `
-        <div class="hero">
-          <div class="hero-overlay"></div>
-          <div class="container hero-container">
-            <div class="hero-main">
-              <div class="hero-logo-wrapper">
-                <img src="https://i.ibb.co/p6nDgt03/file-000000008e0471f8be66a85d17cc2997.png" alt="De Creative Logo">
-              </div>
-              <h1 class="hero-title">DE CREATIVE</h1>
-              <p class="hero-tagline">Architectural Surfaces & Premium Paneling</p>
-              
-              <div class="hero-services">
-                <span class="service-tag">Premium Wallpapers</span>
-                <span class="service-tag">PVC Paneling</span>
-                <span class="service-tag">Professional Installation</span>
-              </div>
-
-              <div class="hero-actions">
-                <a href="#/catalog" data-route class="btn btn-primary">View Products</a>
-                <a href="#/works" data-route class="btn btn-outline" style="color:var(--text-main); border-color:var(--text-main);">Our Work</a>
-              </div>
-            </div>
-
-            <div class="glass-card">
-              <h3>Our Branches</h3>
-              <div class="branch">
-                <h4>Kangan, Ganderbal</h4>
-                <p>Main Office at Main Chowk.</p>
-                <small>Near Tehzeeb Restaurant</small>
-              </div>
-              <div class="branch">
-                <h4>Rainawari, Srinagar</h4>
-                <p>Branch office at Rainawari.</p>
-              </div>
-              <a href="#/contact" data-route class="btn btn-outline" style="width: 100%; margin-top: 1rem;">Contact Us</a>
-            </div>
-          </div>
-        </div>
-        
-        <section class="section">
-          <div class="container">
-            <h2 class="title" style="text-align:center; margin-bottom: 3rem;">Popular Products</h2>
-            <div class="product-grid">
-              ${PRODUCTS.slice(13, 17).map(p => createProductCard(p)).join('')}
-            </div>
-            <div style="text-align: center; margin-top: 3rem;">
-              <a href="#/catalog" data-route class="btn btn-primary">See All Products</a>
-            </div>
-          </div>
-        </section>
-      `;
-    }
-
-    function createProductCard(p) {
-      const added = isInCart(p.id);
-      return `
-        <a href="#/product/${p.id}" data-route class="product-card">
-          <div class="product-img">
-            <img src="${p.image}" alt="${p.name}">
-          </div>
-          <div class="product-info">
-            <div class="product-cat">${p.category}</div>
-            <h3 class="product-name">${p.name}</h3>
-            <div class="product-action">
-              <button class="btn-add ${added ? 'added' : ''}" data-id="${p.id}">
-                ${added ? 'Added to Quote' : 'Add to Quote +'}
-              </button>
-            </div>
-          </div>
-        </a>
-      `;
-    }
-
-    let catalogState = { category: 'All', search: '' };
-
-    function renderCatalog(app) {
-      app.innerHTML = `
-        <div class="container section">
-          <h1 class="title">Our Products</h1>
-          <p style="color:var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; max-width: 600px;">Browse our complete range of premium materials. Add items to your quote list, and we'll send you a formal estimate via WhatsApp.</p>
-          
-          <div class="filter-bar">
-            <div class="category-tabs" id="filterTabs">
-              ${CATEGORIES.map(c => `<button class="tab-btn ${c === catalogState.category ? 'active' : ''}" data-cat="${c}">${c}</button>`).join('')}
-            </div>
-            <input type="text" class="search-box" id="searchInput" placeholder="Search products..." value="${catalogState.search}">
-          </div>
-
-          <div class="product-grid" id="catalogGrid"></div>
-        </div>
-      `;
-      
-      updateCatalogGrid();
-
-      document.getElementById('filterTabs').addEventListener('click', e => {
-        if (e.target.classList.contains('tab-btn')) {
-          document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-          e.target.classList.add('active');
-          catalogState.category = e.target.dataset.cat;
-          updateCatalogGrid();
-        }
-      });
-
-      document.getElementById('searchInput').addEventListener('input', e => {
-        catalogState.search = e.target.value.toLowerCase();
-        updateCatalogGrid();
-      });
-    }
-
-    function updateCatalogGrid() {
-      const grid = document.getElementById('catalogGrid');
-      if (!grid) return;
-      
-      const filtered = PRODUCTS.filter(p => {
-        const matchCat = catalogState.category === 'All' || p.category === catalogState.category;
-        const matchSearch = p.name.toLowerCase().includes(catalogState.search) || p.category.toLowerCase().includes(catalogState.search);
-        return matchCat && matchSearch;
-      });
-
-      if (filtered.length === 0) {
-        grid.innerHTML = `<p style="grid-column: 1/-1; color: var(--text-muted); padding: 2rem 0;">No products found matching your criteria.</p>`;
-        return;
-      }
-
-      grid.innerHTML = filtered.map(p => createProductCard(p)).join('');
-    }
-
-    function renderProductDetail(id) {
-      const p = PRODUCTS.find(x => x.id === id);
-      const app = document.getElementById('app');
-      
-      if (!p) {
-        app.innerHTML = `<div class="container section"><h1 class="title">Product Not Found</h1><a href="#/catalog" data-route class="btn btn-outline">Back to Catalog</a></div>`;
-        return;
-      }
-
-      const added = isInCart(p.id);
-
-      app.innerHTML = `
-        <div class="container section">
-          <a href="#/catalog" data-route style="color:var(--primary); font-size: 0.9rem; margin-bottom: 2rem; display: inline-block;">← Back to Products</a>
-          
-          <div class="detail-grid">
-            <div class="detail-img">
-              <img src="${p.image}" alt="${p.name}">
-            </div>
-            <div class="detail-info">
-              <div style="color:var(--primary); text-transform:uppercase; font-size:0.85rem; margin-bottom: 1rem; font-weight:600; letter-spacing:1px;">${p.category}</div>
-              <h1>${p.name}</h1>
-              <p class="detail-desc">${p.description}</p>
-              
-              <div class="specs-list">
-                <h3 style="font-size:1.1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; font-family: var(--font-heading);">Specifications</h3>
-                ${Object.entries(p.specs).map(([k,v]) => `
-                  <div class="spec-item">
-                    <span class="spec-label">${k}</span>
-                    <span class="spec-value">${v}</span>
-                  </div>
-                `).join('')}
-              </div>
-
-              <button class="btn-add ${added ? 'added' : ''}" data-id="${p.id}" style="padding: 1rem; font-size: 1rem; background: ${added ? 'var(--primary)' : 'transparent'};">
-                ${added ? 'Added to Quote Request' : 'Add to Quote Request +'}
-              </button>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderWorks(app) {
-      app.innerHTML = `
-        <div class="container section">
-          <h1 class="title" style="text-align:center; margin-bottom: 1rem;">Our Installations</h1>
-          <p style="text-align:center; color:var(--text-muted); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Explore our recent interior transformations, featuring our premium wallpapers and PVC paneling installed by our experts across Kashmir.</p>
-          
-          <div class="works-grid">
-            ${PREVIOUS_WORKS.map(w => `
-              <div class="work-item">
-                <img src="${w.image}" loading="lazy" alt="Installation Work by De Creative">
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-    }
-
-    function renderAbout(app) {
-      app.innerHTML = `
-        <div class="container section">
-          <div class="detail-grid" style="align-items: center;">
-            <div>
-              <h1 class="title">About De Creative</h1>
-              <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1.5rem;">We believe the materials surrounding you shape your everyday experience. Based in the heart of Kashmir, De Creative is a specialized supplier and installer of architectural surfaces.</p>
-              <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem;">We bypass generic retail to bring you direct access to premium wallpapers and robust PVC paneling. From the initial consultation at our Ganderbal or Srinagar offices to the final installation in your home, we ensure flawless execution.</p>
-              
-              <div style="display:flex; gap: 1rem;">
-                <a href="#/catalog" data-route class="btn btn-primary">View Products</a>
-                <a href="#/contact" data-route class="btn btn-outline">Contact Us</a>
-              </div>
-            </div>
-            <div class="detail-img">
-              <img src="https://i.ibb.co/p6nDgt03/file-000000008e0471f8be66a85d17cc2997.png" alt="De Creative Logo" style="background: var(--surface); padding: 4rem;">
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderContact(app) {
-      app.innerHTML = `
-        <div class="container section">
-          <div class="contact-grid">
-            <div class="contact-details">
-              <h1 class="title" style="margin-bottom: 2rem;">Get in Touch</h1>
-              
-              <div class="contact-block">
-                <h3>Main Office (Ganderbal)</h3>
-                <p>Main Chowk Kangan<br>Near Tehzeeb Restaurant<br>Jammu & Kashmir</p>
-              </div>
-              
-              <div class="contact-block">
-                <h3>Branch (Srinagar)</h3>
-                <p>Branch office at Rainawari<br>Srinagar, Jammu & Kashmir</p>
-              </div>
-              
-              <div class="contact-block">
-                <h3>Direct Contact</h3>
-                <p>Phone: +91 600 682 4595</p>
-              </div>
-            </div>
-            
-            <div style="background: var(--bg); padding: 3rem;">
-              <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary);">Send an Inquiry</h3>
-              <form id="contactForm">
-                <input type="text" id="genName" class="cart-input" placeholder="Your Name" required>
-                <input type="tel" id="genPhone" class="cart-input" placeholder="Your Phone Number" required>
-                <textarea id="genMessage" class="cart-input" placeholder="How can we help you?" rows="4" required style="resize:vertical;"></textarea>
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Send Message via WhatsApp</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      `;
-
-      setTimeout(() => {
-        document.getElementById('contactForm')?.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const name = document.getElementById('genName').value || 'a Customer';
-          const details = document.getElementById('genMessage').value;
-          const msg = `Hey Akeel sir, my name is ${name}.\n\n${details}`;
-          window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
-        });
-      }, 50);
-    }
-
-    function updateAddButtons() {
-      document.querySelectorAll('.btn-add').forEach(btn => {
-        const id = btn.dataset.id;
-        if (isInCart(id)) {
-          btn.classList.add('added');
-          btn.textContent = btn.textContent.includes('+') ? 'Added to Quote' : 'Added to Quote Request';
-        } else {
-          btn.classList.remove('added');
-          btn.textContent = btn.textContent.includes('Request') ? 'Add to Quote Request +' : 'Add to Quote +';
-        }
-      });
-    }
-
-    function renderCart() {
-      document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
-      
-      const list = document.getElementById('cartItemsList');
-      if (cart.length === 0) {
-        list.innerHTML = `<div style="color:var(--text-muted); text-align:center; margin-top:2rem;">Your quote list is empty.</div>`;
-        return;
-      }
-      
-      list.innerHTML = cart.map(item => `
-        <div class="cart-item">
-          <div class="cart-item-img"><img src="${item.image}" alt=""></div>
-          <div>
-            <h4>${item.name}</h4>
-            <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 0.5rem; text-transform:uppercase;">${item.category}</div>
-            <div class="cart-item-controls">
-              <button class="qty-btn" onclick="updateQty('${item.id}', ${item.qty - 1})">-</button>
-              <span style="width: 20px; text-align: center; font-size: 0.9rem;">${item.qty}</span>
-              <button class="qty-btn" onclick="updateQty('${item.id}', ${item.qty + 1})">+</button>
-              <button class="remove-btn" onclick="removeItem('${item.id}')">Remove</button>
-            </div>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // Setup Routing
-      document.body.addEventListener('click', e => {
-        const link = e.target.closest('[data-route]');
-        if (link) {
-          e.preventDefault();
-          window.location.hash = link.getAttribute('href');
-        }
-      });
-      window.addEventListener('hashchange', navigate);
-      
-      // Setup UI Toggles
-      document.getElementById('menuToggle').addEventListener('click', () => {
-        document.getElementById('mobileMenu').classList.toggle('open');
-      });
-      
-      document.getElementById('openCartBtn').addEventListener('click', () => {
-        document.getElementById('cartOverlay').classList.add('open');
-        document.getElementById('cartDrawer').classList.add('open');
-      });
-      
-      const closeCart = () => {
-        document.getElementById('cartOverlay').classList.remove('open');
-        document.getElementById('cartDrawer').classList.remove('open');
+        // Math Notes State
+        variables: {
+          speed: 20,
+          area: 250,
+          density: 1.225,
+          cd: 0.04
+        },
+        selectedVar: 'speed',
+        graphScale: 35,         // pixels per unit
+        penColor: '#ff9f0a'
       };
-      
-      document.getElementById('closeCartBtn').addEventListener('click', closeCart);
-      document.getElementById('cartOverlay').addEventListener('click', closeCart);
 
-      // WhatsApp Quote Submission
-      document.getElementById('sendQuoteBtn').addEventListener('click', () => {
-        if (cart.length === 0) return alert('Your quote list is empty.');
-        
-        const name = document.getElementById('clientName').value || 'a Customer';
-        const lines = cart.map(i => `- ${i.qty}x ${i.name}`).join('\n');
-        
-        const msg = `Hey Akeel sir, my name is ${name}. I need the following products:\n\n${lines}`;
-        window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+      // Load saved history safely
+      try {
+        const savedHist = localStorage.getItem('ios27_calc_history');
+        if (savedHist) {
+          const parsed = JSON.parse(savedHist);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            state.history = parsed;
+          }
+        }
+      } catch (err) {
+        // Ignore storage errors in sandboxed iframe
+      }
+
+      function saveHistory() {
+        try {
+          localStorage.setItem('ios27_calc_history', JSON.stringify(state.history.slice(0, 50)));
+        } catch (err) {
+          // Ignore storage errors
+        }
+      }
+
+      // =========================================================================
+      // 2. WEB AUDIO SYNTHESIZER (Authentic iOS Tock / Haptic Click)
+      // =========================================================================
+      let audioCtx = null;
+      function playKeyClick(type) {
+        if (!state.soundEnabled) return;
+        try {
+          if (!audioCtx) {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass) return;
+            audioCtx = new AudioContextClass();
+          }
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          const now = audioCtx.currentTime;
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+
+          // Subtle frequency variation by key type
+          const baseFreq = type === 'op' ? 195 : type === 'fn' ? 175 : type === 'sci' ? 220 : 155;
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(baseFreq, now);
+          osc.frequency.exponentialRampToValueAtTime(48, now + 0.028);
+
+          gain.gain.setValueAtTime(0.14, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.028);
+
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.03);
+        } catch (e) {
+          // Ignore audio errors
+        }
+      }
+
+      // =========================================================================
+      // 3. UNIT & CURRENCY CONVERSION DATA (12 Categories)
+      // =========================================================================
+      const CONVERSION_DATA = {
+        Currency: {
+          icon: '💱',
+          units: {
+            USD: { name: 'US Dollar ($)', rate: 1 },
+            EUR: { name: 'Euro (€)', rate: 0.92 },
+            GBP: { name: 'British Pound (£)', rate: 0.785 },
+            INR: { name: 'Indian Rupee (₹)', rate: 84.1 },
+            JPY: { name: 'Japanese Yen (¥)', rate: 149.8 },
+            CAD: { name: 'Canadian Dollar (CA$)', rate: 1.38 },
+            AUD: { name: 'Australian Dollar (A$)', rate: 1.51 },
+            CHF: { name: 'Swiss Franc (CHF)', rate: 0.865 }
+          }
+        },
+        Length: {
+          icon: '📏',
+          units: {
+            m: { name: 'Meters', rate: 1 },
+            km: { name: 'Kilometers', rate: 0.001 },
+            cm: { name: 'Centimeters', rate: 100 },
+            mm: { name: 'Millimeters', rate: 1000 },
+            mi: { name: 'Miles', rate: 0.000621371 },
+            yd: { name: 'Yards', rate: 1.09361 },
+            ft: { name: 'Feet', rate: 3.28084 },
+            in: { name: 'Inches', rate: 39.3701 },
+            nmi: { name: 'Nautical Miles', rate: 0.000539957 }
+          }
+        },
+        Weight: {
+          icon: '⚖️',
+          units: {
+            kg: { name: 'Kilograms', rate: 1 },
+            g: { name: 'Grams', rate: 1000 },
+            mg: { name: 'Milligrams', rate: 1e6 },
+            lb: { name: 'Pounds', rate: 2.20462262 },
+            oz: { name: 'Ounces', rate: 35.27396 },
+            st: { name: 'Stone', rate: 0.157473 }
+          }
+        },
+        Temperature: {
+          icon: '🌡️',
+          custom: true,
+          units: {
+            C: { name: 'Celsius (°C)' },
+            F: { name: 'Fahrenheit (°F)' },
+            K: { name: 'Kelvin (K)' }
+          }
+        },
+        Volume: {
+          icon: '🧪',
+          units: {
+            L: { name: 'Liters', rate: 1 },
+            mL: { name: 'Milliliters', rate: 1000 },
+            gal: { name: 'US Gallons', rate: 0.264172 },
+            qt: { name: 'US Quarts', rate: 1.05669 },
+            cup: { name: 'US Cups', rate: 4.22675 },
+            floz: { name: 'US Fluid Ounces', rate: 33.814 }
+          }
+        },
+        Area: {
+          icon: '📐',
+          units: {
+            sqm: { name: 'Square Meters', rate: 1 },
+            sqkm: { name: 'Square Kilometers', rate: 1e-6 },
+            sqft: { name: 'Square Feet', rate: 10.7639 },
+            ac: { name: 'Acres', rate: 0.000247105 },
+            ha: { name: 'Hectares', rate: 0.0001 }
+          }
+        },
+        Speed: {
+          icon: '🏎️',
+          units: {
+            kmh: { name: 'Kilometers / Hour', rate: 1 },
+            mph: { name: 'Miles / Hour', rate: 0.621371 },
+            ms: { name: 'Meters / Second', rate: 0.277778 },
+            kn: { name: 'Knots', rate: 0.539957 }
+          }
+        },
+        Time: {
+          icon: '⏱️',
+          units: {
+            s: { name: 'Seconds', rate: 1 },
+            min: { name: 'Minutes', rate: 1 / 60 },
+            hr: { name: 'Hours', rate: 1 / 3600 },
+            day: { name: 'Days', rate: 1 / 86400 },
+            wk: { name: 'Weeks', rate: 1 / 604800 }
+          }
+        },
+        Data: {
+          icon: '💾',
+          units: {
+            MB: { name: 'Megabytes', rate: 1 },
+            GB: { name: 'Gigabytes', rate: 0.001 },
+            TB: { name: 'Terabytes', rate: 1e-6 },
+            KB: { name: 'Kilobytes', rate: 1000 }
+          }
+        },
+        Energy: {
+          icon: '⚡',
+          units: {
+            J: { name: 'Joules', rate: 1 },
+            kJ: { name: 'Kilojoules', rate: 0.001 },
+            cal: { name: 'Calories (cal)', rate: 0.239006 },
+            kcal: { name: 'Kilocalories (Cal)', rate: 0.000239006 },
+            kWh: { name: 'Kilowatt-Hours', rate: 2.77778e-7 }
+          }
+        },
+        Power: {
+          icon: '🔌',
+          units: {
+            W: { name: 'Watts', rate: 1 },
+            kW: { name: 'Kilowatts', rate: 0.001 },
+            hp: { name: 'Mechanical Horsepower', rate: 0.00134102 }
+          }
+        },
+        Angle: {
+          icon: '🧭',
+          units: {
+            deg: { name: 'Degrees (°)', rate: 1 },
+            rad: { name: 'Radians (rad)', rate: Math.PI / 180 },
+            grad: { name: 'Gradians', rate: 10 / 9 }
+          }
+        }
+      };
+
+      // =========================================================================
+      // 4. DOM REFERENCES
+      // =========================================================================
+      const elChassis = document.getElementById('iphone-chassis');
+      const elExpression = document.getElementById('expression-display');
+      const elResult = document.getElementById('result-display');
+      const elResultWrapper = document.getElementById('result-display-wrapper');
+      const elCopyTooltip = document.getElementById('copy-tooltip');
+      const elKeyClear = document.getElementById('key-clear');
+      const elRadBadge = document.getElementById('rad-deg-badge');
+      const elMemBadge = document.getElementById('memory-badge');
+      const elIslandBadge = document.getElementById('island-badge');
+
+      const elSciKeypad = document.getElementById('scientific-keypad');
+      const elBasicKeypad = document.getElementById('basic-keypad');
+      const elKeypadsWrapper = document.getElementById('keypads-wrapper');
+
+      const elStandardDisplay = document.getElementById('standard-display-area');
+      const elConverterDisplay = document.getElementById('converter-display-area');
+      const elCalcMainView = document.getElementById('calculator-main-view');
+      const elMathNotesView = document.getElementById('math-notes-view');
+
+      const elModePopover = document.getElementById('mode-popover');
+      const elHistoryDrawer = document.getElementById('history-drawer');
+      const elHistoryList = document.getElementById('history-list');
+      const elHistoryCount = document.getElementById('history-count-label');
+      const elToast = document.getElementById('ios-toast');
+
+      // =========================================================================
+      // 5. FORMATTING & DISPLAY ENGINE
+      // =========================================================================
+      function showToast(msg) {
+        elToast.textContent = msg;
+        elToast.classList.remove('opacity-0');
+        elToast.classList.add('opacity-100');
+        clearTimeout(showToast._timer);
+        showToast._timer = setTimeout(() => {
+          elToast.classList.remove('opacity-100');
+          elToast.classList.add('opacity-0');
+        }, 1600);
+      }
+
+      function formatDisplayNumber(rawStr) {
+        if (rawStr === 'Error' || rawStr === 'Not a number') return 'Error';
+        if (rawStr === '' || rawStr === null || rawStr === undefined) return '0';
+        const str = String(rawStr);
+        if (str.includes('e') || str.includes('E')) {
+          const num = Number(str);
+          if (!Number.isFinite(num)) return 'Error';
+          return num.toExponential(6).replace(/\.?0+e/, 'e');
+        }
+        const isNeg = str.startsWith('-');
+        const clean = isNeg ? str.slice(1) : str;
+        const parts = clean.split('.');
+        const intPart = parts[0] || '0';
+        const formattedInt = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        const result = parts.length > 1 ? `${formattedInt}.${parts[1]}` : formattedInt;
+        return isNeg ? `−${result}` : result;
+      }
+
+      function formatNumericResult(val) {
+        if (!Number.isFinite(val) || Number.isNaN(val)) return 'Error';
+        if (Math.abs(val) === 0) return '0';
+        if (Math.abs(val) >= 1e12 || (Math.abs(val) > 0 && Math.abs(val) < 1e-8)) {
+          return val.toExponential(6).replace(/\.?0+e/, 'e');
+        }
+        // Round floating point noise (e.g. 0.1 + 0.2 = 0.3)
+        const rounded = Number(Math.round(Number(val + 'e12')) + 'e-12');
+        return String(rounded);
+      }
+
+      function updateClearButtonLabel() {
+        // Authentic iOS 26 / iOS 27 C vs AC logic (verified via 9to5Mac & Apple Support):
+        // When a non-zero number is currently being entered, show 'C'.
+        // When currentInput is '0' (or after '='), show 'AC'.
+        const isTypingNumber = state.currentInput !== '0' && !state.justEvaluated;
+        elKeyClear.textContent = isTypingNumber ? 'C' : 'AC';
+      }
+
+      function updateDisplay() {
+        updateClearButtonLabel();
+
+        // Update expression line
+        if (state.justEvaluated && state.lastExpressionText) {
+          elExpression.textContent = state.lastExpressionText;
+        } else if (state.tokens.length > 0) {
+          const exprTokens = state.tokens.map(t => {
+            if (!Number.isNaN(Number(t))) return formatDisplayNumber(t);
+            return t;
+          });
+          const tail = state.currentInput !== '' ? formatDisplayNumber(state.currentInput) : '';
+          elExpression.textContent = `${exprTokens.join(' ')} ${tail}`.trim();
+        } else {
+          elExpression.textContent = '';
+        }
+
+        // Format main display & dynamically scale font size like iOS Calculator
+        let displayValueStr = state.currentInput;
+        if (displayValueStr === '' && state.tokens.length > 0) {
+          // When user just pressed an operator (e.g. 7 + or 7 + 8 +), evaluate running subtotal of numbers so far
+          const tokensWithoutTrailingOp = [...state.tokens];
+          if (['+', '−', '×', '÷', '^', '('].includes(tokensWithoutTrailingOp[tokensWithoutTrailingOp.length - 1])) {
+            tokensWithoutTrailingOp.pop();
+          }
+          const subVal = evaluateTokens(tokensWithoutTrailingOp);
+          displayValueStr = !Number.isNaN(subVal) ? formatNumericResult(subVal) : (tokensWithoutTrailingOp[tokensWithoutTrailingOp.length - 1] || '0');
+        }
+        const formatted = formatDisplayNumber(displayValueStr || '0');
+        elResult.textContent = formatted;
+
+        const len = formatted.length;
+        if (state.orientation === 'landscape' || state.mode === 'scientific') {
+          elResult.style.fontSize = len > 14 ? '32px' : len > 10 ? '40px' : '48px';
+          elStandardDisplay.style.minHeight = '88px';
+        } else {
+          elResult.style.fontSize = len > 12 ? '36px' : len > 9 ? '46px' : len > 7 ? '54px' : '64px';
+          elStandardDisplay.style.minHeight = '122px';
+        }
+
+        // Highlight active binary operator key if user just pressed an operator
+        document.querySelectorAll('[data-op]').forEach(btn => {
+          const op = btn.getAttribute('data-op');
+          const lastToken = state.tokens[state.tokens.length - 1];
+          if (state.currentInput === '' && lastToken === op) {
+            btn.classList.add('op-selected');
+          } else {
+            btn.classList.remove('op-selected');
+          }
+        });
+
+        // Update badges
+        elRadBadge.classList.toggle('hidden', !state.radiansMode);
+        elMemBadge.classList.toggle('hidden', !state.hasMemory);
+        elIslandBadge.classList.toggle('hidden', !state.hasMemory);
+
+        // If Converter is enabled, update converter display too
+        if (state.convertEnabled) {
+          updateConverterCalculation();
+        }
+      }
+
+      // =========================================================================
+      // 6. CORE CALCULATOR ENGINE (PEMDAS, Repeat '=', C vs AC, Backspace)
+      // =========================================================================
+      // Pure CSP-safe recursive descent mathematical expression evaluator (no eval / new Function)
+      function safeParseMathExpr(exprStr, varsMap) {
+        if (!exprStr || typeof exprStr !== 'string') return NaN;
+        const vars = varsMap || {};
+        let str = exprStr
+          .replace(/×/g, '*')
+          .replace(/÷/g, '/')
+          .replace(/−/g, '-')
+          .replace(/\*\*/g, '^');
+
+        // Tokenize numbers (including scientific notation like 1.5e-3), identifiers, operators, parens
+        const tokens = [];
+        let i = 0;
+        while (i < str.length) {
+          const ch = str[i];
+          if (/\s/.test(ch)) {
+            i++;
+            continue;
+          }
+          if (/[0-9.]/.test(ch)) {
+            let numStr = '';
+            while (i < str.length && /[0-9.]/.test(str[i])) {
+              numStr += str[i++];
+            }
+            if (i < str.length && (str[i] === 'e' || str[i] === 'E')) {
+              numStr += str[i++];
+              if (i < str.length && (str[i] === '+' || str[i] === '-')) {
+                numStr += str[i++];
+              }
+              while (i < str.length && /[0-9]/.test(str[i])) {
+                numStr += str[i++];
+              }
+            }
+            const val = parseFloat(numStr);
+            if (Number.isNaN(val)) return NaN;
+            tokens.push({ type: 'num', value: val });
+            continue;
+          }
+          if (/[a-zA-Z_]/.test(ch)) {
+            let id = '';
+            while (i < str.length && /[a-zA-Z0-9_]/.test(str[i])) {
+              id += str[i++];
+            }
+            // Handle Math.prefix if present
+            if (id === 'Math' && str[i] === '.') {
+              i++;
+              let sub = '';
+              while (i < str.length && /[a-zA-Z0-9_]/.test(str[i])) {
+                sub += str[i++];
+              }
+              id = sub.toLowerCase();
+            }
+            tokens.push({ type: 'id', value: id });
+            continue;
+          }
+          if ('+-*/^()'.includes(ch)) {
+            tokens.push({ type: 'op', value: ch });
+            i++;
+            continue;
+          }
+          return NaN;
+        }
+
+        let pos = 0;
+        function peek() { return tokens[pos] || null; }
+        function consume() { return tokens[pos++] || null; }
+
+        function parseExpression() {
+          let left = parseTerm();
+          while (peek() && peek().type === 'op' && (peek().value === '+' || peek().value === '-')) {
+            const op = consume().value;
+            const right = parseTerm();
+            left = op === '+' ? left + right : left - right;
+          }
+          return left;
+        }
+
+        function parseTerm() {
+          let left = parsePower();
+          while (peek() && peek().type === 'op' && (peek().value === '*' || peek().value === '/')) {
+            const op = consume().value;
+            const right = parsePower();
+            if (op === '/') {
+              if (right === 0) return NaN;
+              left = left / right;
+            } else {
+              left = left * right;
+            }
+          }
+          return left;
+        }
+
+        function parsePower() {
+          let base = parseUnary();
+          if (peek() && peek().type === 'op' && peek().value === '^') {
+            consume();
+            const exp = parsePower(); // right-associative
+            base = Math.pow(base, exp);
+          }
+          return base;
+        }
+
+        function parseUnary() {
+          if (peek() && peek().type === 'op' && (peek().value === '+' || peek().value === '-')) {
+            const op = consume().value;
+            const val = parseUnary();
+            return op === '-' ? -val : val;
+          }
+          return parsePrimary();
+        }
+
+        function parsePrimary() {
+          const tok = peek();
+          if (!tok) return NaN;
+          if (tok.type === 'num') {
+            consume();
+            return tok.value;
+          }
+          if (tok.type === 'id') {
+            consume();
+            const name = tok.value;
+            // Function call?
+            if (peek() && peek().type === 'op' && peek().value === '(') {
+              consume(); // '('
+              const arg = parseExpression();
+              if (peek() && peek().type === 'op' && peek().value === ')') {
+                consume();
+              }
+              const fnName = name.toLowerCase();
+              if (fnName === 'sin') return Math.sin(arg);
+              if (fnName === 'cos') return Math.cos(arg);
+              if (fnName === 'tan') return Math.tan(arg);
+              if (fnName === 'asin') return Math.asin(arg);
+              if (fnName === 'acos') return Math.acos(arg);
+              if (fnName === 'atan') return Math.atan(arg);
+              if (fnName === 'sinh') return Math.sinh(arg);
+              if (fnName === 'cosh') return Math.cosh(arg);
+              if (fnName === 'tanh') return Math.tanh(arg);
+              if (fnName === 'sqrt') return Math.sqrt(arg);
+              if (fnName === 'cbrt') return Math.cbrt(arg);
+              if (fnName === 'log' || fnName === 'log10') return Math.log10(arg);
+              if (fnName === 'ln') return Math.log(arg);
+              if (fnName === 'abs') return Math.abs(arg);
+              if (fnName === 'exp') return Math.exp(arg);
+              return NaN;
+            }
+            // Constant or Variable
+            if (name.toLowerCase() === 'pi') return Math.PI;
+            if (name === 'e' && !(name in vars)) return Math.E;
+            if (Object.prototype.hasOwnProperty.call(vars, name)) {
+              return Number(vars[name]);
+            }
+            return NaN;
+          }
+          if (tok.type === 'op' && tok.value === '(') {
+            consume(); // '('
+            const val = parseExpression();
+            if (peek() && peek().type === 'op' && peek().value === ')') {
+              consume();
+            }
+            return val;
+          }
+          return NaN;
+        }
+
+        const result = parseExpression();
+        if (pos < tokens.length) return NaN;
+        return result;
+      }
+
+      function evaluateTokens(tokenList) {
+        if (!tokenList || tokenList.length === 0) return 0;
+        const expr = tokenList.join(' ');
+        return safeParseMathExpr(expr, {});
+      }
+
+      function inputDigit(d) {
+        playKeyClick('num');
+        if (state.justEvaluated) {
+          state.currentInput = d === '.' ? '0.' : d;
+          state.tokens = [];
+          state.justEvaluated = false;
+          state.lastExpressionText = '';
+          updateDisplay();
+          return;
+        }
+
+        if (d === '.') {
+          if (state.currentInput === '') {
+            state.currentInput = '0.';
+          } else if (!state.currentInput.includes('.')) {
+            state.currentInput += '.';
+          }
+          updateDisplay();
+          return;
+        }
+
+        if (state.currentInput === '0') {
+          state.currentInput = d;
+        } else if (state.currentInput === '-0') {
+          state.currentInput = '-' + d;
+        } else if (state.currentInput.replace(/[-.]/g, '').length < 15) {
+          state.currentInput += d;
+        }
+        updateDisplay();
+      }
+
+      function inputOperator(op) {
+        playKeyClick('op');
+        if (state.currentInput === 'Error') {
+          state.currentInput = '0';
+        }
+        if (state.justEvaluated) {
+          state.tokens = [state.currentInput, op];
+          state.currentInput = '';
+          state.justEvaluated = false;
+          state.lastExpressionText = '';
+          updateDisplay();
+          return;
+        }
+
+        if (state.currentInput !== '') {
+          state.tokens.push(state.currentInput, op);
+          state.currentInput = '';
+        } else if (state.tokens.length > 0) {
+          // Replace trailing operator
+          const last = state.tokens[state.tokens.length - 1];
+          if (['+', '−', '×', '÷', '^'].includes(last)) {
+            state.tokens[state.tokens.length - 1] = op;
+          } else {
+            state.tokens.push(op);
+          }
+        } else {
+          state.tokens.push('0', op);
+          state.currentInput = '';
+        }
+        updateDisplay();
+      }
+
+      function handleBackspace() {
+        playKeyClick('fn');
+        if (state.justEvaluated || state.currentInput === 'Error') {
+          return;
+        }
+        if (state.currentInput !== '' && state.currentInput !== '0') {
+          state.currentInput = state.currentInput.slice(0, -1);
+          if (state.currentInput === '' || state.currentInput === '-') {
+            state.currentInput = state.tokens.length > 0 ? '' : '0';
+          }
+        } else if (state.tokens.length > 0) {
+          // Pop last operator and pull previous number back into currentInput for editing!
+          const popped = state.tokens.pop();
+          if (!['+', '−', '×', '÷', '^', '(', ')'].includes(popped)) {
+            state.currentInput = popped.slice(0, -1) || '0';
+          } else if (state.tokens.length > 0) {
+            const prevNum = state.tokens.pop();
+            state.currentInput = prevNum;
+          }
+        }
+        updateDisplay();
+      }
+
+      function handleClearOrAllClear() {
+        playKeyClick('fn');
+        const isTypingNumber = state.currentInput !== '0' && state.currentInput !== '' && !state.justEvaluated;
+        if (isTypingNumber && state.tokens.length > 0) {
+          // C: Clear only the current number being entered, preserving previous expression!
+          state.currentInput = '';
+        } else if (isTypingNumber && state.tokens.length === 0) {
+          state.currentInput = '0';
+        } else {
+          // AC: All Clear
+          state.currentInput = '0';
+          state.tokens = [];
+          state.justEvaluated = false;
+          state.lastExpressionText = '';
+          state.lastOperator = null;
+          state.lastOperand = null;
+          state.openParens = 0;
+        }
+        updateDisplay();
+      }
+
+      function handleNegate() {
+        playKeyClick('fn');
+        if (state.currentInput === 'Error') return;
+        if (state.currentInput === '' && state.tokens.length > 0) {
+          state.currentInput = '-0';
+        } else if (state.currentInput.startsWith('-')) {
+          state.currentInput = state.currentInput.slice(1);
+        } else if (state.currentInput !== '0') {
+          state.currentInput = '-' + state.currentInput;
+        } else {
+          state.currentInput = '-0';
+        }
+        updateDisplay();
+      }
+
+      function handlePercent() {
+        playKeyClick('fn');
+        const val = parseFloat(state.currentInput || '0');
+        if (Number.isNaN(val)) return;
+
+        // Authentic iOS percentage behavior:
+        // If adding/subtracting (e.g. 100 + 15%), 15% evaluates to 15% of base (15), and remembers 15% for repeat
+        if (state.tokens.length >= 2) {
+          const lastOp = state.tokens[state.tokens.length - 1];
+          const baseVal = parseFloat(state.tokens[state.tokens.length - 2]);
+          if ((lastOp === '+' || lastOp === '−') && !Number.isNaN(baseVal)) {
+            const pctValue = baseVal * (val / 100);
+            state.currentInput = formatNumericResult(pctValue);
+            updateDisplay();
+            return;
+          }
+        }
+        state.currentInput = formatNumericResult(val / 100);
+        updateDisplay();
+      }
+
+      function handleEquals() {
+        playKeyClick('op');
+
+        // Case 1: Repeat last operation if pressing '=' repeatedly (Apple Support documented feature)
+        if (state.justEvaluated && state.lastOperator && state.lastOperand !== null) {
+          const currentVal = parseFloat(state.currentInput || '0');
+          const repeatTokens = [String(currentVal), state.lastOperator, String(state.lastOperand)];
+          const res = evaluateTokens(repeatTokens);
+          const formattedRes = formatNumericResult(res);
+          state.lastExpressionText = `${formatDisplayNumber(String(currentVal))} ${state.lastOperator} ${formatDisplayNumber(String(state.lastOperand))}`;
+          state.currentInput = formattedRes;
+          addHistoryEntry(state.lastExpressionText, formatDisplayNumber(formattedRes));
+          updateDisplay();
+          return;
+        }
+
+        // Case 2: Normal evaluation of tokens + currentInput
+        const fullTokens = [...state.tokens];
+        if (state.currentInput !== '') {
+          fullTokens.push(state.currentInput);
+        } else if (fullTokens.length > 0 && ['+', '−', '×', '÷', '^'].includes(fullTokens[fullTokens.length - 1])) {
+          // If expression ends with operator (e.g. '5 + ='), duplicate previous operand
+          const prev = fullTokens[fullTokens.length - 2] || '0';
+          fullTokens.push(prev);
+        }
+
+        if (fullTokens.length === 0) return;
+
+        // Auto-close any open parentheses
+        while (state.openParens > 0) {
+          fullTokens.push(')');
+          state.openParens--;
+        }
+
+        // Save last operator and operand for repeat '='
+        if (fullTokens.length >= 3) {
+          const maybeOp = fullTokens[fullTokens.length - 2];
+          const maybeOperand = parseFloat(fullTokens[fullTokens.length - 1]);
+          if (['+', '−', '×', '÷', '^'].includes(maybeOp) && !Number.isNaN(maybeOperand)) {
+            state.lastOperator = maybeOp;
+            state.lastOperand = maybeOperand;
+          }
+        }
+
+        const prettyExpr = fullTokens
+          .map(t => (!Number.isNaN(Number(t)) ? formatDisplayNumber(t) : t))
+          .join(' ');
+        const resultVal = evaluateTokens(fullTokens);
+        const formattedResult = formatNumericResult(resultVal);
+
+        state.lastExpressionText = prettyExpr;
+        state.currentInput = formattedResult;
+        state.tokens = [];
+        state.justEvaluated = true;
+
+        if (prettyExpr && formattedResult !== 'Error') {
+          addHistoryEntry(prettyExpr, formatDisplayNumber(formattedResult));
+        }
+
+        updateDisplay();
+      }
+
+      // =========================================================================
+      // 7. SCIENTIFIC CALCULATOR FUNCTIONS
+      // =========================================================================
+      function toRadIfNeeded(val) {
+        return state.radiansMode ? val : (val * Math.PI) / 180;
+      }
+      function fromRadIfNeeded(val) {
+        return state.radiansMode ? val : (val * 180) / Math.PI;
+      }
+      function factorial(n) {
+        if (n < 0 || !Number.isInteger(n)) return NaN;
+        if (n > 170) return Infinity;
+        let r = 1;
+        for (let i = 2; i <= n; i++) r *= i;
+        return r;
+      }
+
+      function updateSecondLabels() {
+        const s = state.secondActive;
+        document.getElementById('key-2nd').classList.toggle('active-toggle', s);
+        document.getElementById('sci-ex').innerHTML = s ? 'yˣ' : 'eˣ';
+        document.getElementById('sci-10x').innerHTML = s ? '2ˣ' : '10ˣ';
+        document.getElementById('sci-ln').innerHTML = s ? 'log<sub>y</sub>' : 'ln';
+        document.getElementById('sci-log').innerHTML = s ? 'log₂' : 'log₁₀';
+        document.getElementById('sci-sin').innerHTML = s ? 'sin⁻¹' : 'sin';
+        document.getElementById('sci-cos').innerHTML = s ? 'cos⁻¹' : 'cos';
+        document.getElementById('sci-tan').innerHTML = s ? 'tan⁻¹' : 'tan';
+        document.getElementById('sci-sinh').innerHTML = s ? 'sinh⁻¹' : 'sinh';
+        document.getElementById('sci-cosh').innerHTML = s ? 'cosh⁻¹' : 'cosh';
+        document.getElementById('sci-tanh').innerHTML = s ? 'tanh⁻¹' : 'tanh';
+      }
+
+      function handleSciKey(sciAction) {
+        playKeyClick('sci');
+        const x = parseFloat(state.currentInput || '0');
+        let res = null;
+        let label = '';
+
+        switch (sciAction) {
+          case '2nd':
+            state.secondActive = !state.secondActive;
+            updateSecondLabels();
+            return;
+          case 'rad':
+            state.radiansMode = !state.radiansMode;
+            document.getElementById('sci-rad').textContent = state.radiansMode ? 'Deg' : 'Rad';
+            updateDisplay();
+            return;
+          case '(':
+            if (state.justEvaluated) {
+              state.tokens = [];
+              state.justEvaluated = false;
+            }
+            if (state.currentInput !== '' && state.currentInput !== '0') {
+              state.tokens.push(state.currentInput, '×');
+              state.currentInput = '';
+            }
+            state.tokens.push('(');
+            state.openParens++;
+            updateDisplay();
+            return;
+          case ')':
+            if (state.openParens > 0) {
+              if (state.currentInput !== '') {
+                state.tokens.push(state.currentInput);
+                state.currentInput = '';
+              }
+              state.tokens.push(')');
+              state.openParens--;
+              updateDisplay();
+            }
+            return;
+          case 'mc':
+            state.memoryValue = 0;
+            state.hasMemory = false;
+            showToast('Memory Cleared');
+            updateDisplay();
+            return;
+          case 'm+':
+            state.memoryValue += (Number.isNaN(x) ? 0 : x);
+            state.hasMemory = true;
+            showToast(`M+ (${formatDisplayNumber(formatNumericResult(state.memoryValue))})`);
+            updateDisplay();
+            return;
+          case 'm-':
+            state.memoryValue -= (Number.isNaN(x) ? 0 : x);
+            state.hasMemory = true;
+            showToast(`M− (${formatDisplayNumber(formatNumericResult(state.memoryValue))})`);
+            updateDisplay();
+            return;
+          case 'mr':
+            state.currentInput = formatNumericResult(state.memoryValue);
+            state.justEvaluated = false;
+            updateDisplay();
+            return;
+          case 'x2':
+            res = x * x;
+            label = `${formatDisplayNumber(String(x))}²`;
+            break;
+          case 'x3':
+            res = x * x * x;
+            label = `${formatDisplayNumber(String(x))}³`;
+            break;
+          case 'xy':
+            inputOperator('^');
+            return;
+          case 'ex':
+            if (state.secondActive) {
+              inputOperator('^');
+              return;
+            }
+            res = Math.exp(x);
+            label = `e^(${x})`;
+            break;
+          case '10x':
+            res = state.secondActive ? Math.pow(2, x) : Math.pow(10, x);
+            label = state.secondActive ? `2^(${x})` : `10^(${x})`;
+            break;
+          case '1/x':
+            res = x === 0 ? NaN : 1 / x;
+            label = `1/(${x})`;
+            break;
+          case 'sqrt2':
+            res = Math.sqrt(x);
+            label = `√(${x})`;
+            break;
+          case 'sqrt3':
+            res = Math.cbrt(x);
+            label = `³√(${x})`;
+            break;
+          case 'sqrty':
+            inputOperator('^');
+            return;
+          case 'ln':
+            res = Math.log(x);
+            label = `ln(${x})`;
+            break;
+          case 'log10':
+            res = state.secondActive ? Math.log2(x) : Math.log10(x);
+            label = state.secondActive ? `log₂(${x})` : `log₁₀(${x})`;
+            break;
+          case 'fact':
+            res = factorial(x);
+            label = `${x}!`;
+            break;
+          case 'sin':
+            res = state.secondActive ? fromRadIfNeeded(Math.asin(x)) : Math.sin(toRadIfNeeded(x));
+            label = `${state.secondActive ? 'sin⁻¹' : 'sin'}(${x}${state.radiansMode ? '' : '°'})`;
+            break;
+          case 'cos':
+            res = state.secondActive ? fromRadIfNeeded(Math.acos(x)) : Math.cos(toRadIfNeeded(x));
+            label = `${state.secondActive ? 'cos⁻¹' : 'cos'}(${x}${state.radiansMode ? '' : '°'})`;
+            break;
+          case 'tan':
+            res = state.secondActive ? fromRadIfNeeded(Math.atan(x)) : Math.tan(toRadIfNeeded(x));
+            label = `${state.secondActive ? 'tan⁻¹' : 'tan'}(${x}${state.radiansMode ? '' : '°'})`;
+            break;
+          case 'sinh':
+            res = state.secondActive ? Math.asinh(x) : Math.sinh(x);
+            label = `${state.secondActive ? 'sinh⁻¹' : 'sinh'}(${x})`;
+            break;
+          case 'cosh':
+            res = state.secondActive ? Math.acosh(x) : Math.cosh(x);
+            label = `${state.secondActive ? 'cosh⁻¹' : 'cosh'}(${x})`;
+            break;
+          case 'tanh':
+            res = state.secondActive ? Math.atanh(x) : Math.tanh(x);
+            label = `${state.secondActive ? 'tanh⁻¹' : 'tanh'}(${x})`;
+            break;
+          case 'pi':
+            state.currentInput = formatNumericResult(Math.PI);
+            state.justEvaluated = false;
+            updateDisplay();
+            return;
+          case 'e':
+            state.currentInput = formatNumericResult(Math.E);
+            state.justEvaluated = false;
+            updateDisplay();
+            return;
+          case 'EE':
+            if (!state.currentInput.includes('e')) {
+              state.currentInput += 'e';
+              updateDisplay();
+            }
+            return;
+          case 'rand':
+            state.currentInput = formatNumericResult(Math.random());
+            state.justEvaluated = false;
+            updateDisplay();
+            return;
+        }
+
+        if (res !== null) {
+          const formatted = formatNumericResult(res);
+          state.lastExpressionText = label;
+          state.currentInput = formatted;
+          state.justEvaluated = true;
+          if (formatted !== 'Error') {
+            addHistoryEntry(label, formatDisplayNumber(formatted));
+          }
+          updateDisplay();
+        }
+      }
+
+      // =========================================================================
+      // 8. CONVERTER ENGINE
+      // =========================================================================
+      const elConvCategories = document.getElementById('converter-categories');
+      const elSelectFrom = document.getElementById('conv-unit-from');
+      const elSelectTo = document.getElementById('conv-unit-to');
+      const elLabelFrom = document.getElementById('conv-unit-from-label');
+      const elLabelTo = document.getElementById('conv-unit-to-label');
+      const elValTop = document.getElementById('conv-val-top');
+      const elValBottom = document.getElementById('conv-val-bottom');
+
+      function renderConverterCategories() {
+        elConvCategories.innerHTML = '';
+        Object.keys(CONVERSION_DATA).forEach(cat => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          const isActive = state.convCategory === cat;
+          btn.className = `px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap transition flex items-center gap-1 ${
+            isActive ? 'bg-amber-500 text-black font-semibold' : 'bg-zinc-800/90 text-zinc-300 hover:text-white'
+          }`;
+          btn.innerHTML = `<span>${CONVERSION_DATA[cat].icon}</span><span>${cat}</span>`;
+          btn.addEventListener('click', () => {
+            playKeyClick('fn');
+            state.convCategory = cat;
+            const unitKeys = Object.keys(CONVERSION_DATA[cat].units);
+            state.convFromUnit = unitKeys[0];
+            state.convToUnit = unitKeys[1] || unitKeys[0];
+            renderConverterCategories();
+            populateConverterUnits();
+            updateConverterCalculation();
+          });
+          elConvCategories.appendChild(btn);
+        });
+      }
+
+      function populateConverterUnits() {
+        const catObj = CONVERSION_DATA[state.convCategory];
+        const unitKeys = Object.keys(catObj.units);
+        elSelectFrom.innerHTML = '';
+        elSelectTo.innerHTML = '';
+
+        unitKeys.forEach(u => {
+          const opt1 = document.createElement('option');
+          opt1.value = u;
+          opt1.textContent = `${u} — ${catObj.units[u].name}`;
+          opt1.className = 'bg-zinc-900 text-white';
+          elSelectFrom.appendChild(opt1);
+
+          const opt2 = document.createElement('option');
+          opt2.value = u;
+          opt2.textContent = `${u} — ${catObj.units[u].name}`;
+          opt2.className = 'bg-zinc-900 text-white';
+          elSelectTo.appendChild(opt2);
+        });
+
+        elSelectFrom.value = state.convFromUnit;
+        elSelectTo.value = state.convToUnit;
+        elLabelFrom.textContent = catObj.units[state.convFromUnit]?.name || '';
+        elLabelTo.textContent = catObj.units[state.convToUnit]?.name || '';
+      }
+
+      function convertTemperature(val, from, to) {
+        if (from === to) return val;
+        let celsius = val;
+        if (from === 'F') celsius = ((val - 32) * 5) / 9;
+        if (from === 'K') celsius = val - 273.15;
+
+        if (to === 'C') return celsius;
+        if (to === 'F') return (celsius * 9) / 5 + 32;
+        if (to === 'K') return celsius + 273.15;
+        return val;
+      }
+
+      function updateConverterCalculation() {
+        const catObj = CONVERSION_DATA[state.convCategory];
+        if (!catObj) return;
+        let activeNumStr = state.currentInput;
+        if (activeNumStr === '' && state.tokens.length > 0) {
+          const tCopy = [...state.tokens];
+          if (['+', '−', '×', '÷', '^'].includes(tCopy[tCopy.length - 1])) tCopy.pop();
+          const sub = evaluateTokens(tCopy);
+          activeNumStr = !Number.isNaN(sub) ? formatNumericResult(sub) : '0';
+        }
+        const rawVal = parseFloat(activeNumStr || '0');
+        const inputVal = Number.isNaN(rawVal) ? 0 : rawVal;
+
+        const isBottomActive = state.convActiveRow === 'bottom';
+        const srcUnit = isBottomActive ? state.convToUnit : state.convFromUnit;
+        const dstUnit = isBottomActive ? state.convFromUnit : state.convToUnit;
+
+        let converted = 0;
+        if (catObj.custom && state.convCategory === 'Temperature') {
+          converted = convertTemperature(inputVal, srcUnit, dstUnit);
+        } else {
+          const fromRate = catObj.units[srcUnit]?.rate || 1;
+          const toRate = catObj.units[dstUnit]?.rate || 1;
+          const baseValue = inputVal / fromRate;
+          converted = baseValue * toRate;
+        }
+
+        if (isBottomActive) {
+          elValBottom.textContent = formatDisplayNumber(activeNumStr || '0');
+          elValTop.textContent = formatDisplayNumber(formatNumericResult(converted));
+          elValBottom.className = 'text-3xl font-light tracking-tight text-amber-400 text-right overflow-x-auto no-scrollbar';
+          elValTop.className = 'text-3xl font-light tracking-tight text-zinc-300 text-right overflow-x-auto no-scrollbar';
+        } else {
+          elValTop.textContent = formatDisplayNumber(activeNumStr || '0');
+          elValBottom.textContent = formatDisplayNumber(formatNumericResult(converted));
+          elValTop.className = 'text-3xl font-light tracking-tight text-white text-right overflow-x-auto no-scrollbar';
+          elValBottom.className = 'text-3xl font-light tracking-tight text-zinc-300 text-right overflow-x-auto no-scrollbar';
+        }
+        elLabelFrom.textContent = catObj.units[state.convFromUnit]?.name || '';
+        elLabelTo.textContent = catObj.units[state.convToUnit]?.name || '';
+      }
+
+      elSelectFrom.addEventListener('change', (e) => {
+        state.convFromUnit = e.target.value;
+        updateConverterCalculation();
+      });
+      elSelectTo.addEventListener('change', (e) => {
+        state.convToUnit = e.target.value;
+        updateConverterCalculation();
+      });
+      document.getElementById('btn-swap-units').addEventListener('click', () => {
+        playKeyClick('fn');
+        const temp = state.convFromUnit;
+        state.convFromUnit = state.convToUnit;
+        state.convToUnit = temp;
+        elSelectFrom.value = state.convFromUnit;
+        elSelectTo.value = state.convToUnit;
+        updateConverterCalculation();
       });
 
-      // Initial Load
-      renderCart();
-      navigate();
-    });
+      // =========================================================================
+      // 9. HISTORY DRAWER ENGINE
+      // =========================================================================
+      function addHistoryEntry(expr, result) {
+        const entry = {
+          id: 'h_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+          expr,
+          result,
+          group: 'Today'
+        };
+        state.history.unshift(entry);
+        saveHistory();
+        renderHistoryList();
+      }
+
+      function renderHistoryList() {
+        elHistoryList.innerHTML = '';
+        const count = state.history.length;
+        elHistoryCount.textContent = `${count} calculation${count === 1 ? '' : 's'}`;
+
+        if (count === 0) {
+          elHistoryList.innerHTML = `
+            <div class="flex flex-col items-center justify-center h-48 text-zinc-500 text-center">
+              <p class="text-sm font-medium">No History</p>
+              <p class="text-xs mt-1">Calculations you complete with "=" appear here.</p>
+            </div>`;
+          return;
+        }
+
+        const groups = ['Today', 'Previous 7 Days'];
+        groups.forEach(groupName => {
+          const items = state.history.filter(h => (h.group || 'Today') === groupName);
+          if (items.length === 0) return;
+
+          const groupHeader = document.createElement('div');
+          groupHeader.className = 'text-xs font-semibold text-zinc-400 uppercase tracking-wider px-1 pt-1';
+          groupHeader.textContent = groupName;
+          elHistoryList.appendChild(groupHeader);
+
+          items.forEach(item => {
+            const row = document.createElement('div');
+            row.className = 'flex items-center justify-between gap-2 p-3 rounded-2xl bg-white/5 hover:bg-white/10 transition cursor-pointer group';
+
+            const leftDelete = document.createElement('button');
+            leftDelete.type = 'button';
+            leftDelete.className = `${state.historyEditMode ? 'flex' : 'hidden'} w-6 h-6 rounded-full bg-rose-500 text-white items-center justify-center text-xs font-bold shrink-0`;
+            leftDelete.textContent = '−';
+            leftDelete.title = 'Delete item';
+            leftDelete.addEventListener('click', (ev) => {
+              ev.stopPropagation();
+              playKeyClick('fn');
+              state.history = state.history.filter(x => x.id !== item.id);
+              saveHistory();
+              renderHistoryList();
+            });
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'flex-1 text-right';
+            contentDiv.innerHTML = `
+              <div class="text-xs text-zinc-400">${item.expr} =</div>
+              <div class="text-xl font-normal text-white">${item.result}</div>
+            `;
+
+            row.appendChild(leftDelete);
+            row.appendChild(contentDiv);
+
+            row.addEventListener('click', () => {
+              playKeyClick('num');
+              const cleanVal = String(item.result).replace(/,/g, '').replace(/−/g, '-');
+              state.currentInput = cleanVal;
+              state.lastExpressionText = item.expr;
+              state.justEvaluated = true;
+              closeHistoryDrawer();
+              updateDisplay();
+              showToast('Recalled from History');
+            });
+
+            elHistoryList.appendChild(row);
+          });
+        });
+      }
+
+      function openHistoryDrawer() {
+        playKeyClick('fn');
+        renderHistoryList();
+        elHistoryDrawer.classList.remove('pointer-events-none', 'opacity-0', 'translate-y-full');
+        elHistoryDrawer.classList.add('pointer-events-auto', 'opacity-100', 'translate-y-0');
+      }
+
+      function closeHistoryDrawer() {
+        playKeyClick('fn');
+        state.historyEditMode = false;
+        document.getElementById('btn-history-edit').textContent = 'Edit';
+        elHistoryDrawer.classList.add('pointer-events-none', 'opacity-0', 'translate-y-full');
+        elHistoryDrawer.classList.remove('pointer-events-auto', 'opacity-100', 'translate-y-0');
+      }
+
+      document.getElementById('btn-history-drawer').addEventListener('click', openHistoryDrawer);
+      document.getElementById('btn-history-close').addEventListener('click', closeHistoryDrawer);
+      document.getElementById('btn-history-edit').addEventListener('click', () => {
+        state.historyEditMode = !state.historyEditMode;
+        document.getElementById('btn-history-edit').textContent = state.historyEditMode ? 'Done' : 'Edit';
+        renderHistoryList();
+      });
+      document.getElementById('btn-history-clear-all').addEventListener('click', () => {
+        playKeyClick('fn');
+        state.history = [];
+        saveHistory();
+        renderHistoryList();
+        showToast('History Cleared');
+      });
+
+      // =========================================================================
+      // 10. iOS 27 MATH NOTES ENGINE (Variables, Pills, Scrubber, Graph, Sketch)
+      // =========================================================================
+      const elNotesTextarea = document.getElementById('math-notes-textarea');
+      const elNotesResults = document.getElementById('math-notes-results');
+      const elVarPillsContainer = document.getElementById('variable-pills-container');
+      const elVarSlider = document.getElementById('var-scrubber-slider');
+      const elScrubberName = document.getElementById('scrubber-var-name');
+      const elScrubberVal = document.getElementById('scrubber-var-val');
+      const elActiveVarIndicator = document.getElementById('active-var-indicator');
+
+      const MATH_NOTES_PRESETS = {
+        airship: `speed = 20
+area = 250
+density = 1.225
+cd = 0.04
+drag = 0.5 * density * (speed ^ 2) * cd * area =
+power_kw = (drag * speed) / 1000 =`,
+        loan: `bill = 185
+tip_pct = 20
+people = 4
+tip_amount = bill * (tip_pct / 100) =
+total_per_person = (bill + tip_amount) / people =`,
+        physics: `velocity = 45
+angle_deg = 45
+gravity = 9.81
+max_height = ((velocity ^ 2) * (sin(angle_deg * 3.14159 / 180) ^ 2)) / (2 * gravity) =
+flight_range = ((velocity ^ 2) * sin(2 * angle_deg * 3.14159 / 180)) / gravity =`
+      };
+
+      function evaluateMathNotes() {
+        const lines = elNotesTextarea.value.split('\n');
+        const vars = {};
+        const outputs = [];
+
+        lines.forEach((rawLine, idx) => {
+          const line = rawLine.trim();
+          if (!line) return;
+
+          // Case A: Variable assignment e.g. "speed = 20" (does not end with '=')
+          const assignMatch = line.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*([^=]+)$/);
+          if (assignMatch && !line.endsWith('=')) {
+            const varName = assignMatch[1];
+            const exprPart = assignMatch[2].trim();
+            const val = evalMathExpressionWithVars(exprPart, vars);
+            if (!Number.isNaN(val)) {
+              vars[varName] = val;
+              outputs.push({
+                line: idx + 1,
+                type: 'var',
+                name: varName,
+                expr: line,
+                value: formatNumericResult(val)
+              });
+            } else {
+              outputs.push({ line: idx + 1, type: 'error', expr: line, msg: 'Syntax warning' });
+            }
+            return;
+          }
+
+          // Case B: Formula evaluation ending with '=' e.g. "drag = 0.5 * ... =" or "25 * 4 ="
+          if (line.endsWith('=')) {
+            const withoutTrailingEq = line.slice(0, -1).trim();
+            const namedFormulaMatch = withoutTrailingEq.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+)$/);
+            if (namedFormulaMatch) {
+              const varName = namedFormulaMatch[1];
+              const formulaExpr = namedFormulaMatch[2];
+              const val = evalMathExpressionWithVars(formulaExpr, vars);
+              if (!Number.isNaN(val)) {
+                vars[varName] = val;
+                outputs.push({
+                  line: idx + 1,
+                  type: 'result',
+                  name: varName,
+                  expr: withoutTrailingEq,
+                  value: formatDisplayNumber(formatNumericResult(val))
+                });
+              } else {
+                outputs.push({ line: idx + 1, type: 'error', expr: line, msg: 'Check variable or syntax' });
+              }
+            } else {
+              const val = evalMathExpressionWithVars(withoutTrailingEq, vars);
+              if (!Number.isNaN(val)) {
+                outputs.push({
+                  line: idx + 1,
+                  type: 'result',
+                  name: null,
+                  expr: withoutTrailingEq,
+                  value: formatDisplayNumber(formatNumericResult(val))
+                });
+              } else {
+                outputs.push({ line: idx + 1, type: 'error', expr: line, msg: 'Unresolved expression' });
+              }
+            }
+          }
+        });
+
+        state.variables = vars;
+        renderVariablePills();
+        renderMathNotesOutputs(outputs);
+        drawGraph();
+      }
+
+      function evalMathExpressionWithVars(exprStr, varsMap) {
+        const res = safeParseMathExpr(exprStr, varsMap);
+        return typeof res === 'number' && Number.isFinite(res) ? res : NaN;
+      }
+
+      function renderVariablePills() {
+        elVarPillsContainer.innerHTML = '';
+        const names = Object.keys(state.variables);
+        if (names.length === 0) return;
+
+        if (!state.selectedVar || !(state.selectedVar in state.variables)) {
+          state.selectedVar = names[0];
+        }
+
+        names.forEach(name => {
+          const val = state.variables[name];
+          const pill = document.createElement('button');
+          pill.type = 'button';
+          const isSel = state.selectedVar === name;
+          pill.className = `px-2.5 py-1 rounded-full text-xs font-mono transition flex items-center gap-1 ${
+            isSel
+              ? 'bg-amber-500 text-black font-semibold shadow'
+              : 'bg-zinc-800 text-zinc-200 hover:bg-zinc-700 border border-white/10'
+          }`;
+          pill.innerHTML = `<span>${name}</span><span class="opacity-70">=</span><span>${formatNumericResult(val)}</span>`;
+          pill.addEventListener('click', () => {
+            playKeyClick('fn');
+            state.selectedVar = name;
+            const v = state.variables[name];
+            elScrubberName.textContent = name;
+            elScrubberVal.textContent = formatNumericResult(v);
+            elActiveVarIndicator.textContent = `${name} = ${formatNumericResult(v)}`;
+            elVarSlider.min = Math.min(-50, Math.floor(v - Math.abs(v) * 2 - 20));
+            elVarSlider.max = Math.max(200, Math.ceil(v + Math.abs(v) * 2 + 50));
+            elVarSlider.step = Math.abs(v) < 2 && v !== 0 ? 0.01 : 1;
+            elVarSlider.value = v;
+            renderVariablePills();
+          });
+          elVarPillsContainer.appendChild(pill);
+        });
+
+        const curVal = state.variables[state.selectedVar];
+        if (curVal !== undefined) {
+          elScrubberName.textContent = state.selectedVar;
+          elScrubberVal.textContent = formatNumericResult(curVal);
+          elActiveVarIndicator.textContent = `${state.selectedVar} = ${formatNumericResult(curVal)}`;
+        }
+      }
+
+      function renderMathNotesOutputs(outputs) {
+        elNotesResults.innerHTML = '';
+        outputs.forEach(item => {
+          const row = document.createElement('div');
+          if (item.type === 'result') {
+            row.className = 'flex items-center justify-between px-2.5 py-1.5 rounded-xl bg-amber-500/10 border border-amber-400/25';
+            row.innerHTML = `
+              <span class="text-xs font-mono text-zinc-300 truncate mr-2">${item.expr} =</span>
+              <span class="math-handwriting text-2xl text-amber-400 font-bold shrink-0">${item.value}</span>
+            `;
+          } else if (item.type === 'error') {
+            // iOS 27 Visual Syntax Error Indicator
+            row.className = 'flex items-center justify-between px-2.5 py-1 rounded-xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-300';
+            row.innerHTML = `
+              <span class="font-mono underline decoration-wavy decoration-rose-400 truncate">${item.expr}</span>
+              <span class="text-[10px]">⚠️ ${item.msg}</span>
+            `;
+          }
+          if (item.type === 'result' || item.type === 'error') {
+            elNotesResults.appendChild(row);
+          }
+        });
+      }
+
+      // Live Variable Scrubber updates the textarea line and re-solves immediately!
+      elVarSlider.addEventListener('input', (e) => {
+        const newVal = parseFloat(e.target.value);
+        const varName = state.selectedVar;
+        if (!varName) return;
+        const regex = new RegExp(`^(${varName}\\s*=\\s*)([^=\\n]+)$`, 'm');
+        if (regex.test(elNotesTextarea.value)) {
+          elNotesTextarea.value = elNotesTextarea.value.replace(regex, `$1${newVal}`);
+          evaluateMathNotes();
+        }
+      });
+
+      elNotesTextarea.addEventListener('input', evaluateMathNotes);
+      document.getElementById('btn-evaluate-notes').addEventListener('click', () => {
+        playKeyClick('op');
+        evaluateMathNotes();
+        showToast('Math Notes Evaluated');
+      });
+
+      document.querySelectorAll('[data-preset]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          playKeyClick('fn');
+          const key = btn.getAttribute('data-preset');
+          if (MATH_NOTES_PRESETS[key]) {
+            elNotesTextarea.value = MATH_NOTES_PRESETS[key];
+            evaluateMathNotes();
+            showToast('Loaded Siri AI Equation Preset');
+          }
+        });
+      });
+
+      // =========================================================================
+      // 11. 2D INTERACTIVE GRAPHING ENGINE (Math Notes Graph Tab)
+      // =========================================================================
+      const graphCanvas = document.getElementById('math-graph-canvas');
+      const graphInput = document.getElementById('graph-equation-input');
+      const graphReadout = document.getElementById('graph-Readout');
+
+      function evalGraphY(xVal) {
+        const expr = graphInput.value || 'sin(x)';
+        const varsWithX = Object.assign({}, state.variables, { x: xVal });
+        return evalMathExpressionWithVars(expr, varsWithX);
+      }
+
+      function drawGraph(hoverPxX) {
+        if (!graphCanvas) return;
+        const rect = graphCanvas.parentElement.getBoundingClientRect();
+        const w = Math.max(rect.width || 320, 260);
+        const h = Math.max(rect.height || 260, 220);
+        graphCanvas.width = w;
+        graphCanvas.height = h;
+
+        const ctx = graphCanvas.getContext('2d');
+        ctx.clearRect(0, 0, w, h);
+
+        const cx = w / 2;
+        const cy = h / 2;
+        const scale = state.graphScale;
+
+        // Draw subtle coordinate grid
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.07)';
+        ctx.lineWidth = 1;
+        for (let gx = cx % scale; gx < w; gx += scale) {
+          ctx.beginPath();
+          ctx.moveTo(gx, 0);
+          ctx.lineTo(gx, h);
+          ctx.stroke();
+        }
+        for (let gy = cy % scale; gy < h; gy += scale) {
+          ctx.beginPath();
+          ctx.moveTo(0, gy);
+          ctx.lineTo(w, gy);
+          ctx.stroke();
+        }
+
+        // Axes
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.28)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(0, cy);
+        ctx.lineTo(w, cy);
+        ctx.moveTo(cx, 0);
+        ctx.lineTo(cx, h);
+        ctx.stroke();
+
+        // Plot Function Curve y = f(x)
+        ctx.strokeStyle = '#ff9f0a';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        let started = false;
+        for (let px = 0; px <= w; px += 2) {
+          const x = (px - cx) / scale;
+          const y = evalGraphY(x);
+          if (Number.isFinite(y)) {
+            const py = cy - y * scale;
+            if (py >= -h && py <= h * 2) {
+              if (!started) {
+                ctx.moveTo(px, py);
+                started = true;
+              } else {
+                ctx.lineTo(px, py);
+              }
+            } else {
+              started = false;
+            }
+          } else {
+            started = false;
+          }
+        }
+        ctx.stroke();
+
+        // Interactive Hover Crosshair Point
+        if (typeof hoverPxX === 'number') {
+          const xVal = (hoverPxX - cx) / scale;
+          const yVal = evalGraphY(xVal);
+          if (Number.isFinite(yVal)) {
+            const py = cy - yVal * scale;
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(hoverPxX, py, 5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#ff9f0a';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            graphReadout.textContent = `x = ${xVal.toFixed(2)}, y = ${yVal.toFixed(3)}`;
+          }
+        }
+      }
+
+      graphCanvas.addEventListener('mousemove', (e) => {
+        const r = graphCanvas.getBoundingClientRect();
+        drawGraph(e.clientX - r.left);
+      });
+      graphCanvas.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+          const r = graphCanvas.getBoundingClientRect();
+          drawGraph(e.touches[0].clientX - r.left);
+        }
+      }, { passive: true });
+
+      document.getElementById('btn-plot-graph').addEventListener('click', () => {
+        playKeyClick('op');
+        drawGraph();
+      });
+      document.querySelectorAll('[data-graphfn]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          playKeyClick('fn');
+          graphInput.value = btn.getAttribute('data-graphfn');
+          drawGraph();
+        });
+      });
+      document.getElementById('btn-graph-zoom-in').addEventListener('click', () => {
+        state.graphScale = Math.min(state.graphScale * 1.25, 120);
+        drawGraph();
+      });
+      document.getElementById('btn-graph-zoom-out').addEventListener('click', () => {
+        state.graphScale = Math.max(state.graphScale * 0.8, 12);
+        drawGraph();
+      });
+
+      // =========================================================================
+      // 12. FREEHAND SKETCH CANVAS (Math Notes Sketch Tab)
+      // =========================================================================
+      const sketchCanvas = document.getElementById('sketch-canvas');
+      const sketchOverlay = document.getElementById('sketch-solved-overlay');
+      let isDrawing = false;
+
+      function initSketchPad() {
+        if (!sketchCanvas) return;
+        const rect = sketchCanvas.parentElement.getBoundingClientRect();
+        sketchCanvas.width = Math.max(rect.width || 320, 280);
+        sketchCanvas.height = Math.max(rect.height || 260, 240);
+        const ctx = sketchCanvas.getContext('2d');
+        ctx.strokeStyle = state.penColor;
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.font = '26px Caveat, cursive';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText('24 × 15 =', 28, 70);
+        ctx.fillStyle = '#ff9f0a';
+        ctx.fillText('360', 135, 70);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText('√144 + 8² =', 28, 130);
+        ctx.fillStyle = '#ff9f0a';
+        ctx.fillText('76', 165, 130);
+      }
+
+      function getSketchPos(e) {
+        const r = sketchCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return { x: clientX - r.left, y: clientY - r.top };
+      }
+
+      sketchCanvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        const ctx = sketchCanvas.getContext('2d');
+        const pos = getSketchPos(e);
+        ctx.strokeStyle = state.penColor;
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+      });
+      sketchCanvas.addEventListener('mousemove', (e) => {
+        if (!isDrawing) return;
+        const ctx = sketchCanvas.getContext('2d');
+        const pos = getSketchPos(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      });
+      window.addEventListener('mouseup', () => { isDrawing = false; });
+
+      sketchCanvas.addEventListener('touchstart', (e) => {
+        isDrawing = true;
+        const ctx = sketchCanvas.getContext('2d');
+        const pos = getSketchPos(e);
+        ctx.strokeStyle = state.penColor;
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+      }, { passive: true });
+      sketchCanvas.addEventListener('touchmove', (e) => {
+        if (!isDrawing) return;
+        const ctx = sketchCanvas.getContext('2d');
+        const pos = getSketchPos(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      }, { passive: true });
+      window.addEventListener('touchend', () => { isDrawing = false; });
+
+      document.querySelectorAll('.pen-color-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.penColor = btn.getAttribute('data-pen');
+          document.querySelectorAll('.pen-color-btn').forEach(b => b.classList.remove('ring-2', 'ring-white'));
+          btn.classList.add('ring-2', 'ring-white');
+        });
+      });
+
+      const WRITTEN_SOLUTIONS = [
+        '∫₀^π sin(x) dx = 2',
+        '12² + 5² = 169 (c = 13)',
+        'lim(x→0) sin(x)/x = 1',
+        'e^(iπ) + 1 = 0'
+      ];
+      let writtenIdx = 0;
+      document.getElementById('btn-sketch-recognize').addEventListener('click', () => {
+        playKeyClick('op');
+        writtenIdx = (writtenIdx + 1) % WRITTEN_SOLUTIONS.length;
+        sketchOverlay.textContent = WRITTEN_SOLUTIONS[writtenIdx];
+        showToast('Solved Handwritten Expression');
+      });
+      document.getElementById('btn-sketch-clear').addEventListener('click', () => {
+        playKeyClick('fn');
+        const ctx = sketchCanvas.getContext('2d');
+        ctx.clearRect(0, 0, sketchCanvas.width, sketchCanvas.height);
+      });
+
+      // Math Notes Sub-tabs switching
+      const btnTabSheet = document.getElementById('btn-notes-tab-sheet');
+      const btnTabGraph = document.getElementById('btn-notes-tab-graph');
+      const btnTabSketch = document.getElementById('btn-notes-tab-sketch');
+      const panelSheet = document.getElementById('notes-panel-sheet');
+      const panelGraph = document.getElementById('notes-panel-graph');
+      const panelSketch = document.getElementById('notes-panel-sketch');
+
+      function switchNotesSubtab(tab) {
+        playKeyClick('fn');
+        panelSheet.classList.toggle('hidden', tab !== 'sheet');
+        panelGraph.classList.toggle('hidden', tab !== 'graph');
+        panelGraph.classList.toggle('flex', tab === 'graph');
+        panelSketch.classList.toggle('hidden', tab !== 'sketch');
+        panelSketch.classList.toggle('flex', tab === 'sketch');
+
+        btnTabSheet.className = `px-2.5 py-1 rounded-lg text-xs font-medium ${tab === 'sheet' ? 'bg-amber-500 text-black' : 'bg-zinc-800 text-zinc-300'}`;
+        btnTabGraph.className = `px-2.5 py-1 rounded-lg text-xs font-medium ${tab === 'graph' ? 'bg-amber-500 text-black' : 'bg-zinc-800 text-zinc-300'}`;
+        btnTabSketch.className = `px-2.5 py-1 rounded-lg text-xs font-medium ${tab === 'sketch' ? 'bg-amber-500 text-black' : 'bg-zinc-800 text-zinc-300'}`;
+
+        if (tab === 'graph') setTimeout(() => drawGraph(), 30);
+        if (tab === 'sketch') setTimeout(() => initSketchPad(), 30);
+      }
+
+      btnTabSheet.addEventListener('click', () => switchNotesSubtab('sheet'));
+      btnTabGraph.addEventListener('click', () => switchNotesSubtab('graph'));
+      btnTabSketch.addEventListener('click', () => switchNotesSubtab('sketch'));
+
+      // =========================================================================
+      // 13. MODE SWITCHING, ORIENTATION & MATERIAL CONTROLS
+      // =========================================================================
+      function applyModeAndLayout() {
+        const isNotes = state.mode === 'notes';
+        const isSci = state.mode === 'scientific';
+        const isLandscape = state.orientation === 'landscape';
+
+        // Toggle main views
+        elCalcMainView.classList.toggle('hidden', isNotes);
+        elCalcMainView.classList.toggle('flex', !isNotes);
+        elMathNotesView.classList.toggle('hidden', !isNotes);
+        elMathNotesView.classList.toggle('flex', isNotes);
+
+        // Toggle Converter vs Standard Display
+        elStandardDisplay.classList.toggle('hidden', state.convertEnabled);
+        elConverterDisplay.classList.toggle('hidden', !state.convertEnabled);
+        elConverterDisplay.classList.toggle('flex', state.convertEnabled);
+
+        // Toggle Scientific Keypad
+        elSciKeypad.classList.toggle('hidden', !isSci);
+        elSciKeypad.classList.toggle('grid', isSci);
+
+        // Adjust button heights so Scientific + Convert fit comfortably in Portrait or Landscape
+        const basicButtons = elBasicKeypad.querySelectorAll('.calc-key');
+        if (isLandscape) {
+          elChassis.style.width = '760px';
+          elChassis.style.height = '430px';
+          elKeypadsWrapper.className = 'grid grid-cols-12 gap-2 items-end';
+          if (isSci) {
+            elSciKeypad.className = 'grid grid-cols-6 gap-1.5 col-span-7';
+            elBasicKeypad.className = 'grid grid-cols-4 gap-1.5 col-span-5';
+          } else {
+            elBasicKeypad.className = 'grid grid-cols-4 gap-2 col-span-12';
+          }
+          basicButtons.forEach(b => {
+            b.style.height = '44px';
+            b.style.fontSize = '20px';
+          });
+        } else {
+          elChassis.style.width = '382px';
+          elChassis.style.height = '788px';
+          elKeypadsWrapper.className = 'flex flex-col gap-2';
+          elBasicKeypad.className = 'grid grid-cols-4 gap-2';
+          const btnHeight = isSci && state.convertEnabled ? '46px' : isSci ? '52px' : state.convertEnabled ? '62px' : '72px';
+          const fontSize = isSci ? '24px' : '30px';
+          basicButtons.forEach(b => {
+            b.style.height = btnHeight;
+            b.style.fontSize = fontSize;
+          });
+        }
+
+        // Update Popover Checkmarks
+        document.getElementById('check-basic').classList.toggle('opacity-0', state.mode !== 'basic');
+        document.getElementById('check-scientific').classList.toggle('opacity-0', state.mode !== 'scientific');
+        document.getElementById('check-notes').classList.toggle('opacity-0', state.mode !== 'notes');
+
+        // Update Convert Switch UI
+        const convSwitch = document.getElementById('toggle-convert-switch');
+        const convKnob = document.getElementById('convert-knob');
+        convSwitch.setAttribute('aria-checked', String(state.convertEnabled));
+        convSwitch.className = `w-11 h-6 rounded-full p-0.5 transition-colors duration-200 flex items-center ${
+          state.convertEnabled ? 'bg-emerald-500' : 'bg-zinc-700'
+        }`;
+        convKnob.style.transform = state.convertEnabled ? 'translateX(20px)' : 'translateX(0)';
+
+        // Sync Top External Control Pills
+        const extBasic = document.getElementById('ext-mode-basic');
+        const extSci = document.getElementById('ext-mode-sci');
+        const extConv = document.getElementById('ext-mode-convert');
+        const extNotes = document.getElementById('ext-mode-notes');
+
+        extBasic.className = `px-2.5 py-1 rounded-lg text-xs font-medium transition ${state.mode === 'basic' && !state.convertEnabled ? 'bg-amber-500 text-black font-semibold' : 'text-zinc-300 hover:text-white'}`;
+        extSci.className = `px-2.5 py-1 rounded-lg text-xs font-medium transition ${state.mode === 'scientific' ? 'bg-amber-500 text-black font-semibold' : 'text-zinc-300 hover:text-white'}`;
+        extConv.className = `px-2.5 py-1 rounded-lg text-xs font-medium transition ${state.convertEnabled ? 'bg-emerald-500 text-black font-semibold' : 'text-zinc-300 hover:text-white'}`;
+        extNotes.className = `px-2.5 py-1 rounded-lg text-xs font-medium transition flex items-center gap-1 ${state.mode === 'notes' ? 'bg-amber-500 text-black font-semibold' : 'text-zinc-300 hover:text-white'}`;
+
+        if (isNotes) {
+          evaluateMathNotes();
+        }
+        updateDisplay();
+      }
+
+      // Mode Popover listeners
+      document.getElementById('btn-mode-popover').addEventListener('click', (e) => {
+        e.stopPropagation();
+        playKeyClick('fn');
+        elModePopover.classList.toggle('hidden');
+      });
+      document.addEventListener('click', (e) => {
+        if (!elModePopover.contains(e.target) && e.target.id !== 'btn-mode-popover') {
+          elModePopover.classList.add('hidden');
+        }
+        if (!elResultWrapper.contains(e.target) && !elCopyTooltip.contains(e.target)) {
+          elCopyTooltip.classList.add('hidden');
+        }
+      });
+
+      document.getElementById('menu-mode-basic').addEventListener('click', () => {
+        playKeyClick('fn');
+        state.mode = 'basic';
+        elModePopover.classList.add('hidden');
+        applyModeAndLayout();
+      });
+      document.getElementById('menu-mode-scientific').addEventListener('click', () => {
+        playKeyClick('fn');
+        state.mode = 'scientific';
+        elModePopover.classList.add('hidden');
+        applyModeAndLayout();
+      });
+      document.getElementById('menu-mode-notes').addEventListener('click', () => {
+        playKeyClick('fn');
+        state.mode = 'notes';
+        elModePopover.classList.add('hidden');
+        applyModeAndLayout();
+      });
+      document.getElementById('toggle-convert-switch').addEventListener('click', () => {
+        playKeyClick('fn');
+        state.convertEnabled = !state.convertEnabled;
+        if (state.mode === 'notes' && state.convertEnabled) {
+          state.mode = 'basic';
+        }
+        applyModeAndLayout();
+      });
+      document.getElementById('btn-return-calc').addEventListener('click', () => {
+        playKeyClick('fn');
+        state.mode = 'basic';
+        applyModeAndLayout();
+      });
+
+      // External quick bar listeners
+      document.getElementById('ext-mode-basic').addEventListener('click', () => {
+        playKeyClick('fn');
+        state.mode = 'basic';
+        state.convertEnabled = false;
+        applyModeAndLayout();
+      });
+      document.getElementById('ext-mode-sci').addEventListener('click', () => {
+        playKeyClick('fn');
+        state.mode = 'scientific';
+        applyModeAndLayout();
+      });
+      document.getElementById('ext-mode-convert').addEventListener('click', () => {
+        playKeyClick('fn');
+        if (state.mode === 'notes') state.mode = 'basic';
+        state.convertEnabled = !state.convertEnabled;
+        applyModeAndLayout();
+      });
+      document.getElementById('ext-mode-notes').addEventListener('click', () => {
+        playKeyClick('fn');
+        state.mode = 'notes';
+        applyModeAndLayout();
+      });
+
+      // Orientation toggle
+      document.getElementById('btn-orientation').addEventListener('click', () => {
+        playKeyClick('fn');
+        state.orientation = state.orientation === 'portrait' ? 'landscape' : 'portrait';
+        if (state.orientation === 'landscape' && state.mode === 'basic') {
+          state.mode = 'scientific';
+        }
+        document.getElementById('orientation-label').textContent =
+          state.orientation === 'portrait' ? 'Portrait' : 'Landscape';
+        applyModeAndLayout();
+      });
+
+      // Material toggle (Liquid Glass vs Classic OLED Dark)
+      document.getElementById('btn-material').addEventListener('click', () => {
+        playKeyClick('fn');
+        state.material = state.material === 'glass' ? 'oled' : 'glass';
+        elChassis.classList.toggle('glass-mode', state.material === 'glass');
+        elChassis.classList.toggle('oled-mode', state.material === 'oled');
+        document.getElementById('material-label').textContent =
+          state.material === 'glass' ? '✨ Liquid Glass' : '🌑 Classic OLED';
+      });
+
+      // Sound toggle
+      document.getElementById('btn-sound').addEventListener('click', () => {
+        state.soundEnabled = !state.soundEnabled;
+        document.getElementById('icon-sound-on').classList.toggle('hidden', !state.soundEnabled);
+        document.getElementById('icon-sound-off').classList.toggle('hidden', state.soundEnabled);
+        if (state.soundEnabled) playKeyClick('fn');
+      });
+
+      // Dynamic Island tap
+      document.getElementById('dynamic-island').addEventListener('click', () => {
+        playKeyClick('fn');
+        showToast(`iOS 27 Calculator • Memory: ${formatDisplayNumber(formatNumericResult(state.memoryValue))}`);
+      });
+
+      // =========================================================================
+      // 14. COPY / PASTE & KEYPAD LISTENERS
+      // =========================================================================
+      elResultWrapper.addEventListener('click', (e) => {
+        e.stopPropagation();
+        elCopyTooltip.classList.toggle('hidden');
+      });
+
+      document.getElementById('btn-copy-result').addEventListener('click', () => {
+        const textToCopy = elResult.textContent.replace(/−/g, '-');
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textToCopy).catch(() => {
+            fallbackCopy(textToCopy);
+          });
+        } else {
+          fallbackCopy(textToCopy);
+        }
+        elCopyTooltip.classList.add('hidden');
+        showToast(`Copied "${elResult.textContent}"`);
+      });
+
+      function fallbackCopy(text) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+        } catch (err) {
+          // Ignore
+        }
+        document.body.removeChild(ta);
+      }
+
+      document.getElementById('btn-paste-result').addEventListener('click', async () => {
+        elCopyTooltip.classList.add('hidden');
+        try {
+          if (navigator.clipboard && navigator.clipboard.readText) {
+            const clip = await navigator.clipboard.readText();
+            const num = parseFloat(clip.replace(/,/g, ''));
+            if (!Number.isNaN(num)) {
+              state.currentInput = String(num);
+              state.justEvaluated = false;
+              updateDisplay();
+              showToast('Pasted from clipboard');
+              return;
+            }
+          }
+        } catch (e) {
+          // Clipboard read blocked in iframe
+        }
+        showToast('Use Ctrl+V / Cmd+V to paste numbers');
+      });
+
+      // Attach listeners to all Basic Keypad buttons
+      document.querySelectorAll('[data-num]').forEach(btn => {
+        btn.addEventListener('click', () => inputDigit(btn.getAttribute('data-num')));
+      });
+      document.querySelectorAll('[data-op]').forEach(btn => {
+        btn.addEventListener('click', () => inputOperator(btn.getAttribute('data-op')));
+      });
+      document.getElementById('key-backspace').addEventListener('click', handleBackspace);
+      document.getElementById('key-backspace').addEventListener('dblclick', () => {
+        state.currentInput = '0';
+        state.tokens = [];
+        updateDisplay();
+        showToast('Cleared All');
+      });
+      document.getElementById('key-clear').addEventListener('click', handleClearOrAllClear);
+      document.querySelector('[data-action="percent"]').addEventListener('click', handlePercent);
+      document.querySelector('[data-action="negate"]').addEventListener('click', handleNegate);
+      document.getElementById('key-equals').addEventListener('click', handleEquals);
+
+      // Attach listeners to all Scientific Keypad buttons
+      document.querySelectorAll('[data-sci]').forEach(btn => {
+        btn.addEventListener('click', () => handleSciKey(btn.getAttribute('data-sci')));
+      });
+
+      // Converter Row Focus
+      document.getElementById('conv-row-top').addEventListener('click', () => {
+        state.convActiveRow = 'top';
+        updateConverterCalculation();
+      });
+      document.getElementById('conv-row-bottom').addEventListener('click', () => {
+        state.convActiveRow = 'bottom';
+        updateConverterCalculation();
+      });
+
+      // Keyboard Shortcuts (when not typing inside Math Notes inputs)
+      window.addEventListener('keydown', (e) => {
+        const tag = (e.target && e.target.tagName) || '';
+        if (tag === 'TEXTAREA' || tag === 'INPUT' || tag === 'SELECT') return;
+
+        if (e.key >= '0' && e.key <= '9') {
+          e.preventDefault();
+          inputDigit(e.key);
+        } else if (e.key === '.') {
+          e.preventDefault();
+          inputDigit('.');
+        } else if (e.key === '+') {
+          e.preventDefault();
+          inputOperator('+');
+        } else if (e.key === '-') {
+          e.preventDefault();
+          inputOperator('−');
+        } else if (e.key === '*') {
+          e.preventDefault();
+          inputOperator('×');
+        } else if (e.key === '/') {
+          e.preventDefault();
+          inputOperator('÷');
+        } else if (e.key === '%') {
+          e.preventDefault();
+          handlePercent();
+        } else if (e.key === 'Enter' || e.key === '=') {
+          e.preventDefault();
+          handleEquals();
+        } else if (e.key === 'Backspace') {
+          e.preventDefault();
+          handleBackspace();
+        } else if (e.key === 'Escape' || e.key === 'c' || e.key === 'C') {
+          e.preventDefault();
+          handleClearOrAllClear();
+        } else if (e.key === '(' || e.key === ')') {
+          e.preventDefault();
+          handleSciKey(e.key);
+        }
+      });
+
+      // Initialize App
+      renderConverterCategories();
+      populateConverterUnits();
+      renderHistoryList();
+      evaluateMathNotes();
+      applyModeAndLayout();
+    })();
   </script>
 </body>
 </html>
